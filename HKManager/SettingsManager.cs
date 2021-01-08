@@ -122,7 +122,7 @@ namespace HKManager
 
         public string GetPath() { return Properties.Settings.Default.HKPath; }
         public void SetPath(string newPath) { Properties.Settings.Default.HKPath = newPath; SaveSettings(); }
-        public bool AreSettingsEmpty() { if (Properties.Settings.Default.HKPath == null) return true; else return false; }
+        public bool AreSettingsEmpty() { if (Properties.Settings.Default.HKPath == "") return true; else return false; }
         public string GetPatch() { return Properties.Settings.Default.Patch; }
         public void SetPatch(string newPatch) { Properties.Settings.Default.Patch = newPatch; SaveSettings(); }
     }

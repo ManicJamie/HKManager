@@ -25,7 +25,7 @@ namespace HKManager
 
         private void HKManager_Load(object sender, EventArgs e)
         {
-            this.Text = "HKManager" + Version;
+            this.Text = "HKManager " + Version;
             fileManager = new FileManager(settingsManager);
             apiManager = new APIManager(fileManager);
             modManager = new ModManager();
@@ -49,10 +49,10 @@ namespace HKManager
             switch (myPatchDialog.ShowDialog())
             {
                 case DialogResult.OK:
-                    apiManager.SetPatch(myPatchDialog.selectedPatch);
+                    settingsManager.SetPatch(myPatchDialog.selectedPatch);
                     break;
                 default:
-                    apiManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
+                    settingsManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
                     break;
             }
             UpdatePathLabel();
@@ -73,9 +73,10 @@ namespace HKManager
         {
             try
             {
-                VersionLabel.Text = "Patch: " + apiManager.GetPatch().ToString();
+                VersionLabel.Text = "Patch: " + settingsManager.GetPatch();
             } catch (System.NullReferenceException e)
             {
+                MessageBox.Show("frick");
                 // leave label text
             }
         }

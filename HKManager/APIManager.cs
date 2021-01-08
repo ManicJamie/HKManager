@@ -13,18 +13,17 @@ namespace HKManager
         private const string APILocation = "HKManager_Data/APIs/";
         private bool APIenabled = false;
         private FileManager fileManager;
-        private string patch;
         private string OS;
 
         public APIManager(FileManager manager)
         {
             fileManager = manager;
-            OS = fileManager.GetOS();
+            OS = fileManager.GetSettingsManager().GetOS();
         }
 
         public bool EnableAPI()
         {
-            switch (patch)
+            switch (fileManager.GetSettingsManager().GetPatch())
             {
                 case "1.2.2.1":
                     fileManager.SetAPI(APILocation + "1221/Modded.dll");
@@ -38,8 +37,5 @@ namespace HKManager
                     return false;
             }
         }
-
-        public void SetPatch(string newpatch) { patch = newpatch; }
-        public string GetPatch() { return patch; }
     }
 }

@@ -44,7 +44,7 @@ namespace HKManager
             File.Move(APIPath, newPath);
         }
 
-        public string GetOS() { return settingsManager.GetOS(); } // Provide OS from settingsManager
+        public SettingsManager GetSettingsManager() { return settingsManager; } // Provide settingsManager
         
     }
 }
