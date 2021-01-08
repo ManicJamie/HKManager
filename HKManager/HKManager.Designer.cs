@@ -71,7 +71,7 @@
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
             this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
-            this.MainContainer.Size = new System.Drawing.Size(943, 483);
+            this.MainContainer.Size = new System.Drawing.Size(943, 453);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
             // 
@@ -87,8 +87,8 @@
             // 
             this.PathButton.Location = new System.Drawing.Point(12, 269);
             this.PathButton.Name = "PathButton";
-            this.PathButton.Size = new System.Drawing.Size(142, 66);
-            this.PathButton.TabIndex = 10;
+            this.PathButton.Size = new System.Drawing.Size(121, 53);
+            this.PathButton.TabIndex = 4;
             this.PathButton.Text = "Change HK Path";
             this.PathButton.UseVisualStyleBackColor = true;
             this.PathButton.Click += new System.EventHandler(this.PathButton_Click);
@@ -96,10 +96,10 @@
             // LaunchButton
             // 
             this.LaunchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LaunchButton.Location = new System.Drawing.Point(109, 399);
+            this.LaunchButton.Location = new System.Drawing.Point(123, 382);
             this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(136, 72);
-            this.LaunchButton.TabIndex = 9;
+            this.LaunchButton.Size = new System.Drawing.Size(122, 59);
+            this.LaunchButton.TabIndex = 5;
             this.LaunchButton.Text = "Launch";
             this.LaunchButton.UseVisualStyleBackColor = true;
             // 
@@ -110,7 +110,7 @@
             this.UpdateButton.Location = new System.Drawing.Point(12, 163);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(233, 47);
-            this.UpdateButton.TabIndex = 8;
+            this.UpdateButton.TabIndex = 3;
             this.UpdateButton.Text = "Check For Updates";
             this.UpdateButton.UseVisualStyleBackColor = true;
             // 
@@ -121,7 +121,7 @@
             this.DownloadButton.Location = new System.Drawing.Point(12, 110);
             this.DownloadButton.Name = "DownloadButton";
             this.DownloadButton.Size = new System.Drawing.Size(233, 47);
-            this.DownloadButton.TabIndex = 7;
+            this.DownloadButton.TabIndex = 2;
             this.DownloadButton.Text = "Download Mods";
             this.DownloadButton.UseVisualStyleBackColor = true;
             // 
@@ -134,7 +134,7 @@
             this.ModdedButton.Location = new System.Drawing.Point(140, 32);
             this.ModdedButton.Name = "ModdedButton";
             this.ModdedButton.Size = new System.Drawing.Size(105, 53);
-            this.ModdedButton.TabIndex = 6;
+            this.ModdedButton.TabIndex = 1;
             this.ModdedButton.Text = "Modded";
             this.ModdedButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ModdedButton.UseVisualStyleBackColor = true;
@@ -147,7 +147,7 @@
             this.VanillaButton.Location = new System.Drawing.Point(12, 32);
             this.VanillaButton.Name = "VanillaButton";
             this.VanillaButton.Size = new System.Drawing.Size(105, 53);
-            this.VanillaButton.TabIndex = 5;
+            this.VanillaButton.TabIndex = 0;
             this.VanillaButton.Text = "Vanilla";
             this.VanillaButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.VanillaButton.UseVisualStyleBackColor = true;
@@ -168,7 +168,8 @@
             this.SavePresetButton.Location = new System.Drawing.Point(574, 91);
             this.SavePresetButton.Name = "SavePresetButton";
             this.SavePresetButton.Size = new System.Drawing.Size(95, 66);
-            this.SavePresetButton.TabIndex = 2;
+            this.SavePresetButton.TabIndex = 7;
+            this.SavePresetButton.TabStop = false;
             this.SavePresetButton.Text = "Save Preset";
             this.SavePresetButton.UseVisualStyleBackColor = true;
             // 
@@ -178,7 +179,8 @@
             this.LoadPresetButton.Location = new System.Drawing.Point(574, 21);
             this.LoadPresetButton.Name = "LoadPresetButton";
             this.LoadPresetButton.Size = new System.Drawing.Size(95, 64);
-            this.LoadPresetButton.TabIndex = 1;
+            this.LoadPresetButton.TabIndex = 6;
+            this.LoadPresetButton.TabStop = false;
             this.LoadPresetButton.Text = "Load Preset";
             this.LoadPresetButton.UseVisualStyleBackColor = true;
             // 
@@ -187,7 +189,7 @@
             this.ModManagerContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ModManagerContainer.Location = new System.Drawing.Point(13, 12);
             this.ModManagerContainer.Name = "ModManagerContainer";
-            this.ModManagerContainer.Size = new System.Drawing.Size(555, 459);
+            this.ModManagerContainer.Size = new System.Drawing.Size(555, 429);
             this.ModManagerContainer.TabIndex = 1;
             this.ModManagerContainer.TabStop = false;
             this.ModManagerContainer.Text = "Manage Mods";
@@ -195,14 +197,14 @@
             // HKManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(943, 483);
+            this.ClientSize = new System.Drawing.Size(943, 453);
             this.Controls.Add(this.MainContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(961, 530);
-            this.MinimumSize = new System.Drawing.Size(276, 530);
+            this.MaximumSize = new System.Drawing.Size(961, 500);
+            this.MinimumSize = new System.Drawing.Size(276, 500);
             this.Name = "HKManager";
             this.Text = "HKManager";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HKManager_FormClosed);
             this.Load += new System.EventHandler(this.HKManager_Load);
             this.MainContainer.Panel1.ResumeLayout(false);
             this.MainContainer.Panel1.PerformLayout();

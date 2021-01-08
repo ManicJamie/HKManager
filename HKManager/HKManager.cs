@@ -14,9 +14,9 @@ namespace HKManager
     {
         private const string Version = "a1.0";
         private SettingsManager settingsManager = new SettingsManager();
-        private ModManager modManager = new ModManager();
-        private APIManager apiManager = new APIManager();
-        private FileManager fileManager = new FileManager();
+        private FileManager fileManager;
+        private APIManager apiManager;
+        private ModManager modManager;
 
         public HKManager()
         {
@@ -25,6 +25,10 @@ namespace HKManager
 
         private void HKManager_Load(object sender, EventArgs e)
         {
+            this.Text = "HKManager" + Version;
+            fileManager = new FileManager(settingsManager);
+            apiManager = new APIManager(fileManager);
+            modManager = new ModManager();
             if (!fileManager.FileTreeExists()) // close app if user denies creating file tree
             {
                 this.Close(); Application.Exit();
@@ -34,13 +38,25 @@ namespace HKManager
                 settingsManager.CreateNewAppSettings();
             }
             UpdatePathLabel();
+            UpdatePatchLabel();
             this.Size = this.MinimumSize;
         }
 
         private void PathButton_Click(object sender, EventArgs e)
         {
-            settingsManager.SetUserPath();
+            PatchSelectionDialog myPatchDialog = new PatchSelectionDialog();
+            if (!settingsManager.SetUserPath()) { this.Close(); Application.Exit(); }
+            switch (myPatchDialog.ShowDialog())
+            {
+                case DialogResult.OK:
+                    apiManager.SetPatch(myPatchDialog.selectedPatch);
+                    break;
+                default:
+                    apiManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
+                    break;
+            }
             UpdatePathLabel();
+            UpdatePatchLabel();
         }
 
         public void CloseSignalReceived(object sender, EventArgs e)
@@ -51,6 +67,17 @@ namespace HKManager
         private void UpdatePathLabel()
         {
             PathLabel.Text = "Path: " + settingsManager.GetPath();
+        }
+
+        private void UpdatePatchLabel()
+        {
+            try
+            {
+                VersionLabel.Text = "Patch: " + apiManager.GetPatch().ToString();
+            } catch (System.NullReferenceException e)
+            {
+                // leave label text
+            }
         }
 
         private void HKManager_FormClosed(object sender, FormClosedEventArgs e)

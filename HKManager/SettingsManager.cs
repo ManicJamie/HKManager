@@ -40,22 +40,18 @@ namespace HKManager
             return defaultpaths;
         }
 
-        private string GetOS()
+        public string GetOS()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return "Windows";
-
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "MacOS" ;
-
-
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return "Linux" ;
-
-            else return "Windows";
-                
+            else return "Windows";  
         }
 
         public void CreateNewAppSettings()
         {
             FindDefaultPath();
+            CreatePatch();
         }
 
         private void FindDefaultPath()
@@ -71,9 +67,23 @@ namespace HKManager
                 }
             }
             
-            if (!SetUserPath())
+            if (!SetUserPath()) // Get path from user.
             {
                 MessageBox.Show("HKManager requires to know the location of your Hollow Knight Install. \r\nThe application will now exit.", "HKManager");
+                Application.Exit(); // Exit w/ notification if user does not specify path.
+            }
+        }
+
+        private bool CreatePatch()
+        {
+            PatchSelectionDialog myPatchDialog = new PatchSelectionDialog();
+            switch (myPatchDialog.ShowDialog())
+            {
+                case DialogResult.OK:
+                    SetPatch(myPatchDialog.selectedPatch);
+                    return true;
+                default:
+                    return false;
             }
         }
 
@@ -111,7 +121,9 @@ namespace HKManager
         }
 
         public string GetPath() { return Properties.Settings.Default.HKPath; }
-        public void SetPath(string newPath) { Properties.Settings.Default.HKPath = newPath; }
-        public bool AreSettingsEmpty() { if (Properties.Settings.Default.HKPath == "") return true; else return false; }
+        public void SetPath(string newPath) { Properties.Settings.Default.HKPath = newPath; SaveSettings(); }
+        public bool AreSettingsEmpty() { if (Properties.Settings.Default.HKPath == null) return true; else return false; }
+        public string GetPatch() { return Properties.Settings.Default.Patch; }
+        public void SetPatch(string newPatch) { Properties.Settings.Default.Patch = newPatch; SaveSettings(); }
     }
 }

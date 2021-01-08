@@ -34,5 +34,17 @@ namespace HKManager.Properties {
                 this["HKPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Patch {
+            get {
+                return ((string)(this["Patch"]));
+            }
+            set {
+                this["Patch"] = value;
+            }
+        }
     }
 }

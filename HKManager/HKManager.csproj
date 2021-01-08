@@ -58,6 +58,12 @@
       <DependentUpon>HKManager.cs</DependentUpon>
     </Compile>
     <Compile Include="ModManager.cs" />
+    <Compile Include="PatchSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatchSelectionDialog.Designer.cs">
+      <DependentUpon>PatchSelectionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -83,6 +89,9 @@
     <None Include="Resources\hornet.ico" />
     <EmbeddedResource Include="HKManager.resx">
       <DependentUpon>HKManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatchSelectionDialog.resx">
+      <DependentUpon>PatchSelectionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
