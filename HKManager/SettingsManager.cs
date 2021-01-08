@@ -13,8 +13,7 @@ namespace HKManager
 {
     class SettingsManager
     {
-
-        public List<string> FillDefaultPaths()
+        public List<string> GetDefaultPaths()
         {
             List<string> defaultpaths = new List<string>();
             switch (GetOS())
@@ -54,38 +53,65 @@ namespace HKManager
                 
         }
 
-        private void CreateNewAppSettings()
+        public void CreateNewAppSettings()
         {
-            DefinePath();
+            FindDefaultPath();
         }
 
-        private void DefinePath()
+        private void FindDefaultPath()
         {
             string path = "";
-            foreach (string testPath in FillDefaultPaths())
+            foreach (string testPath in GetDefaultPaths())
             {
-                if (File.Exists(testPath + "/hollow_knight.exe"))
+                if (CheckPathForHK(testPath))
                 {
                     path = testPath;
-                    break;
+                    SetPath(path);
+                    return;
                 }
             }
+            
+            if (!SetUserPath())
+            {
+                MessageBox.Show("HKManager requires to know the location of your Hollow Knight Install. \r\nThe application will now exit.", "HKManager");
+            }
+        }
+
+        public bool SetUserPath()
+        {
+            string path = "";
+            FolderBrowserDialog browserDialog = new FolderBrowserDialog();
+            browserDialog.Description = "Select the Hollow Knight folder";
             while (path == "")
             {
-                FolderBrowserDialog browserDialog = new FolderBrowserDialog();
                 switch (browserDialog.ShowDialog())
                 {
                     case DialogResult.OK:
-                        if (File.Exists(browserDialog.SelectedPath + "/hollow_knight.exe")) path = browserDialog.SelectedPath;
+                        if (CheckPathForHK(browserDialog.SelectedPath)) path = browserDialog.SelectedPath;
                         break;
                     case DialogResult.Cancel:
                     case DialogResult.Abort:
-                        MessageBox.Show("HKManager requires to know the location of your Hollow Knight Install. \r\nThe application will now exit.", "HKManager");
-                        Application.Exit();
-                        break;
+                        return false;
                 }
+
             }
-            Properties.Settings.Default.HKPath = path;
+            SetPath(path);
+            return true;
         }
+
+        private bool CheckPathForHK(string probe)
+        {
+            if (File.Exists(probe + "/hollow_knight.exe")) return true;
+            else return false;
+        }
+        
+        public void SaveSettings()
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        public string GetPath() { return Properties.Settings.Default.HKPath; }
+        public void SetPath(string newPath) { Properties.Settings.Default.HKPath = newPath; }
+        public bool AreSettingsEmpty() { if (Properties.Settings.Default.HKPath == "") return true; else return false; }
     }
 }

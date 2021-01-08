@@ -50,6 +50,7 @@
     <Compile Include="APIManager.cs" />
     <Compile Include="DownloadManager.cs" />
     <Compile Include="FileDownloader.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="HKManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\hornet.ico" />
+    <EmbeddedResource Include="HKManager.resx">
+      <DependentUpon>HKManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

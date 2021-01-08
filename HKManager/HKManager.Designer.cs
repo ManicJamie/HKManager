@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
+            this.PathLabel = new System.Windows.Forms.Label();
+            this.PathButton = new System.Windows.Forms.Button();
             this.LaunchButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DownloadButton = new System.Windows.Forms.Button();
@@ -55,6 +56,8 @@
             // 
             // MainContainer.Panel1
             // 
+            this.MainContainer.Panel1.Controls.Add(this.PathLabel);
+            this.MainContainer.Panel1.Controls.Add(this.PathButton);
             this.MainContainer.Panel1.Controls.Add(this.LaunchButton);
             this.MainContainer.Panel1.Controls.Add(this.UpdateButton);
             this.MainContainer.Panel1.Controls.Add(this.DownloadButton);
@@ -71,6 +74,24 @@
             this.MainContainer.Size = new System.Drawing.Size(943, 483);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
+            // 
+            // PathLabel
+            // 
+            this.PathLabel.Location = new System.Drawing.Point(9, 222);
+            this.PathLabel.Name = "PathLabel";
+            this.PathLabel.Size = new System.Drawing.Size(236, 44);
+            this.PathLabel.TabIndex = 11;
+            this.PathLabel.Text = "Path:";
+            // 
+            // PathButton
+            // 
+            this.PathButton.Location = new System.Drawing.Point(12, 269);
+            this.PathButton.Name = "PathButton";
+            this.PathButton.Size = new System.Drawing.Size(142, 66);
+            this.PathButton.TabIndex = 10;
+            this.PathButton.Text = "Change HK Path";
+            this.PathButton.UseVisualStyleBackColor = true;
+            this.PathButton.Click += new System.EventHandler(this.PathButton_Click);
             // 
             // LaunchButton
             // 
@@ -181,6 +202,7 @@
             this.MinimumSize = new System.Drawing.Size(276, 530);
             this.Name = "HKManager";
             this.Text = "HKManager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HKManager_FormClosed);
             this.Load += new System.EventHandler(this.HKManager_Load);
             this.MainContainer.Panel1.ResumeLayout(false);
             this.MainContainer.Panel1.PerformLayout();
@@ -203,6 +225,8 @@
         private System.Windows.Forms.Button SavePresetButton;
         private System.Windows.Forms.Button LoadPresetButton;
         private System.Windows.Forms.GroupBox ModManagerContainer;
+        private System.Windows.Forms.Button PathButton;
+        private System.Windows.Forms.Label PathLabel;
     }
 }
 
