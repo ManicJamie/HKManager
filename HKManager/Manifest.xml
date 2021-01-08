@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Manifest>
+  <APIList>
+    <Patch number = "">
+      <URI></URI>
+    </Patch>
+  </APIList>
+  <ModList>
+    <Mod name = "">
+      <Description></Description>
+      <VersionList>
+        <Version buildNum = "">
+          <Patch></Patch>
+          <UpdateDetails></UpdateDetails>
+          <DownloadURI></DownloadURI>
+        </Version>
+      </VersionList>
+      <Dependencies>
+        <DependencyName></DependencyName>
+      </Dependencies>
+    </Mod>
+  </ModList>
+</Manifest>

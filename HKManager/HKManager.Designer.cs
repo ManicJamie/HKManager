@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
-            this.VersionLabel = new System.Windows.Forms.Label();
-            this.VanillaButton = new System.Windows.Forms.RadioButton();
-            this.ModdedButton = new System.Windows.Forms.RadioButton();
-            this.DownloadButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
             this.LaunchButton = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
+            this.DownloadButton = new System.Windows.Forms.Button();
+            this.ModdedButton = new System.Windows.Forms.RadioButton();
+            this.VanillaButton = new System.Windows.Forms.RadioButton();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.SavePresetButton = new System.Windows.Forms.Button();
+            this.LoadPresetButton = new System.Windows.Forms.Button();
+            this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
+            this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,19 +62,61 @@
             this.MainContainer.Panel1.Controls.Add(this.VanillaButton);
             this.MainContainer.Panel1.Controls.Add(this.VersionLabel);
             this.MainContainer.Panel1.Padding = new System.Windows.Forms.Padding(10);
-            this.MainContainer.Size = new System.Drawing.Size(556, 450);
+            // 
+            // MainContainer.Panel2
+            // 
+            this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
+            this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
+            this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
+            this.MainContainer.Size = new System.Drawing.Size(943, 483);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
             // 
-            // VersionLabel
+            // LaunchButton
             // 
-            this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(12, 9);
-            this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(142, 20);
-            this.VersionLabel.TabIndex = 3;
-            this.VersionLabel.Text = "Version: x.x.x.x-xx";
+            this.LaunchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LaunchButton.Location = new System.Drawing.Point(109, 399);
+            this.LaunchButton.Name = "LaunchButton";
+            this.LaunchButton.Size = new System.Drawing.Size(136, 72);
+            this.LaunchButton.TabIndex = 9;
+            this.LaunchButton.Text = "Launch";
+            this.LaunchButton.UseVisualStyleBackColor = true;
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UpdateButton.Location = new System.Drawing.Point(12, 163);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(233, 47);
+            this.UpdateButton.TabIndex = 8;
+            this.UpdateButton.Text = "Check For Updates";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            // 
+            // DownloadButton
+            // 
+            this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DownloadButton.Location = new System.Drawing.Point(12, 110);
+            this.DownloadButton.Name = "DownloadButton";
+            this.DownloadButton.Size = new System.Drawing.Size(233, 47);
+            this.DownloadButton.TabIndex = 7;
+            this.DownloadButton.Text = "Download Mods";
+            this.DownloadButton.UseVisualStyleBackColor = true;
+            // 
+            // ModdedButton
+            // 
+            this.ModdedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModdedButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ModdedButton.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ModdedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModdedButton.Location = new System.Drawing.Point(140, 32);
+            this.ModdedButton.Name = "ModdedButton";
+            this.ModdedButton.Size = new System.Drawing.Size(105, 53);
+            this.ModdedButton.TabIndex = 6;
+            this.ModdedButton.Text = "Modded";
+            this.ModdedButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ModdedButton.UseVisualStyleBackColor = true;
             // 
             // VanillaButton
             // 
@@ -84,57 +131,60 @@
             this.VanillaButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.VanillaButton.UseVisualStyleBackColor = true;
             // 
-            // ModdedButton
+            // VersionLabel
             // 
-            this.ModdedButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.ModdedButton.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ModdedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModdedButton.Location = new System.Drawing.Point(140, 32);
-            this.ModdedButton.Name = "ModdedButton";
-            this.ModdedButton.Size = new System.Drawing.Size(105, 53);
-            this.ModdedButton.TabIndex = 6;
-            this.ModdedButton.Text = "Modded";
-            this.ModdedButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ModdedButton.UseVisualStyleBackColor = true;
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.Location = new System.Drawing.Point(12, 9);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(142, 20);
+            this.VersionLabel.TabIndex = 3;
+            this.VersionLabel.Text = "Version: x.x.x.x-xx";
             // 
-            // DownloadButton
+            // SavePresetButton
             // 
-            this.DownloadButton.Location = new System.Drawing.Point(12, 110);
-            this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(233, 47);
-            this.DownloadButton.TabIndex = 7;
-            this.DownloadButton.Text = "Download Mods";
-            this.DownloadButton.UseVisualStyleBackColor = true;
+            this.SavePresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SavePresetButton.Location = new System.Drawing.Point(574, 91);
+            this.SavePresetButton.Name = "SavePresetButton";
+            this.SavePresetButton.Size = new System.Drawing.Size(95, 66);
+            this.SavePresetButton.TabIndex = 2;
+            this.SavePresetButton.Text = "Save Preset";
+            this.SavePresetButton.UseVisualStyleBackColor = true;
             // 
-            // UpdateButton
+            // LoadPresetButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(12, 163);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(233, 47);
-            this.UpdateButton.TabIndex = 8;
-            this.UpdateButton.Text = "Check For Updates";
-            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.LoadPresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadPresetButton.Location = new System.Drawing.Point(574, 21);
+            this.LoadPresetButton.Name = "LoadPresetButton";
+            this.LoadPresetButton.Size = new System.Drawing.Size(95, 64);
+            this.LoadPresetButton.TabIndex = 1;
+            this.LoadPresetButton.Text = "Load Preset";
+            this.LoadPresetButton.UseVisualStyleBackColor = true;
             // 
-            // LaunchButton
+            // ModManagerContainer
             // 
-            this.LaunchButton.Location = new System.Drawing.Point(140, 386);
-            this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(105, 52);
-            this.LaunchButton.TabIndex = 9;
-            this.LaunchButton.Text = "Launch";
-            this.LaunchButton.UseVisualStyleBackColor = true;
+            this.ModManagerContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ModManagerContainer.Location = new System.Drawing.Point(13, 12);
+            this.ModManagerContainer.Name = "ModManagerContainer";
+            this.ModManagerContainer.Size = new System.Drawing.Size(555, 459);
+            this.ModManagerContainer.TabIndex = 1;
+            this.ModManagerContainer.TabStop = false;
+            this.ModManagerContainer.Text = "Manage Mods";
             // 
             // HKManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 450);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(943, 483);
             this.Controls.Add(this.MainContainer);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(961, 530);
+            this.MinimumSize = new System.Drawing.Size(276, 530);
             this.Name = "HKManager";
             this.Text = "HKManager";
             this.Load += new System.EventHandler(this.HKManager_Load);
             this.MainContainer.Panel1.ResumeLayout(false);
             this.MainContainer.Panel1.PerformLayout();
+            this.MainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -150,6 +200,9 @@
         private System.Windows.Forms.RadioButton ModdedButton;
         private System.Windows.Forms.RadioButton VanillaButton;
         private System.Windows.Forms.Button LaunchButton;
+        private System.Windows.Forms.Button SavePresetButton;
+        private System.Windows.Forms.Button LoadPresetButton;
+        private System.Windows.Forms.GroupBox ModManagerContainer;
     }
 }
 

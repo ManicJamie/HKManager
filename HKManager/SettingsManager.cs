@@ -6,26 +6,18 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace HKManager
 {
     class SettingsManager
     {
-        private string OS;
-        private List<string> defaultpaths;
 
-        public bool CheckPathExists()
+        public List<string> FillDefaultPaths()
         {
-            if (!Directory.Exists(Properties.Settings.Default.HKFolder))
-            {
-                return false;
-            }
-            else return true;
-        }
-
-        private void FillDefaultPaths()
-        {
-            switch (OS)
+            List<string> defaultpaths = new List<string>();
+            switch (GetOS())
             {
                 case "Windows":
                     //Default Steam and GOG install paths for Windows.
@@ -46,23 +38,54 @@ namespace HKManager
                         (Environment.GetEnvironmentVariable("HOME") + "/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app");
                     break;
             }
+            return defaultpaths;
         }
 
-        private void GetOS()
+        private string GetOS()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                OS = "Windows";
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                OS = "MacOS";
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                OS = "Linux";
-            else
-                OS = "Windows";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return "Windows";
+
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "MacOS" ;
+
+
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return "Linux" ;
+
+            else return "Windows";
+                
         }
 
-        public void SetDefaultPath(string path)
+        private void CreateNewAppSettings()
         {
-            DialogResult dialogResult = MessageBox.Show("Is this your Hollow Knight installation path?\n" + path,"Confirm:", MessageBoxButtons.YesNo);
+            DefinePath();
+        }
+
+        private void DefinePath()
+        {
+            string path = "";
+            foreach (string testPath in FillDefaultPaths())
+            {
+                if (File.Exists(testPath + "/hollow_knight.exe"))
+                {
+                    path = testPath;
+                    break;
+                }
+            }
+            while (path == "")
+            {
+                FolderBrowserDialog browserDialog = new FolderBrowserDialog();
+                switch (browserDialog.ShowDialog())
+                {
+                    case DialogResult.OK:
+                        if (File.Exists(browserDialog.SelectedPath + "/hollow_knight.exe")) path = browserDialog.SelectedPath;
+                        break;
+                    case DialogResult.Cancel:
+                    case DialogResult.Abort:
+                        MessageBox.Show("HKManager requires to know the location of your Hollow Knight Install. \r\nThe application will now exit.", "HKManager");
+                        Application.Exit();
+                        break;
+                }
+            }
+            Properties.Settings.Default.HKPath = path;
         }
     }
 }
