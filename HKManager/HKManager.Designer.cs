@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
+            this.PatchButton = new System.Windows.Forms.Button();
             this.PathLabel = new System.Windows.Forms.Label();
             this.PathButton = new System.Windows.Forms.Button();
             this.LaunchButton = new System.Windows.Forms.Button();
@@ -40,10 +42,13 @@
             this.SavePresetButton = new System.Windows.Forms.Button();
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
+            this.ModTreeView = new System.Windows.Forms.TreeView();
+            this.PresetBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
+            this.ModManagerContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainContainer
@@ -56,6 +61,7 @@
             // 
             // MainContainer.Panel1
             // 
+            this.MainContainer.Panel1.Controls.Add(this.PatchButton);
             this.MainContainer.Panel1.Controls.Add(this.PathLabel);
             this.MainContainer.Panel1.Controls.Add(this.PathButton);
             this.MainContainer.Panel1.Controls.Add(this.LaunchButton);
@@ -68,12 +74,23 @@
             // 
             // MainContainer.Panel2
             // 
+            this.MainContainer.Panel2.Controls.Add(this.PresetBox);
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
             this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
-            this.MainContainer.Size = new System.Drawing.Size(943, 453);
+            this.MainContainer.Size = new System.Drawing.Size(806, 453);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
+            // 
+            // PatchButton
+            // 
+            this.PatchButton.Location = new System.Drawing.Point(132, 269);
+            this.PatchButton.Name = "PatchButton";
+            this.PatchButton.Size = new System.Drawing.Size(114, 53);
+            this.PatchButton.TabIndex = 12;
+            this.PatchButton.Text = "Change HK Patch";
+            this.PatchButton.UseVisualStyleBackColor = true;
+            this.PatchButton.Click += new System.EventHandler(this.PatchButton_Click);
             // 
             // PathLabel
             // 
@@ -87,7 +104,7 @@
             // 
             this.PathButton.Location = new System.Drawing.Point(12, 269);
             this.PathButton.Name = "PathButton";
-            this.PathButton.Size = new System.Drawing.Size(121, 53);
+            this.PathButton.Size = new System.Drawing.Size(114, 53);
             this.PathButton.TabIndex = 4;
             this.PathButton.Text = "Change HK Path";
             this.PathButton.UseVisualStyleBackColor = true;
@@ -164,10 +181,9 @@
             // 
             // SavePresetButton
             // 
-            this.SavePresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SavePresetButton.Location = new System.Drawing.Point(574, 91);
+            this.SavePresetButton.Location = new System.Drawing.Point(403, 91);
             this.SavePresetButton.Name = "SavePresetButton";
-            this.SavePresetButton.Size = new System.Drawing.Size(95, 66);
+            this.SavePresetButton.Size = new System.Drawing.Size(129, 66);
             this.SavePresetButton.TabIndex = 7;
             this.SavePresetButton.TabStop = false;
             this.SavePresetButton.Text = "Save Preset";
@@ -175,10 +191,9 @@
             // 
             // LoadPresetButton
             // 
-            this.LoadPresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadPresetButton.Location = new System.Drawing.Point(574, 21);
+            this.LoadPresetButton.Location = new System.Drawing.Point(403, 21);
             this.LoadPresetButton.Name = "LoadPresetButton";
-            this.LoadPresetButton.Size = new System.Drawing.Size(95, 64);
+            this.LoadPresetButton.Size = new System.Drawing.Size(129, 64);
             this.LoadPresetButton.TabIndex = 6;
             this.LoadPresetButton.TabStop = false;
             this.LoadPresetButton.Text = "Load Preset";
@@ -187,21 +202,44 @@
             // ModManagerContainer
             // 
             this.ModManagerContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ModManagerContainer.Controls.Add(this.ModTreeView);
             this.ModManagerContainer.Location = new System.Drawing.Point(13, 12);
             this.ModManagerContainer.Name = "ModManagerContainer";
-            this.ModManagerContainer.Size = new System.Drawing.Size(555, 429);
+            this.ModManagerContainer.Size = new System.Drawing.Size(384, 429);
             this.ModManagerContainer.TabIndex = 1;
             this.ModManagerContainer.TabStop = false;
             this.ModManagerContainer.Text = "Manage Mods";
             // 
+            // ModTreeView
+            // 
+            this.ModTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModTreeView.Location = new System.Drawing.Point(6, 21);
+            this.ModTreeView.Name = "ModTreeView";
+            this.ModTreeView.Size = new System.Drawing.Size(372, 402);
+            this.ModTreeView.TabIndex = 0;
+            // 
+            // PresetBox
+            // 
+            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PresetBox.FormattingEnabled = true;
+            this.PresetBox.ItemHeight = 18;
+            this.PresetBox.Location = new System.Drawing.Point(403, 163);
+            this.PresetBox.Name = "PresetBox";
+            this.PresetBox.Size = new System.Drawing.Size(129, 274);
+            this.PresetBox.TabIndex = 8;
+            // 
             // HKManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(943, 453);
+            this.ClientSize = new System.Drawing.Size(806, 453);
             this.Controls.Add(this.MainContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(961, 500);
+            this.MaximumSize = new System.Drawing.Size(824, 500);
             this.MinimumSize = new System.Drawing.Size(276, 500);
             this.Name = "HKManager";
             this.Text = "HKManager";
@@ -211,6 +249,7 @@
             this.MainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
+            this.ModManagerContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -229,6 +268,9 @@
         private System.Windows.Forms.GroupBox ModManagerContainer;
         private System.Windows.Forms.Button PathButton;
         private System.Windows.Forms.Label PathLabel;
+        private System.Windows.Forms.Button PatchButton;
+        private System.Windows.Forms.TreeView ModTreeView;
+        private System.Windows.Forms.ListBox PresetBox;
     }
 }
 

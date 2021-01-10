@@ -1,23 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This manifest document is stored on Google Drive, and not locally. It is, however, downloaded locally at runtime.-->
 <Manifest>
   <APIList>
-    <Patch number = "">
-      <URI></URI>
+    <Patch>
+      <Number>1.2.2.1</Number>
+      <URI>https://drive.google.com/file/d/14nQeuhKghwrmWmUw3YYnPjvh9K8VHy4L/view?usp=sharing</URI>
+    </Patch>
+    <Patch>
+      <Number>1.4.3.2</Number>
+      <URI>https://drive.google.com/file/d/1S3avqfCpbjuXLCbDS7v0Cz7di4Yl0Zly/view?usp=sharing</URI>
     </Patch>
   </APIList>
   <ModList>
-    <Mod name = "">
-      <Description></Description>
+    <Mod>
+      <Name>Randomizer 3</Name>
+      <Description>Full-featured item and room randomizer.</Description>
       <VersionList>
-        <Version buildNum = "">
-          <Patch></Patch>
+        <Version>
+          <BuildNum></BuildNum>
+          <Patch>1.4.3.2</Patch>
           <UpdateDetails></UpdateDetails>
-          <DownloadURI></DownloadURI>
+          <URI></URI>
+          <Dependencies>
+            <Name>Seanprcore</Name>
+            <Name>ModCommon</Name>
+          </Dependencies>
         </Version>
       </VersionList>
-      <Dependencies>
-        <DependencyName></DependencyName>
-      </Dependencies>
     </Mod>
+    <Mod>
+      <Name>Seanprcore</Name>
+      <Description>Mod library</Description>
+      <VersionList>
+        <Version>
+          <BuildNum></BuildNum>
+          <Patch>1.4.3.2</Patch>
+          <UpdateDetails></UpdateDetails>
+          <DownloadURI></DownloadURI>
+          <Dependencies>
+            <Name>ModCommon</Name>
+          </Dependencies>
+        </Version>
+      </VersionList>
+    </Mod>
+    <Mod>
+      <Name>ModCommon</Name>
+      <Description>Generic support mod used by other mods.</Description>
+      <VersionList>
+        <Version>
+          <BuildNum></BuildNum>
+          <Patch>1.4.3.2</Patch>
+          <UpdateDetails></UpdateDetails>
+          <DownloadURI></DownloadURI>
+          <Dependencies>
+          </Dependencies>
+        </Version>
+      </VersionList>
+    </Mod>
+    
   </ModList>
 </Manifest>

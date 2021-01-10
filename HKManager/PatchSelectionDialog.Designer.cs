@@ -29,6 +29,7 @@ namespace HKManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatchSelectionDialog));
             this.TextLabel = new System.Windows.Forms.Label();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.OKButton = new System.Windows.Forms.Button();
@@ -47,12 +48,7 @@ namespace HKManager
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "1.1.1.8",
-            "1.2.1.0",
-            "1.2.1.4",
             "1.2.2.1",
-            "1.3.1.5",
-            "1.4.2.4",
             "1.4.3.2"});
             this.comboBox.Location = new System.Drawing.Point(26, 58);
             this.comboBox.Name = "comboBox";
@@ -61,6 +57,7 @@ namespace HKManager
             // 
             // OKButton
             // 
+            this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OKButton.Location = new System.Drawing.Point(228, 58);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(67, 35);
@@ -77,6 +74,7 @@ namespace HKManager
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.TextLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PatchSelectionDialog";
             this.Text = "HKManager";
             this.ResumeLayout(false);

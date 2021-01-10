@@ -8,12 +8,20 @@ namespace HKManager
 {
     class ModManager
     {
+        private DownloadManager downloadManager;
+        private FileManager fileManager;
 
-        public void DisableMod(int modIndex)
+        public ModManager(DownloadManager downloader, FileManager file)
+        {
+            downloadManager = downloader;
+            fileManager = file;
+        }
+
+        public void DisableMod()
         {
         }
 
-        public void EnableMod(int modIndex)
+        public void EnableMod()
         {
         }
 

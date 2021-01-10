@@ -37,5 +37,22 @@ namespace HKManager
                     return false;
             }
         }
+
+        public bool DisableAPI()
+        {
+            switch (fileManager.GetSettingsManager().GetPatch())
+            {
+                case "1.2.2.1":
+                    fileManager.SetAPI(APILocation + "1221/Vanilla.dll");
+                    APIenabled = false;
+                    return true;
+                case "1.4.3.2":
+                    fileManager.SetAPI(APILocation + "1432/Vanilla.dll");
+                    APIenabled = false;
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }

@@ -17,22 +17,26 @@ namespace HKManager
         private FileManager fileManager;
         private APIManager apiManager;
         private ModManager modManager;
+        private DownloadManager downloadManager;
 
         public HKManager()
         {
             InitializeComponent();
+            this.Text = "HKManager " + Version;
+            fileManager = new FileManager(settingsManager);
+            apiManager = new APIManager(fileManager);
+            modManager = new ModManager(downloadManager, fileManager);
+            downloadManager = new DownloadManager(fileManager);
         }
 
         private void HKManager_Load(object sender, EventArgs e)
         {
-            this.Text = "HKManager " + Version;
-            fileManager = new FileManager(settingsManager);
-            apiManager = new APIManager(fileManager);
-            modManager = new ModManager();
             if (!fileManager.FileTreeExists()) // close app if user denies creating file tree
             {
                 this.Close(); Application.Exit();
-            } 
+            } else { // if user has opted to continue, download moddingAPI for checking the installs.
+                
+            }
             if (settingsManager.AreSettingsEmpty())
             {
                 settingsManager.CreateNewAppSettings();
@@ -59,11 +63,6 @@ namespace HKManager
             UpdatePatchLabel();
         }
 
-        public void CloseSignalReceived(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void UpdatePathLabel()
         {
             PathLabel.Text = "Path: " + settingsManager.GetPath();
@@ -74,10 +73,9 @@ namespace HKManager
             try
             {
                 VersionLabel.Text = "Patch: " + settingsManager.GetPatch();
-            } catch (System.NullReferenceException e)
+            } catch (System.NullReferenceException)
             {
-                MessageBox.Show("frick");
-                // leave label text
+                // leave label text as patch is not known
             }
         }
 
@@ -85,5 +83,21 @@ namespace HKManager
         {
             settingsManager.SaveSettings();
         }
+
+        private void PatchButton_Click(object sender, EventArgs e)
+        {
+            PatchSelectionDialog myPatchDialog = new PatchSelectionDialog();
+            switch (myPatchDialog.ShowDialog())
+            {
+                case DialogResult.OK:
+                    settingsManager.SetPatch(myPatchDialog.selectedPatch);
+                    break;
+                default:
+                    settingsManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
+                    break;
+            }
+            UpdatePatchLabel();
+        }
+
     }
 }

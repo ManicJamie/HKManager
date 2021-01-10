@@ -17,6 +17,7 @@ namespace HKManager
         public PatchSelectionDialog()
         {
             InitializeComponent();
+            comboBox.SelectedItem = "1.4.3.2";
         }
 
         private void OKButton_Click(object sender, EventArgs e)

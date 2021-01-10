@@ -20,12 +20,12 @@ namespace HKManager
             {
                 case "Windows":
                     //Default Steam and GOG install paths for Windows.
-                    defaultpaths.Add("Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
-                    defaultpaths.Add("Program Files/Steam/steamapps/Common/Hollow Knight");
-                    defaultpaths.Add("Steam/steamapps/common/Hollow Knight");
-                    defaultpaths.Add("Program Files (x86)/GOG Galaxy/Games/Hollow Knight");
-                    defaultpaths.Add("Program Files/GOG Galaxy/Games/Hollow Knight");
-                    defaultpaths.Add("GOG Galaxy/Games/Hollow Knight");
+                    defaultpaths.Add("C:/Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
+                    defaultpaths.Add("C:/Program Files/Steam/steamapps/Common/Hollow Knight");
+                    defaultpaths.Add("C:/Steam/steamapps/common/Hollow Knight");
+                    defaultpaths.Add("C:/Program Files (x86)/GOG Galaxy/Games/Hollow Knight");
+                    defaultpaths.Add("C:/Program Files/GOG Galaxy/Games/Hollow Knight");
+                    defaultpaths.Add("C:/GOG Galaxy/Games/Hollow Knight");
                     break;
                 case "Linux":
                     // Default steam installation path for Linux.
@@ -83,6 +83,7 @@ namespace HKManager
                     SetPatch(myPatchDialog.selectedPatch);
                     return true;
                 default:
+                    SetPatch("1.4.3.2");
                     return false;
             }
         }
@@ -98,6 +99,7 @@ namespace HKManager
                 {
                     case DialogResult.OK:
                         if (CheckPathForHK(browserDialog.SelectedPath)) path = browserDialog.SelectedPath;
+                        else Application.Exit();
                         break;
                     case DialogResult.Cancel:
                     case DialogResult.Abort:
