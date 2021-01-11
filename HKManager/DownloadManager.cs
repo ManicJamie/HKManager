@@ -9,14 +9,14 @@ using System.Xml;
 
 namespace HKManager
 {
-    class DownloadManager
+    public class DownloadManager
     {
         const string manifestLink = "https://drive.google.com/file/d/1vGl3pTN-RcdsbL3Xt2qm_6aVCx8vHbCn/view?usp=sharing";
         private XmlDocument manifest;
         private FileDownloader downloader = new FileDownloader();
         private FileManager fileManager;
         private ManualResetEvent manifestDownloading = new ManualResetEvent(false);
-        
+        public ManualResetEvent downloadInProgress = new ManualResetEvent(true);
 
         public DownloadManager(FileManager manager)
         {
@@ -27,6 +27,7 @@ namespace HKManager
         {
             downloader.DownloadFileCompleted += (sender, e) => IngestManifest();
             downloader.DownloadFile(manifestLink, "HKManager_Data/temp/manifest.xml");
+            manifestDownloading.WaitOne();
         }
 
         private void IngestManifest()

@@ -28,8 +28,6 @@ namespace HKManager
             apiManager = new APIManager(fileManager);
             modManager = new ModManager(downloadManager, fileManager);
             downloadManager = new DownloadManager(fileManager);
-            // add progress bar updater
-            downloadManager.GetDownloader().DownloadProgressChanged += (sender, e) => UpdateProgressBar(sender, e);
         }
 
         private void HKManager_Load(object sender, EventArgs e)
@@ -46,15 +44,14 @@ namespace HKManager
             UpdatePathLabel();
             UpdatePatchLabel();
             this.Size = this.MaximumSize;
-        }
-
-        private void HKManager_Shown(object sender, EventArgs e)
-        {
             downloadManager.DownloadManifest();
             // download apis if they are not found
             if (!fileManager.IsAPIDownloaded(settingsManager.GetPatch()))
             {
-                downloadManager.DownloadAPI(settingsManager.GetPatch());
+                using (APIDownloadForm apiform = new APIDownloadForm(downloadManager, settingsManager.GetPatch()))
+                {
+                    apiform.ShowDialog();
+                }
             }
             // check status of api and update visuals
             apiManager.UpdateAPIManager();
@@ -66,6 +63,11 @@ namespace HKManager
             {
                 VanillaButton.Checked = true;
             }
+        }
+
+        private void HKManager_Shown(object sender, EventArgs e)
+        {
+
         }
 
         private void PathButton_Click(object sender, EventArgs e)
@@ -136,11 +138,8 @@ namespace HKManager
             {
                 apiManager.EnableAPI();
             }
-        }
-
-        private void UpdateProgressBar(object sender, FileDownloader.DownloadProgress e)
-        {
-            DownloadProgressBar.Value = e.ProgressPercentage;
+            if (apiManager.IsAPIEnabled()) { Size = MaximumSize; }
+            else { Size = MinimumSize; }
         }
     }
 }

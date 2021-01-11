@@ -44,15 +44,11 @@
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             this.ModTreeView = new System.Windows.Forms.TreeView();
-            this.StatusStrip = new System.Windows.Forms.StatusStrip();
-            this.MainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.DownloadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
             this.ModManagerContainer.SuspendLayout();
-            this.StatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainContainer
@@ -82,13 +78,13 @@
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
             this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
-            this.MainContainer.Size = new System.Drawing.Size(806, 428);
+            this.MainContainer.Size = new System.Drawing.Size(806, 452);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
             // 
             // PatchButton
             // 
-            this.PatchButton.Location = new System.Drawing.Point(132, 269);
+            this.PatchButton.Location = new System.Drawing.Point(131, 295);
             this.PatchButton.Name = "PatchButton";
             this.PatchButton.Size = new System.Drawing.Size(114, 53);
             this.PatchButton.TabIndex = 12;
@@ -100,13 +96,13 @@
             // 
             this.PathLabel.Location = new System.Drawing.Point(9, 222);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(236, 44);
+            this.PathLabel.Size = new System.Drawing.Size(236, 56);
             this.PathLabel.TabIndex = 11;
-            this.PathLabel.Text = "Path:";
+            this.PathLabel.Text = "Path: i am a dwarf and im digging a hole diggy diggy hole diggy diggy hole";
             // 
             // PathButton
             // 
-            this.PathButton.Location = new System.Drawing.Point(12, 269);
+            this.PathButton.Location = new System.Drawing.Point(12, 295);
             this.PathButton.Name = "PathButton";
             this.PathButton.Size = new System.Drawing.Size(114, 53);
             this.PathButton.TabIndex = 4;
@@ -117,7 +113,7 @@
             // LaunchButton
             // 
             this.LaunchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LaunchButton.Location = new System.Drawing.Point(124, 369);
+            this.LaunchButton.Location = new System.Drawing.Point(124, 384);
             this.LaunchButton.Name = "LaunchButton";
             this.LaunchButton.Size = new System.Drawing.Size(122, 59);
             this.LaunchButton.TabIndex = 5;
@@ -221,7 +217,7 @@
             this.ModManagerContainer.Controls.Add(this.ModTreeView);
             this.ModManagerContainer.Location = new System.Drawing.Point(13, 12);
             this.ModManagerContainer.Name = "ModManagerContainer";
-            this.ModManagerContainer.Size = new System.Drawing.Size(384, 413);
+            this.ModManagerContainer.Size = new System.Drawing.Size(384, 429);
             this.ModManagerContainer.TabIndex = 1;
             this.ModManagerContainer.TabStop = false;
             this.ModManagerContainer.Text = "Manage Mods";
@@ -234,41 +230,13 @@
             this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ModTreeView.Location = new System.Drawing.Point(6, 21);
             this.ModTreeView.Name = "ModTreeView";
-            this.ModTreeView.Size = new System.Drawing.Size(372, 386);
+            this.ModTreeView.Size = new System.Drawing.Size(372, 402);
             this.ModTreeView.TabIndex = 0;
-            // 
-            // StatusStrip
-            // 
-            this.StatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MainStatusLabel,
-            this.DownloadProgressBar});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 427);
-            this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(806, 26);
-            this.StatusStrip.SizingGrip = false;
-            this.StatusStrip.TabIndex = 1;
-            this.StatusStrip.Text = "StatusStrip";
-            // 
-            // MainStatusLabel
-            // 
-            this.MainStatusLabel.AutoSize = false;
-            this.MainStatusLabel.Name = "MainStatusLabel";
-            this.MainStatusLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.MainStatusLabel.Size = new System.Drawing.Size(100, 20);
-            this.MainStatusLabel.Text = "Loading...";
-            this.MainStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DownloadProgressBar
-            // 
-            this.DownloadProgressBar.Name = "DownloadProgressBar";
-            this.DownloadProgressBar.Size = new System.Drawing.Size(150, 18);
             // 
             // HKManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(806, 453);
-            this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.MainContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -285,10 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.ModManagerContainer.ResumeLayout(false);
-            this.StatusStrip.ResumeLayout(false);
-            this.StatusStrip.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -309,9 +274,6 @@
         private System.Windows.Forms.Button PatchButton;
         private System.Windows.Forms.TreeView ModTreeView;
         private System.Windows.Forms.ListBox PresetBox;
-        private System.Windows.Forms.StatusStrip StatusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel MainStatusLabel;
-        private System.Windows.Forms.ToolStripProgressBar DownloadProgressBar;
     }
 }
 

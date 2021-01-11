@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace HKManager
 {
-    class SettingsManager
+    public class SettingsManager
     {
         public List<string> GetDefaultPaths()
         {

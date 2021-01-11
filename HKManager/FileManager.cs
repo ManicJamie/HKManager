@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace HKManager
 {
-    class FileManager
+    public class FileManager
     {
         private SettingsManager settingsManager;
         
@@ -64,7 +64,6 @@ namespace HKManager
             if (IsAPIDownloaded(patch))
             {
                 byte[] gameAPI = File.ReadAllBytes(settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.dll");
-                StreamReader moddingAPIStream = new StreamReader("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll");
                 byte[] moddingAPI = File.ReadAllBytes("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll");
                 if (gameAPI.Equals(moddingAPI)) return true;
                 else return false;
