@@ -15,37 +15,43 @@ namespace HKManager
         private XmlDocument manifest;
         private FileDownloader downloader = new FileDownloader();
         private FileManager fileManager;
+        private ManualResetEvent manifestDownloading = new ManualResetEvent(false);
         
 
         public DownloadManager(FileManager manager)
         {
             fileManager = manager;
-            DownloadManifest();
         }
 
         public void DownloadManifest()
         {
-            downloader.DownloadFileAsync(manifestLink, "temp/manifest.xml");
             downloader.DownloadFileCompleted += (sender, e) => IngestManifest();
+            downloader.DownloadFile(manifestLink, "HKManager_Data/temp/manifest.xml");
         }
 
         private void IngestManifest()
         {
             manifest = new XmlDocument();
-            manifest.Load("temp/manifest.xml");
+            manifest.Load("HKManager_Data/temp/manifest.xml");
+            manifestDownloading.Set();
             downloader.DownloadFileCompleted -= (sender, e) => IngestManifest(); // remove self from file completed event
         }
 
-        public void DownloadAPIs()
+        public void DownloadAPI(string patch)
         {
+            manifestDownloading.WaitOne(); // wait for manifest to be ingested before attempting to use
             foreach (XmlNode API in manifest.DocumentElement.FirstChild.ChildNodes)
             {
-                downloader.DownloadFileAsync(API.LastChild.InnerText, "HKManager_Data/Downloads/" + API.FirstChild.InnerText.Replace(".","") + ".zip"); //PatchNo is FirstChild, URI is LastChild
-                downloader.DownloadFileCompleted += (sender, e) => fileManager.IngestAPI(API.FirstChild.InnerText.Replace(".", ""));
+                if (API.FirstChild.InnerText == patch) {
+                    downloader.DownloadFileAsync(API.LastChild.InnerText, "HKManager_Data/temp/" + API.FirstChild.InnerText.Replace(".", "") + ".zip"); //PatchNo is FirstChild, URI is LastChild
+                    downloader.DownloadFileCompleted += (sender, e) => fileManager.IngestAPI(API.FirstChild.InnerText.Replace(".", ""));
+                    return;
+                }
             }
         }
 
         public XmlDocument GetManifest() { return manifest; }
+        public FileDownloader GetDownloader() { return downloader; }
     }
 }
 

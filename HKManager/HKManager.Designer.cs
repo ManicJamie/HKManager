@@ -39,21 +39,25 @@
             this.ModdedButton = new System.Windows.Forms.RadioButton();
             this.VanillaButton = new System.Windows.Forms.RadioButton();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.PresetBox = new System.Windows.Forms.ListBox();
             this.SavePresetButton = new System.Windows.Forms.Button();
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             this.ModTreeView = new System.Windows.Forms.TreeView();
-            this.PresetBox = new System.Windows.Forms.ListBox();
+            this.StatusStrip = new System.Windows.Forms.StatusStrip();
+            this.MainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DownloadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
             this.ModManagerContainer.SuspendLayout();
+            this.StatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainContainer
             // 
-            this.MainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.MainContainer.IsSplitterFixed = true;
             this.MainContainer.Location = new System.Drawing.Point(0, 0);
@@ -78,7 +82,7 @@
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
             this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
-            this.MainContainer.Size = new System.Drawing.Size(806, 453);
+            this.MainContainer.Size = new System.Drawing.Size(806, 428);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
             // 
@@ -113,7 +117,7 @@
             // LaunchButton
             // 
             this.LaunchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LaunchButton.Location = new System.Drawing.Point(123, 382);
+            this.LaunchButton.Location = new System.Drawing.Point(124, 369);
             this.LaunchButton.Name = "LaunchButton";
             this.LaunchButton.Size = new System.Drawing.Size(122, 59);
             this.LaunchButton.TabIndex = 5;
@@ -155,6 +159,7 @@
             this.ModdedButton.Text = "Modded";
             this.ModdedButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ModdedButton.UseVisualStyleBackColor = true;
+            this.ModdedButton.CheckedChanged += new System.EventHandler(this.modButtons_CheckedChanged);
             // 
             // VanillaButton
             // 
@@ -168,6 +173,7 @@
             this.VanillaButton.Text = "Vanilla";
             this.VanillaButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.VanillaButton.UseVisualStyleBackColor = true;
+            this.VanillaButton.CheckedChanged += new System.EventHandler(this.modButtons_CheckedChanged);
             // 
             // VersionLabel
             // 
@@ -178,6 +184,16 @@
             this.VersionLabel.Size = new System.Drawing.Size(142, 20);
             this.VersionLabel.TabIndex = 3;
             this.VersionLabel.Text = "Version: x.x.x.x-xx";
+            // 
+            // PresetBox
+            // 
+            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PresetBox.FormattingEnabled = true;
+            this.PresetBox.ItemHeight = 18;
+            this.PresetBox.Location = new System.Drawing.Point(403, 163);
+            this.PresetBox.Name = "PresetBox";
+            this.PresetBox.Size = new System.Drawing.Size(129, 166);
+            this.PresetBox.TabIndex = 8;
             // 
             // SavePresetButton
             // 
@@ -205,7 +221,7 @@
             this.ModManagerContainer.Controls.Add(this.ModTreeView);
             this.ModManagerContainer.Location = new System.Drawing.Point(13, 12);
             this.ModManagerContainer.Name = "ModManagerContainer";
-            this.ModManagerContainer.Size = new System.Drawing.Size(384, 429);
+            this.ModManagerContainer.Size = new System.Drawing.Size(384, 413);
             this.ModManagerContainer.TabIndex = 1;
             this.ModManagerContainer.TabStop = false;
             this.ModManagerContainer.Text = "Manage Mods";
@@ -218,23 +234,41 @@
             this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ModTreeView.Location = new System.Drawing.Point(6, 21);
             this.ModTreeView.Name = "ModTreeView";
-            this.ModTreeView.Size = new System.Drawing.Size(372, 402);
+            this.ModTreeView.Size = new System.Drawing.Size(372, 386);
             this.ModTreeView.TabIndex = 0;
             // 
-            // PresetBox
+            // StatusStrip
             // 
-            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PresetBox.FormattingEnabled = true;
-            this.PresetBox.ItemHeight = 18;
-            this.PresetBox.Location = new System.Drawing.Point(403, 163);
-            this.PresetBox.Name = "PresetBox";
-            this.PresetBox.Size = new System.Drawing.Size(129, 274);
-            this.PresetBox.TabIndex = 8;
+            this.StatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainStatusLabel,
+            this.DownloadProgressBar});
+            this.StatusStrip.Location = new System.Drawing.Point(0, 427);
+            this.StatusStrip.Name = "StatusStrip";
+            this.StatusStrip.Size = new System.Drawing.Size(806, 26);
+            this.StatusStrip.SizingGrip = false;
+            this.StatusStrip.TabIndex = 1;
+            this.StatusStrip.Text = "StatusStrip";
+            // 
+            // MainStatusLabel
+            // 
+            this.MainStatusLabel.AutoSize = false;
+            this.MainStatusLabel.Name = "MainStatusLabel";
+            this.MainStatusLabel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.MainStatusLabel.Size = new System.Drawing.Size(100, 20);
+            this.MainStatusLabel.Text = "Loading...";
+            this.MainStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DownloadProgressBar
+            // 
+            this.DownloadProgressBar.Name = "DownloadProgressBar";
+            this.DownloadProgressBar.Size = new System.Drawing.Size(150, 18);
             // 
             // HKManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(806, 453);
+            this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.MainContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -244,13 +278,17 @@
             this.Name = "HKManager";
             this.Text = "HKManager";
             this.Load += new System.EventHandler(this.HKManager_Load);
+            this.Shown += new System.EventHandler(this.HKManager_Shown);
             this.MainContainer.Panel1.ResumeLayout(false);
             this.MainContainer.Panel1.PerformLayout();
             this.MainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).EndInit();
             this.MainContainer.ResumeLayout(false);
             this.ModManagerContainer.ResumeLayout(false);
+            this.StatusStrip.ResumeLayout(false);
+            this.StatusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -271,6 +309,9 @@
         private System.Windows.Forms.Button PatchButton;
         private System.Windows.Forms.TreeView ModTreeView;
         private System.Windows.Forms.ListBox PresetBox;
+        private System.Windows.Forms.StatusStrip StatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel MainStatusLabel;
+        private System.Windows.Forms.ToolStripProgressBar DownloadProgressBar;
     }
 }
 

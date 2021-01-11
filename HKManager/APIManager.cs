@@ -13,12 +13,17 @@ namespace HKManager
         private const string APILocation = "HKManager_Data/APIs/";
         private bool APIenabled = false;
         private FileManager fileManager;
-        private string OS;
+        private SettingsManager settingsManager;
 
         public APIManager(FileManager manager)
         {
             fileManager = manager;
-            OS = fileManager.GetSettingsManager().GetOS();
+            settingsManager = fileManager.GetSettingsManager();
+        }
+
+        public void UpdateAPIManager()
+        {
+            APIenabled = fileManager.IsGameModded(settingsManager.GetPatch());
         }
 
         public bool EnableAPI()
@@ -54,5 +59,7 @@ namespace HKManager
                     return false;
             }
         }
+
+        public bool IsAPIEnabled() { return APIenabled; }
     }
 }

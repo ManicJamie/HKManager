@@ -42,17 +42,34 @@ namespace HKManager
         {
             string newPath = settingsManager.GetPath() + "/hollow_knight_data/Managed/Assembly-CSharp.dll";
             if (File.Exists(newPath)) File.Delete(newPath); // Remove file if already exists
-            File.Move(APIPath, newPath);
+            File.Copy(APIPath, newPath, true);
         }
 
         public void IngestAPI(string patch)
         {
-            ZipFile.ExtractToDirectory("HKManager_Data/Downloads/" + patch + ".zip", "HKManager_Data/APIs/" + patch);
+            ZipFile.ExtractToDirectory("HKManager_Data/temp/" + patch + ".zip", "HKManager_Data/APIs/");
+            File.Copy("HKManager_Data/APIs/" + patch + "/Assembly-CSharp.xml", settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.xml", true);
         }
 
-        public bool isGameModded(string patch)
+        public bool IsAPIDownloaded(string patch)
         {
+            if (Directory.Exists("HKManager_Data/APIs/" + patch.Replace(".","")))
+            {
+                if (File.Exists("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll") && File.Exists("HKManager_Data/APIs/" + patch.Replace(".", "") + "/vanilla.dll")) return true; else return false;
+            } else return false;
+        } 
 
+        public bool IsGameModded(string patch)
+        {
+            if (IsAPIDownloaded(patch))
+            {
+                byte[] gameAPI = File.ReadAllBytes(settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.dll");
+                StreamReader moddingAPIStream = new StreamReader("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll");
+                byte[] moddingAPI = File.ReadAllBytes("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll");
+                if (gameAPI.Equals(moddingAPI)) return true;
+                else return false;
+            } else {
+            } return false;
         }
 
         public SettingsManager GetSettingsManager() { return settingsManager; } // Provide settingsManager

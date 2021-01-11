@@ -22,11 +22,14 @@ namespace HKManager
         public HKManager()
         {
             InitializeComponent();
+            // instantiate classes
             this.Text = "HKManager " + Version;
             fileManager = new FileManager(settingsManager);
             apiManager = new APIManager(fileManager);
             modManager = new ModManager(downloadManager, fileManager);
             downloadManager = new DownloadManager(fileManager);
+            // add progress bar updater
+            downloadManager.GetDownloader().DownloadProgressChanged += (sender, e) => UpdateProgressBar(sender, e);
         }
 
         private void HKManager_Load(object sender, EventArgs e)
@@ -34,16 +37,35 @@ namespace HKManager
             if (!fileManager.FileTreeExists()) // close app if user denies creating file tree
             {
                 this.Close(); Application.Exit();
-            } else { // if user has opted to continue, download moddingAPI for checking the installs.
-                
             }
+            // generate settings if they are not found
             if (settingsManager.AreSettingsEmpty())
             {
                 settingsManager.CreateNewAppSettings();
             }
             UpdatePathLabel();
             UpdatePatchLabel();
-            this.Size = this.MinimumSize;
+            this.Size = this.MaximumSize;
+        }
+
+        private void HKManager_Shown(object sender, EventArgs e)
+        {
+            downloadManager.DownloadManifest();
+            // download apis if they are not found
+            if (!fileManager.IsAPIDownloaded(settingsManager.GetPatch()))
+            {
+                downloadManager.DownloadAPI(settingsManager.GetPatch());
+            }
+            // check status of api and update visuals
+            apiManager.UpdateAPIManager();
+            if (apiManager.IsAPIEnabled())
+            {
+                ModdedButton.Checked = true;
+            }
+            else
+            {
+                VanillaButton.Checked = true;
+            }
         }
 
         private void PathButton_Click(object sender, EventArgs e)
@@ -99,5 +121,26 @@ namespace HKManager
             UpdatePatchLabel();
         }
 
+        private void modButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton pressedButton = sender as RadioButton;
+            if (pressedButton == null)
+            {
+                MessageBox.Show("Sender is not a radio button");
+            }
+            
+            if (pressedButton == VanillaButton && apiManager.IsAPIEnabled())
+            {
+                apiManager.DisableAPI();
+            } else if (pressedButton == ModdedButton && !apiManager.IsAPIEnabled())
+            {
+                apiManager.EnableAPI();
+            }
+        }
+
+        private void UpdateProgressBar(object sender, FileDownloader.DownloadProgress e)
+        {
+            DownloadProgressBar.Value = e.ProgressPercentage;
+        }
     }
 }
