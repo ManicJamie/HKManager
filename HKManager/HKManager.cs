@@ -34,7 +34,7 @@ namespace HKManager
         {
             if (!fileManager.FileTreeExists()) // close app if user denies creating file tree
             {
-                this.Close(); Application.Exit();
+                Application.Exit(); Close(); 
             }
             // generate settings if they are not found
             if (settingsManager.AreSettingsEmpty())
@@ -65,26 +65,10 @@ namespace HKManager
             }
         }
 
-        private void HKManager_Shown(object sender, EventArgs e)
-        {
-
-        }
-
         private void PathButton_Click(object sender, EventArgs e)
         {
-            PatchSelectionDialog myPatchDialog = new PatchSelectionDialog();
-            if (!settingsManager.SetUserPath()) { this.Close(); Application.Exit(); }
-            switch (myPatchDialog.ShowDialog())
-            {
-                case DialogResult.OK:
-                    settingsManager.SetPatch(myPatchDialog.selectedPatch);
-                    break;
-                default:
-                    settingsManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
-                    break;
-            }
+            if (!settingsManager.SetUserPath()) { return; }
             UpdatePathLabel();
-            UpdatePatchLabel();
         }
 
         private void UpdatePathLabel()
@@ -117,8 +101,25 @@ namespace HKManager
                     settingsManager.SetPatch(myPatchDialog.selectedPatch);
                     break;
                 default:
-                    settingsManager.SetPatch("1.4.3.2"); // Assume user has no clue what patches are and set patch for them.
-                    break;
+                    return;
+            }
+            // download apis if they are not found
+            if (!fileManager.IsAPIDownloaded(settingsManager.GetPatch()))
+            {
+                using (APIDownloadForm apiform = new APIDownloadForm(downloadManager, settingsManager.GetPatch()))
+                {
+                    apiform.ShowDialog();
+                }
+            }
+            // check status of api and update visuals
+            apiManager.UpdateAPIManager();
+            if (apiManager.IsAPIEnabled())
+            {
+                ModdedButton.Checked = true;
+            }
+            else
+            {
+                VanillaButton.Checked = true;
             }
             UpdatePatchLabel();
         }

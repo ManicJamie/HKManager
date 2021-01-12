@@ -1,5 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- This manifest document is stored on Google Drive, and not locally. It is, however, downloaded locally at runtime.-->
+<!--  Structure:
+<Manifest>
+  <APIList>
+    <Patch>
+      <Number></Number> 
+      <URI></URI>
+    </Patch>
+  </APIList>
+  <ModList>
+    <Mod>
+      <Name></Name>
+      <Description></Description>
+      <VersionList>
+        <Version>
+          <BuildNum></BuildNum>
+          <Iteration></Iteration>
+          <Patch></Patch>
+          <UpdateDetails></UpdateDetails>
+          <URI></URI>
+          <Dependencies>
+            <Name></Name>
+          </Dependencies>
+        </Version>
+      </VersionList>
+    </Mod>    
+  </ModList>
+</Manifest>-->
 <Manifest>
   <APIList>
     <Patch>
@@ -17,13 +44,37 @@
       <Description>Full-featured item and room randomizer.</Description>
       <VersionList>
         <Version>
-          <BuildNum></BuildNum>
+          <BuildNum>3.07(947)</BuildNum>
+          <Iteration>1</Iteration>
           <Patch>1.4.3.2</Patch>
-          <UpdateDetails></UpdateDetails>
+          <UpdateDetails>Basic item randomizer.</UpdateDetails>
           <URI></URI>
           <Dependencies>
             <Name>Seanprcore</Name>
             <Name>ModCommon</Name>
+          </Dependencies>
+        </Version>
+        <Version>
+          <BuildNum>3.07LR(18)</BuildNum>
+          <Iteration>1</Iteration>
+          <Patch>1.4.3.2</Patch>
+          <UpdateDetails>Adds geo rocks, soul totems, lifeblood cocoons, grimmkin flames and boss essence to randomization.</UpdateDetails>
+          <URI></URI>
+          <Dependencies>
+            <Name>Seanprcore</Name>
+            <Name>ModCommon</Name>
+          </Dependencies>
+        </Version>
+        <Version>
+          <BuildNum>3.07LRT(862)</BuildNum>
+          <Iteration>1</Iteration>
+          <Patch>1.4.3.2</Patch>
+          <UpdateDetails>Mirrors LR for randomization. Translates room names in logs for room/area rando.</UpdateDetails>
+          <URI></URI>
+          <Dependencies>
+            <Name>Seanprcore</Name>
+            <Name>ModCommon</Name>
+            <Name>HKTranslator</Name>
           </Dependencies>
         </Version>
       </VersionList>
@@ -34,6 +85,7 @@
       <VersionList>
         <Version>
           <BuildNum></BuildNum>
+          <Iteration></Iteration>
           <Patch>1.4.3.2</Patch>
           <UpdateDetails></UpdateDetails>
           <DownloadURI></DownloadURI>

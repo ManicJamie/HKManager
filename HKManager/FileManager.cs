@@ -41,7 +41,6 @@ namespace HKManager
         public void SetAPI(string APIPath)
         {
             string newPath = settingsManager.GetPath() + "/hollow_knight_data/Managed/Assembly-CSharp.dll";
-            if (File.Exists(newPath)) File.Delete(newPath); // Remove file if already exists
             File.Copy(APIPath, newPath, true);
         }
 
@@ -63,6 +62,10 @@ namespace HKManager
         {
             if (IsAPIDownloaded(patch))
             {
+                if (!File.Exists(settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.dll")) 
+                { // Manage issues arising from Assembly-CSharp.dll not existing.
+                    throw new FileNotFoundException("HK assembly file not found.");
+                }
                 byte[] gameAPI = File.ReadAllBytes(settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.dll");
                 byte[] moddingAPI = File.ReadAllBytes("HKManager_Data/APIs/" + patch.Replace(".", "") + "/modded.dll");
                 if (gameAPI.Equals(moddingAPI)) return true;

@@ -44,6 +44,7 @@
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             this.ModTreeView = new System.Windows.Forms.TreeView();
+            this.ScanButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // MainContainer.Panel2
             // 
+            this.MainContainer.Panel2.Controls.Add(this.ScanButton);
             this.MainContainer.Panel2.Controls.Add(this.PresetBox);
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
@@ -186,14 +188,14 @@
             this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PresetBox.FormattingEnabled = true;
             this.PresetBox.ItemHeight = 18;
-            this.PresetBox.Location = new System.Drawing.Point(403, 163);
+            this.PresetBox.Location = new System.Drawing.Point(403, 96);
             this.PresetBox.Name = "PresetBox";
-            this.PresetBox.Size = new System.Drawing.Size(129, 166);
+            this.PresetBox.Size = new System.Drawing.Size(129, 202);
             this.PresetBox.TabIndex = 8;
             // 
             // SavePresetButton
             // 
-            this.SavePresetButton.Location = new System.Drawing.Point(403, 91);
+            this.SavePresetButton.Location = new System.Drawing.Point(403, 374);
             this.SavePresetButton.Name = "SavePresetButton";
             this.SavePresetButton.Size = new System.Drawing.Size(129, 66);
             this.SavePresetButton.TabIndex = 7;
@@ -203,7 +205,7 @@
             // 
             // LoadPresetButton
             // 
-            this.LoadPresetButton.Location = new System.Drawing.Point(403, 21);
+            this.LoadPresetButton.Location = new System.Drawing.Point(403, 304);
             this.LoadPresetButton.Name = "LoadPresetButton";
             this.LoadPresetButton.Size = new System.Drawing.Size(129, 64);
             this.LoadPresetButton.TabIndex = 6;
@@ -233,6 +235,15 @@
             this.ModTreeView.Size = new System.Drawing.Size(372, 402);
             this.ModTreeView.TabIndex = 0;
             // 
+            // ScanButton
+            // 
+            this.ScanButton.Location = new System.Drawing.Point(403, 12);
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Size = new System.Drawing.Size(129, 73);
+            this.ScanButton.TabIndex = 9;
+            this.ScanButton.Text = "Scan for Mods";
+            this.ScanButton.UseVisualStyleBackColor = true;
+            // 
             // HKManager
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -246,7 +257,6 @@
             this.Name = "HKManager";
             this.Text = "HKManager";
             this.Load += new System.EventHandler(this.HKManager_Load);
-            this.Shown += new System.EventHandler(this.HKManager_Shown);
             this.MainContainer.Panel1.ResumeLayout(false);
             this.MainContainer.Panel1.PerformLayout();
             this.MainContainer.Panel2.ResumeLayout(false);
@@ -274,6 +284,7 @@
         private System.Windows.Forms.Button PatchButton;
         private System.Windows.Forms.TreeView ModTreeView;
         private System.Windows.Forms.ListBox PresetBox;
+        private System.Windows.Forms.Button ScanButton;
     }
 }
 

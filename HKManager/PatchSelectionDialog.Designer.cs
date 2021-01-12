@@ -71,6 +71,7 @@ namespace HKManager
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 105);
+            this.ControlBox = false;
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.TextLabel);
