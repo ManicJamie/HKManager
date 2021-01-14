@@ -8,32 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Runtime.InteropServices;
+using System.Runtime;
+using System.Diagnostics;
 
 namespace HKManager
 {
     public partial class ModDownloadForm : Form
     {
+        private ModManager modManager;
+        const string DriveURL = "https://drive.google.com/drive/u/4/folders/1sG2cWt0AtjbRmlE2TWeDswfSruJVoBjf";
 
-        public struct Mod
-        {
-            public string name;
-            public string description;
-            public List<ModVersion> VersionList;
-        }
-
-        public struct ModVersion
-        {
-            public string buildNum;
-            public int Iteration;
-            public string patch;
-            public string updateDetails;
-            public string URI;
-            public List<string> DependencyNames;
-        }
-
-        public ModDownloadForm(XmlNode modList)
+        public ModDownloadForm(ModManager manager)
         {
             InitializeComponent();
+            modManager = manager;
         }
 
         private void ModDownloadForm_Load(object sender, EventArgs e)
@@ -41,43 +30,14 @@ namespace HKManager
             
         }
 
-        private List<Mod> ParseModListXML(XmlNode xmlModList)
+        private void DriveButton_Click(object sender, EventArgs e) // Opens HKManager google drive.
         {
-            List<Mod> modList = new List<Mod>();
-            foreach (XmlNode node in xmlModList.ChildNodes)
-            {
-                modList.Append(ParseModNodeXML(node));
-            }
-            return modList;
+            Process.Start(DriveURL);
         }
 
-        private Mod ParseModNodeXML(XmlNode node)
+        private void ModFolderButton_Click(object sender, EventArgs e) // Opens mod folder.
         {
-            Mod parsedMod;
-            parsedMod.name = node.SelectSingleNode("Name").InnerText;
-            parsedMod.description = node.SelectSingleNode("Description").InnerText;
-            parsedMod.VersionList = ParseVersionNodesXML(node.SelectSingleNode("VersionList").ChildNodes);
-            return parsedMod;
-        }
-
-        private List<ModVersion> ParseVersionNodesXML(XmlNodeList nodes)
-        {
-            List<ModVersion> Versions = new List<ModVersion>();
-            foreach (XmlNode node in nodes)
-            {
-                ModVersion VersionConstruct = new ModVersion();
-                VersionConstruct.buildNum = node.SelectSingleNode("BuildNum").InnerText;
-                VersionConstruct.Iteration = int.Parse(node.SelectSingleNode("Iteration").InnerText);
-                VersionConstruct.patch = node.SelectSingleNode("Patch").InnerText;
-                VersionConstruct.updateDetails = node.SelectSingleNode("UpdateDetails").InnerText;
-                VersionConstruct.URI = node.SelectSingleNode("URI").InnerText;
-                foreach (XmlNode dependency in node.SelectSingleNode("Dependencies").ChildNodes)
-                {
-                    VersionConstruct.DependencyNames.Append(dependency.InnerText);
-                }
-                Versions.Append(VersionConstruct);
-            }
-            return Versions;
+            Process.Start(modManager.GetFileManager().GetSettingsManager().GetPath() + "/Hollow_Knight_Data/Managed/Mods");
         }
     }
 }

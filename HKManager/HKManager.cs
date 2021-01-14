@@ -12,7 +12,7 @@ namespace HKManager
 {
     public partial class HKManager : Form
     {
-        private const string Version = "a1.0";
+        public const string Version = "0.1";
         private SettingsManager settingsManager = new SettingsManager();
         private FileManager fileManager;
         private APIManager apiManager;
@@ -141,6 +141,17 @@ namespace HKManager
             }
             if (apiManager.IsAPIEnabled()) { Size = MaximumSize; }
             else { Size = MinimumSize; }
+        }
+
+        private void DownloadButton_Click(object sender, EventArgs e)
+        {
+            ModDownloadForm modDownloadForm = new ModDownloadForm(modManager);
+            modDownloadForm.ShowDialog();
+        }
+
+        private void ScanButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("I'm here to reserve a spot for a function (scanning mods already in the folder) that proved too difficult to initially implement. Expect me to be replaced in future.");
         }
     }
 }

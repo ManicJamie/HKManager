@@ -28,25 +28,27 @@
   </ModList>
 </Manifest>-->
 <Manifest>
+  <ManagerVersion>0.1</ManagerVersion>
   <APIList>
     <Patch>
-      <Number>1.2.2.1</Number>
+      <Number>1221</Number>
       <URI>https://drive.google.com/file/d/14nQeuhKghwrmWmUw3YYnPjvh9K8VHy4L/view?usp=sharing</URI>
     </Patch>
     <Patch>
-      <Number>1.4.3.2</Number>
+      <Number>1432</Number>
       <URI>https://drive.google.com/file/d/1S3avqfCpbjuXLCbDS7v0Cz7di4Yl0Zly/view?usp=sharing</URI>
     </Patch>
   </APIList>
   <ModList>
     <Mod>
       <Name>Randomizer 3</Name>
-      <Description>Full-featured item and room randomizer.</Description>
+      <Filename></Filename>
+      <Description>Full-featured item, room and area randomizer.</Description>
       <VersionList>
         <Version>
           <BuildNum>3.07(947)</BuildNum>
           <Iteration>1</Iteration>
-          <Patch>1.4.3.2</Patch>
+          <Patch>1432</Patch>
           <UpdateDetails>Basic item randomizer.</UpdateDetails>
           <URI></URI>
           <Dependencies>
@@ -57,7 +59,7 @@
         <Version>
           <BuildNum>3.07LR(18)</BuildNum>
           <Iteration>1</Iteration>
-          <Patch>1.4.3.2</Patch>
+          <Patch>1432</Patch>
           <UpdateDetails>Adds geo rocks, soul totems, lifeblood cocoons, grimmkin flames and boss essence to randomization.</UpdateDetails>
           <URI></URI>
           <Dependencies>
@@ -68,7 +70,7 @@
         <Version>
           <BuildNum>3.07LRT(862)</BuildNum>
           <Iteration>1</Iteration>
-          <Patch>1.4.3.2</Patch>
+          <Patch>1432</Patch>
           <UpdateDetails>Mirrors LR for randomization. Translates room names in logs for room/area rando.</UpdateDetails>
           <URI></URI>
           <Dependencies>
@@ -81,14 +83,15 @@
     </Mod>
     <Mod>
       <Name>Seanprcore</Name>
+      <Filename></Filename>
       <Description>Mod library</Description>
       <VersionList>
         <Version>
           <BuildNum></BuildNum>
           <Iteration></Iteration>
-          <Patch>1.4.3.2</Patch>
+          <Patch>1432</Patch>
           <UpdateDetails></UpdateDetails>
-          <DownloadURI></DownloadURI>
+          <URI></URI>
           <Dependencies>
             <Name>ModCommon</Name>
           </Dependencies>
@@ -97,13 +100,15 @@
     </Mod>
     <Mod>
       <Name>ModCommon</Name>
+      <Filename></Filename>
       <Description>Generic support mod used by other mods.</Description>
       <VersionList>
         <Version>
           <BuildNum></BuildNum>
+          <Iteration></Iteration>
           <Patch>1.4.3.2</Patch>
           <UpdateDetails></UpdateDetails>
-          <DownloadURI></DownloadURI>
+          <URI></URI>
           <Dependencies>
           </Dependencies>
         </Version>

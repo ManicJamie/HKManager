@@ -40,7 +40,7 @@ namespace HKManager
             return defaultpaths;
         }
 
-        public string GetOS()
+        public static string GetOS()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return "Windows";
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return "MacOS" ;

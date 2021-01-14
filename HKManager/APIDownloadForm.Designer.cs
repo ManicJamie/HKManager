@@ -60,7 +60,7 @@ namespace HKManager
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "APIDownloadForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "APIDownloadForm";
+            this.Text = "HKManager";
             this.Load += new System.EventHandler(this.APIDownloadForm_Load);
             this.ResumeLayout(false);
 

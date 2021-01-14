@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("multi multi peepoArrive");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("yo lifeblood rando");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("LRT");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.PatchButton = new System.Windows.Forms.Button();
@@ -39,12 +46,12 @@
             this.ModdedButton = new System.Windows.Forms.RadioButton();
             this.VanillaButton = new System.Windows.Forms.RadioButton();
             this.VersionLabel = new System.Windows.Forms.Label();
+            this.ScanButton = new System.Windows.Forms.Button();
             this.PresetBox = new System.Windows.Forms.ListBox();
             this.SavePresetButton = new System.Windows.Forms.Button();
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             this.ModTreeView = new System.Windows.Forms.TreeView();
-            this.ScanButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -98,7 +105,7 @@
             // 
             this.PathLabel.Location = new System.Drawing.Point(9, 222);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(236, 56);
+            this.PathLabel.Size = new System.Drawing.Size(236, 70);
             this.PathLabel.TabIndex = 11;
             this.PathLabel.Text = "Path: i am a dwarf and im digging a hole diggy diggy hole diggy diggy hole";
             // 
@@ -143,6 +150,7 @@
             this.DownloadButton.TabIndex = 2;
             this.DownloadButton.Text = "Download Mods";
             this.DownloadButton.UseVisualStyleBackColor = true;
+            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
             // ModdedButton
             // 
@@ -182,6 +190,16 @@
             this.VersionLabel.Size = new System.Drawing.Size(142, 20);
             this.VersionLabel.TabIndex = 3;
             this.VersionLabel.Text = "Version: x.x.x.x-xx";
+            // 
+            // ScanButton
+            // 
+            this.ScanButton.Location = new System.Drawing.Point(403, 12);
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Size = new System.Drawing.Size(129, 73);
+            this.ScanButton.TabIndex = 9;
+            this.ScanButton.Text = "Nothing button";
+            this.ScanButton.UseVisualStyleBackColor = true;
+            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
             // 
             // PresetBox
             // 
@@ -230,19 +248,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ModTreeView.CheckBoxes = true;
+            this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ModTreeView.Location = new System.Drawing.Point(6, 21);
             this.ModTreeView.Name = "ModTreeView";
+            treeNode1.Name = "Node1";
+            treeNode1.Text = "multi multi peepoArrive";
+            treeNode2.Name = "Node2";
+            treeNode2.Text = "yo lifeblood rando";
+            treeNode3.Name = "Node3";
+            treeNode3.Text = "LRT";
+            treeNode4.Name = "Mod1";
+            treeNode4.Text = "Randomizer lol";
+            this.ModTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4});
+            this.ModTreeView.ShowNodeToolTips = true;
             this.ModTreeView.Size = new System.Drawing.Size(372, 402);
             this.ModTreeView.TabIndex = 0;
-            // 
-            // ScanButton
-            // 
-            this.ScanButton.Location = new System.Drawing.Point(403, 12);
-            this.ScanButton.Name = "ScanButton";
-            this.ScanButton.Size = new System.Drawing.Size(129, 73);
-            this.ScanButton.TabIndex = 9;
-            this.ScanButton.Text = "Scan for Mods";
-            this.ScanButton.UseVisualStyleBackColor = true;
             // 
             // HKManager
             // 

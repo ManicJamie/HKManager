@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace HKManager
 {
     public class FileManager
     {
         private SettingsManager settingsManager;
+        private XmlDocument localManifest;
         
+        // INIT
         public FileManager(SettingsManager manager)
         {
             settingsManager = manager;
         }
+
         public bool FileTreeExists() // Check if file tree exists. If not, create file tree with user confirmation. 
         {
             if (!Directory.Exists("HKManager_Data"))
@@ -44,10 +48,11 @@ namespace HKManager
             File.Copy(APIPath, newPath, true);
         }
 
-        public void IngestAPI(string patch)
+        public void IngestAPI(string patch) // Extract API to own directory and delete zip.
         {
             ZipFile.ExtractToDirectory("HKManager_Data/temp/" + patch + ".zip", "HKManager_Data/APIs/");
             File.Copy("HKManager_Data/APIs/" + patch + "/Assembly-CSharp.xml", settingsManager.GetPath() + "/Hollow_Knight_Data/Managed/Assembly-CSharp.xml", true);
+            File.Delete("HKManager_Data/temp/" + patch + ".zip");
         }
 
         public bool IsAPIDownloaded(string patch)

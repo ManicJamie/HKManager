@@ -29,11 +29,17 @@ namespace HKManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModDownloadForm));
             this.modTreeView = new System.Windows.Forms.TreeView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.downloadLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.downloadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.ControlContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.ModFolderButton = new System.Windows.Forms.Button();
+            this.DriveButton = new System.Windows.Forms.Button();
+            this.DownloadButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
+            this.ControlContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // modTreeView
@@ -42,9 +48,10 @@ namespace HKManager
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.modTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.modTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modTreeView.Location = new System.Drawing.Point(12, 12);
             this.modTreeView.Name = "modTreeView";
-            this.modTreeView.Size = new System.Drawing.Size(375, 390);
+            this.modTreeView.Size = new System.Drawing.Size(339, 378);
             this.modTreeView.TabIndex = 0;
             // 
             // statusStrip1
@@ -53,9 +60,9 @@ namespace HKManager
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.downloadLabel,
             this.downloadProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 410);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 398);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(396, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(486, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -63,7 +70,7 @@ namespace HKManager
             // 
             this.downloadLabel.AutoSize = false;
             this.downloadLabel.Name = "downloadLabel";
-            this.downloadLabel.Size = new System.Drawing.Size(108, 20);
+            this.downloadLabel.Size = new System.Drawing.Size(120, 20);
             this.downloadLabel.Text = "Downloading...";
             // 
             // downloadProgressBar
@@ -74,18 +81,78 @@ namespace HKManager
             this.downloadProgressBar.Size = new System.Drawing.Size(200, 18);
             this.downloadProgressBar.ToolTipText = "Download Progress";
             // 
+            // ControlContainer
+            // 
+            this.ControlContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ControlContainer.ColumnCount = 1;
+            this.ControlContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ControlContainer.Controls.Add(this.ModFolderButton, 0, 1);
+            this.ControlContainer.Controls.Add(this.DriveButton, 0, 3);
+            this.ControlContainer.Controls.Add(this.DownloadButton, 0, 0);
+            this.ControlContainer.Location = new System.Drawing.Point(357, 12);
+            this.ControlContainer.Name = "ControlContainer";
+            this.ControlContainer.RowCount = 3;
+            this.ControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.ControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.ControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ControlContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.ControlContainer.Size = new System.Drawing.Size(117, 378);
+            this.ControlContainer.TabIndex = 2;
+            // 
+            // ModFolderButton
+            // 
+            this.ModFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModFolderButton.Location = new System.Drawing.Point(3, 72);
+            this.ModFolderButton.Name = "ModFolderButton";
+            this.ModFolderButton.Size = new System.Drawing.Size(111, 63);
+            this.ModFolderButton.TabIndex = 3;
+            this.ModFolderButton.Text = "Open Mods Folder";
+            this.ModFolderButton.UseVisualStyleBackColor = true;
+            this.ModFolderButton.Click += new System.EventHandler(this.ModFolderButton_Click);
+            // 
+            // DriveButton
+            // 
+            this.DriveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DriveButton.Location = new System.Drawing.Point(3, 308);
+            this.DriveButton.Name = "DriveButton";
+            this.DriveButton.Size = new System.Drawing.Size(111, 67);
+            this.DriveButton.TabIndex = 1;
+            this.DriveButton.Text = "Open Google Drive";
+            this.DriveButton.UseVisualStyleBackColor = true;
+            this.DriveButton.Click += new System.EventHandler(this.DriveButton_Click);
+            // 
+            // DownloadButton
+            // 
+            this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DownloadButton.Location = new System.Drawing.Point(3, 3);
+            this.DownloadButton.Name = "DownloadButton";
+            this.DownloadButton.Size = new System.Drawing.Size(111, 63);
+            this.DownloadButton.TabIndex = 0;
+            this.DownloadButton.Text = "Download";
+            this.DownloadButton.UseVisualStyleBackColor = true;
+            // 
             // ModDownloadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 436);
+            this.ClientSize = new System.Drawing.Size(486, 424);
+            this.Controls.Add(this.ControlContainer);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.modTreeView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModDownloadForm";
             this.Text = "ModDownloadForm";
             this.Load += new System.EventHandler(this.ModDownloadForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.ControlContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +164,9 @@ namespace HKManager
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel downloadLabel;
         private System.Windows.Forms.ToolStripProgressBar downloadProgressBar;
+        private System.Windows.Forms.TableLayoutPanel ControlContainer;
+        private System.Windows.Forms.Button ModFolderButton;
+        private System.Windows.Forms.Button DriveButton;
+        private System.Windows.Forms.Button DownloadButton;
     }
 }

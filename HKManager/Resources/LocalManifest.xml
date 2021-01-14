@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is an example of localManifest, which is generated at runtime to store information about mods downloaded.
+The xml schema is identical to Manifest, to the point where I should actually start validating the schema lol.-->
+<Manifest>
+  <APIList>
+    <Patch>
+      <Number></Number>
+      <URI></URI>
+    </Patch>
+  </APIList>
+  <ModList>
+    <Mod>
+      <Name></Name>
+      <Description></Description>
+      <VersionList>
+        <Version>
+          <BuildNum></BuildNum>
+          <Iteration></Iteration>
+          <Patch></Patch>
+          <UpdateDetails></UpdateDetails>
+          <URI></URI>
+          <Dependencies>
+            <Name></Name>
+          </Dependencies>
+        </Version>
+      </VersionList>
+    </Mod>
+  </ModList>
+</Manifest>
