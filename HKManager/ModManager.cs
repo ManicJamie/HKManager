@@ -18,7 +18,7 @@ namespace HKManager
     public struct ModVersion
     {
         public string buildNum;
-        public int Iteration;
+        public string Iteration;
         public string patch;
         public string updateDetails;
         public string URI;
@@ -31,8 +31,6 @@ namespace HKManager
         private FileManager fileManager;
         private List<Mod> mods;
         private List<Mod> onlineMods;
-
-
 
         public ModManager(DownloadManager downloader, FileManager file)
         {

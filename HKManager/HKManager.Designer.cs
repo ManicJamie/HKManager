@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("multi multi peepoArrive");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("yo lifeblood rando");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("LRT");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("SeanprCore");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("3.10(xx)");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("3.10MW(xx)");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("LRT");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode3});
+            treeNode3,
+            treeNode4});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.PatchButton = new System.Windows.Forms.Button();
@@ -252,17 +253,21 @@
             this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ModTreeView.Location = new System.Drawing.Point(6, 21);
             this.ModTreeView.Name = "ModTreeView";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "multi multi peepoArrive";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "yo lifeblood rando";
-            treeNode3.Name = "Node3";
-            treeNode3.Text = "LRT";
-            treeNode4.Name = "Mod1";
-            treeNode4.Text = "Randomizer lol";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "SeanprCore";
+            treeNode2.Name = "Node1";
+            treeNode2.Text = "3.10(xx)";
+            treeNode3.Name = "Node2";
+            treeNode3.Text = "3.10MW(xx)";
+            treeNode4.Name = "Node3";
+            treeNode4.Text = "LRT";
+            treeNode5.Name = "Mod1";
+            treeNode5.Text = "Randomizer lol";
             this.ModTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode1,
+            treeNode5});
             this.ModTreeView.ShowNodeToolTips = true;
+            this.ModTreeView.ShowRootLines = false;
             this.ModTreeView.Size = new System.Drawing.Size(372, 402);
             this.ModTreeView.TabIndex = 0;
             // 

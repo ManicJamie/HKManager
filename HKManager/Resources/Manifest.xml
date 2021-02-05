@@ -1,38 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- This manifest document is stored on Google Drive, and not locally. It is, however, downloaded locally at runtime.-->
-<!--  Structure:
-<Manifest>
-  <APIList>
-    <Patch>
-      <Number></Number> 
-      <URI></URI>
-    </Patch>
-  </APIList>
-  <ModList>
-    <Mod>
-      <Name></Name>
-      <Description></Description>
-      <VersionList>
-        <Version>
-          <BuildNum></BuildNum>
-          <Iteration></Iteration>
-          <Patch></Patch>
-          <UpdateDetails></UpdateDetails>
-          <URI></URI>
-          <Dependencies>
-            <Name></Name>
-          </Dependencies>
-        </Version>
-      </VersionList>
-    </Mod>    
-  </ModList>
-</Manifest>-->
 <Manifest>
   <ManagerVersion>0.1</ManagerVersion>
   <APIList>
     <Patch>
       <Number>1221</Number>
-      <URI>https://drive.google.com/file/d/14nQeuhKghwrmWmUw3YYnPjvh9K8VHy4L/view?usp=sharing</URI>
+      <URI>https://drive.google.com/file/d/1WqK7bvmpurNdZT2HQVKhg8zNi3CuI9pc/view?usp=sharing</URI>
     </Patch>
     <Patch>
       <Number>1432</Number>
@@ -65,18 +38,6 @@
           <Dependencies>
             <Name>Seanprcore</Name>
             <Name>ModCommon</Name>
-          </Dependencies>
-        </Version>
-        <Version>
-          <BuildNum>3.07LRT(862)</BuildNum>
-          <Iteration>1</Iteration>
-          <Patch>1432</Patch>
-          <UpdateDetails>Mirrors LR for randomization. Translates room names in logs for room/area rando.</UpdateDetails>
-          <URI></URI>
-          <Dependencies>
-            <Name>Seanprcore</Name>
-            <Name>ModCommon</Name>
-            <Name>HKTranslator</Name>
           </Dependencies>
         </Version>
       </VersionList>
@@ -114,6 +75,5 @@
         </Version>
       </VersionList>
     </Mod>
-    
   </ModList>
 </Manifest>

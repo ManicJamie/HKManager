@@ -12,40 +12,50 @@ namespace HKManager
     public class DownloadManager
     {
         const string manifestLink = "https://drive.google.com/file/d/1vGl3pTN-RcdsbL3Xt2qm_6aVCx8vHbCn/view?usp=sharing";
+
+        // Manifest encapsulation
         private XmlDocument manifest;
+        private ManualResetEvent manifestDownloading = new ManualResetEvent(false);
+
+        public XmlDocument Manifest { get => GetManifest(); private set => manifest = value; }
+        private XmlDocument GetManifest() { manifestDownloading.WaitOne(); return manifest; }
+
+        // Downloader & FileManager encapsulation
         private FileDownloader downloader = new FileDownloader();
         private FileManager fileManager;
-        private ManualResetEvent manifestDownloading = new ManualResetEvent(false);
-        public ManualResetEvent downloadInProgress = new ManualResetEvent(true);
 
+        public FileDownloader Downloader { get => downloader; private set => downloader = value; }
+        public FileManager FileManager { get => fileManager; set => fileManager = value; }
+
+        // Initialisation
         public DownloadManager(FileManager manager)
         {
-            fileManager = manager;
+            FileManager = manager;
         }
 
+        // Manifest Downloading
         public void DownloadManifest()
         {
-            downloader.DownloadFileCompleted += (sender, e) => IngestManifest();
-            downloader.DownloadFile(manifestLink, "HKManager_Data/temp/manifest.xml");
-            WaitManifest();
+            Downloader.DownloadFileCompleted += (sender, e) => IngestManifest();
+            Downloader.DownloadFile(manifestLink, "HKManager_Data/temp/manifest.xml");
         }
 
         private void IngestManifest()
         {
-            manifest = new XmlDocument();
-            manifest.Load("HKManager_Data/temp/manifest.xml");
+            Manifest = new XmlDocument();
+            Manifest.Load("HKManager_Data/temp/manifest.xml");
             manifestDownloading.Set();
-            downloader.DownloadFileCompleted -= (sender, e) => IngestManifest(); // remove self from file completed event
+            Downloader.DownloadFileCompleted -= (sender, e) => IngestManifest(); // remove self from file completed event
         }
 
+        // File Downloading
         public void DownloadAPI(string patch)
         {
-            WaitManifest(); // wait for manifest to be ingested before attempting to use
-            foreach (XmlNode API in manifest.DocumentElement.SelectSingleNode("APIList").ChildNodes)
+            foreach (XmlNode API in Manifest.DocumentElement.SelectSingleNode("APIList").ChildNodes)
             {
                 if (API.SelectSingleNode("Number").InnerText == patch) {
-                    downloader.DownloadFileAsync(API.LastChild.InnerText, "HKManager_Data/temp/" + API.SelectSingleNode("Number").InnerText.Replace(".", "") + ".zip"); //PatchNo is FirstChild, URI is LastChild
-                    downloader.DownloadFileCompleted += (sender, e) => fileManager.IngestAPI(API.SelectSingleNode("Number").InnerText.Replace(".", ""));
+                    Downloader.DownloadFileAsync(API.LastChild.InnerText, "HKManager_Data/temp/" + API.SelectSingleNode("Number").InnerText.Replace(".", "") + ".zip"); //PatchNo is FirstChild, URI is LastChild
+                    Downloader.DownloadFileCompleted += (sender, e) => FileManager.IngestAPI(API.SelectSingleNode("Number").InnerText.Replace(".", ""));
                     return;
                 }
             }
@@ -56,7 +66,7 @@ namespace HKManager
             
         }
 
-        // Handling Manifest.xml
+        // Handling XML
         public List<Mod> GetManifestModList()
         {
             return ParseModListXML(GetManifest().DocumentElement.SelectSingleNode("ModList"));
@@ -89,7 +99,7 @@ namespace HKManager
             {
                 ModVersion VersionConstruct = new ModVersion();
                 VersionConstruct.buildNum = node.SelectSingleNode("BuildNum").InnerText;
-                VersionConstruct.Iteration = int.Parse(node.SelectSingleNode("Iteration").InnerText);
+                VersionConstruct.Iteration = node.SelectSingleNode("Iteration").InnerText;
                 VersionConstruct.patch = node.SelectSingleNode("Patch").InnerText;
                 VersionConstruct.updateDetails = node.SelectSingleNode("UpdateDetails").InnerText;
                 VersionConstruct.URI = node.SelectSingleNode("URI").InnerText;
@@ -102,9 +112,7 @@ namespace HKManager
             return Versions;
         }
 
-        public void WaitManifest() { manifestDownloading.WaitOne(); }
-        public XmlDocument GetManifest() { WaitManifest(); return manifest; }
-        public FileDownloader GetDownloader() { return downloader; }
+        public FileDownloader GetDownloader() { return Downloader; }
     }
 }
 
