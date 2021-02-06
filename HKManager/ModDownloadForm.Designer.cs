@@ -29,6 +29,9 @@ namespace HKManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("idk probably multiworld");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Randomizer", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModDownloadForm));
             this.modTreeView = new System.Windows.Forms.TreeView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -51,6 +54,12 @@ namespace HKManager
             this.modTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modTreeView.Location = new System.Drawing.Point(12, 12);
             this.modTreeView.Name = "modTreeView";
+            treeNode1.Name = "Node1";
+            treeNode1.Text = "idk probably multiworld";
+            treeNode2.Name = "Randomizer";
+            treeNode2.Text = "Randomizer";
+            this.modTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
             this.modTreeView.Size = new System.Drawing.Size(339, 378);
             this.modTreeView.TabIndex = 0;
             // 
@@ -111,7 +120,6 @@ namespace HKManager
             this.ModFolderButton.TabIndex = 3;
             this.ModFolderButton.Text = "Open Mods Folder";
             this.ModFolderButton.UseVisualStyleBackColor = true;
-            this.ModFolderButton.Click += new System.EventHandler(this.ModFolderButton_Click);
             // 
             // DriveButton
             // 
@@ -124,7 +132,6 @@ namespace HKManager
             this.DriveButton.TabIndex = 1;
             this.DriveButton.Text = "Open Google Drive";
             this.DriveButton.UseVisualStyleBackColor = true;
-            this.DriveButton.Click += new System.EventHandler(this.DriveButton_Click);
             // 
             // DownloadButton
             // 
@@ -149,7 +156,6 @@ namespace HKManager
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModDownloadForm";
             this.Text = "ModDownloadForm";
-            this.Load += new System.EventHandler(this.ModDownloadForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ControlContainer.ResumeLayout(false);

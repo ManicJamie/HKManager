@@ -31,11 +31,9 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("SeanprCore");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("3.10(xx)");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("3.10MW(xx)");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("LRT");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode3});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.PatchButton = new System.Windows.Forms.Button();
@@ -47,12 +45,13 @@
             this.ModdedButton = new System.Windows.Forms.RadioButton();
             this.VanillaButton = new System.Windows.Forms.RadioButton();
             this.VersionLabel = new System.Windows.Forms.Label();
-            this.ScanButton = new System.Windows.Forms.Button();
             this.PresetBox = new System.Windows.Forms.ListBox();
             this.SavePresetButton = new System.Windows.Forms.Button();
             this.LoadPresetButton = new System.Windows.Forms.Button();
             this.ModManagerContainer = new System.Windows.Forms.GroupBox();
             this.ModTreeView = new System.Windows.Forms.TreeView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.InstallButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -70,12 +69,12 @@
             // 
             // MainContainer.Panel1
             // 
+            this.MainContainer.Panel1.Controls.Add(this.InstallButton);
+            this.MainContainer.Panel1.Controls.Add(this.label1);
             this.MainContainer.Panel1.Controls.Add(this.PatchButton);
             this.MainContainer.Panel1.Controls.Add(this.PathLabel);
             this.MainContainer.Panel1.Controls.Add(this.PathButton);
             this.MainContainer.Panel1.Controls.Add(this.LaunchButton);
-            this.MainContainer.Panel1.Controls.Add(this.UpdateButton);
-            this.MainContainer.Panel1.Controls.Add(this.DownloadButton);
             this.MainContainer.Panel1.Controls.Add(this.ModdedButton);
             this.MainContainer.Panel1.Controls.Add(this.VanillaButton);
             this.MainContainer.Panel1.Controls.Add(this.VersionLabel);
@@ -83,11 +82,12 @@
             // 
             // MainContainer.Panel2
             // 
-            this.MainContainer.Panel2.Controls.Add(this.ScanButton);
             this.MainContainer.Panel2.Controls.Add(this.PresetBox);
             this.MainContainer.Panel2.Controls.Add(this.SavePresetButton);
             this.MainContainer.Panel2.Controls.Add(this.LoadPresetButton);
             this.MainContainer.Panel2.Controls.Add(this.ModManagerContainer);
+            this.MainContainer.Panel2.Controls.Add(this.UpdateButton);
+            this.MainContainer.Panel2.Controls.Add(this.DownloadButton);
             this.MainContainer.Size = new System.Drawing.Size(806, 452);
             this.MainContainer.SplitterDistance = 258;
             this.MainContainer.TabIndex = 0;
@@ -108,7 +108,8 @@
             this.PathLabel.Name = "PathLabel";
             this.PathLabel.Size = new System.Drawing.Size(236, 70);
             this.PathLabel.TabIndex = 11;
-            this.PathLabel.Text = "Path: i am a dwarf and im digging a hole diggy diggy hole diggy diggy hole";
+            this.PathLabel.Text = "Path: This is a long file path that exists purely to fill space for literally no " +
+    "reason";
             // 
             // PathButton
             // 
@@ -134,9 +135,9 @@
             // 
             this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpdateButton.Location = new System.Drawing.Point(12, 163);
+            this.UpdateButton.Location = new System.Drawing.Point(403, 91);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(233, 47);
+            this.UpdateButton.Size = new System.Drawing.Size(129, 63);
             this.UpdateButton.TabIndex = 3;
             this.UpdateButton.Text = "Check For Updates";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -145,9 +146,9 @@
             // 
             this.DownloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DownloadButton.Location = new System.Drawing.Point(12, 110);
+            this.DownloadButton.Location = new System.Drawing.Point(403, 24);
             this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(233, 47);
+            this.DownloadButton.Size = new System.Drawing.Size(129, 61);
             this.DownloadButton.TabIndex = 2;
             this.DownloadButton.Text = "Download Mods";
             this.DownloadButton.UseVisualStyleBackColor = true;
@@ -192,24 +193,18 @@
             this.VersionLabel.TabIndex = 3;
             this.VersionLabel.Text = "Version: x.x.x.x-xx";
             // 
-            // ScanButton
-            // 
-            this.ScanButton.Location = new System.Drawing.Point(403, 12);
-            this.ScanButton.Name = "ScanButton";
-            this.ScanButton.Size = new System.Drawing.Size(129, 73);
-            this.ScanButton.TabIndex = 9;
-            this.ScanButton.Text = "Nothing button";
-            this.ScanButton.UseVisualStyleBackColor = true;
-            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
-            // 
             // PresetBox
             // 
             this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PresetBox.FormattingEnabled = true;
             this.PresetBox.ItemHeight = 18;
-            this.PresetBox.Location = new System.Drawing.Point(403, 96);
+            this.PresetBox.Items.AddRange(new object[] {
+            "Randomizer",
+            "Practice",
+            "Custom Levels"});
+            this.PresetBox.Location = new System.Drawing.Point(403, 168);
             this.PresetBox.Name = "PresetBox";
-            this.PresetBox.Size = new System.Drawing.Size(129, 202);
+            this.PresetBox.Size = new System.Drawing.Size(129, 130);
             this.PresetBox.TabIndex = 8;
             // 
             // SavePresetButton
@@ -253,23 +248,44 @@
             this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ModTreeView.Location = new System.Drawing.Point(6, 21);
             this.ModTreeView.Name = "ModTreeView";
+            treeNode1.Checked = true;
+            treeNode1.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             treeNode1.Name = "Node0";
             treeNode1.Text = "SeanprCore";
+            treeNode1.ToolTipText = "Description";
+            treeNode2.Checked = true;
             treeNode2.Name = "Node1";
             treeNode2.Text = "3.10(xx)";
+            treeNode3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             treeNode3.Name = "Node2";
             treeNode3.Text = "3.10MW(xx)";
-            treeNode4.Name = "Node3";
-            treeNode4.Text = "LRT";
-            treeNode5.Name = "Mod1";
-            treeNode5.Text = "Randomizer lol";
+            treeNode4.Checked = true;
+            treeNode4.Name = "Mod1";
+            treeNode4.Text = "Randomizer lol";
             this.ModTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode5});
+            treeNode4});
             this.ModTreeView.ShowNodeToolTips = true;
-            this.ModTreeView.ShowRootLines = false;
             this.ModTreeView.Size = new System.Drawing.Size(372, 402);
             this.ModTreeView.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 104);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Current Installation: {}";
+            // 
+            // InstallButton
+            // 
+            this.InstallButton.Location = new System.Drawing.Point(54, 140);
+            this.InstallButton.Name = "InstallButton";
+            this.InstallButton.Size = new System.Drawing.Size(153, 49);
+            this.InstallButton.TabIndex = 13;
+            this.InstallButton.Text = "Switch Installs";
+            this.InstallButton.UseVisualStyleBackColor = true;
             // 
             // HKManager
             // 
@@ -311,7 +327,8 @@
         private System.Windows.Forms.Button PatchButton;
         private System.Windows.Forms.TreeView ModTreeView;
         private System.Windows.Forms.ListBox PresetBox;
-        private System.Windows.Forms.Button ScanButton;
+        private System.Windows.Forms.Button InstallButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

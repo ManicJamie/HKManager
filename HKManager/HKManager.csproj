@@ -53,16 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIDownloadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="APIDownloadForm.Designer.cs">
-      <DependentUpon>APIDownloadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="APIManager.cs" />
-    <Compile Include="DownloadManager.cs" />
-    <Compile Include="FileDownloader.cs" />
-    <Compile Include="FileManager.cs" />
     <Compile Include="HKManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,9 +96,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\hornet.ico" />
-    <EmbeddedResource Include="APIDownloadForm.resx">
-      <DependentUpon>APIDownloadForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HKManager.resx">
       <DependentUpon>HKManager.cs</DependentUpon>
     </EmbeddedResource>
