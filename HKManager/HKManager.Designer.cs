@@ -28,19 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("SeanprCore");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("3.10(xx)");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("3.10MW(xx)");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("SeanprCore");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("3.10(xx)");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("3.10MW(xx)");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Randomizer lol", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15});
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.ProfileContainer = new System.Windows.Forms.GroupBox();
             this.VersionLabel = new System.Windows.Forms.Label();
@@ -63,10 +51,13 @@
             this.DownloadToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.DownloadLabel = new System.Windows.Forms.ToolStripLabel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.DownloadTreeView = new System.Windows.Forms.TreeView();
             this.LevelTab = new System.Windows.Forms.TabPage();
             this.SkinTab = new System.Windows.Forms.TabPage();
+            this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -77,6 +68,7 @@
             this.PresetContainer.SuspendLayout();
             this.ModDownloadTab.SuspendLayout();
             this.DownloadToolStrip.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainContainer
@@ -120,9 +112,9 @@
             this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VersionLabel.Location = new System.Drawing.Point(6, 16);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(139, 18);
+            this.VersionLabel.Size = new System.Drawing.Size(66, 18);
             this.VersionLabel.TabIndex = 3;
-            this.VersionLabel.Text = "Version: 1.4.3.2 - 57";
+            this.VersionLabel.Text = "Version: ";
             // 
             // button1
             // 
@@ -142,7 +134,7 @@
             this.PathLabel.Name = "PathLabel";
             this.PathLabel.Size = new System.Drawing.Size(186, 50);
             this.PathLabel.TabIndex = 5;
-            this.PathLabel.Text = "HK Path: C:/Some/Folder/Somewhere/Probably/HollowKnight";
+            this.PathLabel.Text = "HK Path: ";
             // 
             // button2
             // 
@@ -161,10 +153,6 @@
             this.ProfileBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileBox.FormattingEnabled = true;
             this.ProfileBox.ItemHeight = 18;
-            this.ProfileBox.Items.AddRange(new object[] {
-            "1.2.2.1",
-            "1.4.3.2",
-            "MyOtherInstallOf1432"});
             this.ProfileBox.Location = new System.Drawing.Point(6, 94);
             this.ProfileBox.Name = "ProfileBox";
             this.ProfileBox.Size = new System.Drawing.Size(189, 220);
@@ -188,6 +176,7 @@
             // 
             // ModManageTab
             // 
+            this.ModManageTab.Controls.Add(this.groupBox1);
             this.ModManageTab.Controls.Add(this.PresetContainer);
             this.ModManageTab.Controls.Add(this.ModTreeView);
             this.ModManageTab.Location = new System.Drawing.Point(4, 22);
@@ -203,32 +192,27 @@
             this.PresetContainer.Controls.Add(this.PresetBox);
             this.PresetContainer.Controls.Add(this.LoadPresetButton);
             this.PresetContainer.Controls.Add(this.SavePresetButton);
-            this.PresetContainer.Location = new System.Drawing.Point(266, 6);
+            this.PresetContainer.Location = new System.Drawing.Point(266, 146);
             this.PresetContainer.Name = "PresetContainer";
-            this.PresetContainer.Size = new System.Drawing.Size(127, 363);
+            this.PresetContainer.Size = new System.Drawing.Size(127, 223);
             this.PresetContainer.TabIndex = 9;
             this.PresetContainer.TabStop = false;
             this.PresetContainer.Text = "Mod Presets";
             // 
             // PresetBox
             // 
-            this.PresetBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PresetBox.FormattingEnabled = true;
             this.PresetBox.ItemHeight = 15;
-            this.PresetBox.Items.AddRange(new object[] {
-            "Randomizer",
-            "Practice",
-            "Custom Levels"});
             this.PresetBox.Location = new System.Drawing.Point(6, 19);
             this.PresetBox.Name = "PresetBox";
-            this.PresetBox.Size = new System.Drawing.Size(115, 274);
+            this.PresetBox.Size = new System.Drawing.Size(115, 139);
             this.PresetBox.TabIndex = 8;
             // 
             // LoadPresetButton
             // 
-            this.LoadPresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadPresetButton.Location = new System.Drawing.Point(6, 304);
+            this.LoadPresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoadPresetButton.Location = new System.Drawing.Point(6, 164);
             this.LoadPresetButton.Name = "LoadPresetButton";
             this.LoadPresetButton.Size = new System.Drawing.Size(56, 53);
             this.LoadPresetButton.TabIndex = 6;
@@ -238,8 +222,8 @@
             // 
             // SavePresetButton
             // 
-            this.SavePresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SavePresetButton.Location = new System.Drawing.Point(65, 304);
+            this.SavePresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SavePresetButton.Location = new System.Drawing.Point(65, 164);
             this.SavePresetButton.Name = "SavePresetButton";
             this.SavePresetButton.Size = new System.Drawing.Size(56, 53);
             this.SavePresetButton.TabIndex = 7;
@@ -254,23 +238,6 @@
             this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ModTreeView.Location = new System.Drawing.Point(3, 3);
             this.ModTreeView.Name = "ModTreeView";
-            treeNode9.Checked = true;
-            treeNode9.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            treeNode9.Name = "Node0";
-            treeNode9.Text = "SeanprCore";
-            treeNode9.ToolTipText = "Description";
-            treeNode10.Checked = true;
-            treeNode10.Name = "Node1";
-            treeNode10.Text = "3.10(xx)";
-            treeNode11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            treeNode11.Name = "Node2";
-            treeNode11.Text = "3.10MW(xx)";
-            treeNode12.Checked = true;
-            treeNode12.Name = "Mod1";
-            treeNode12.Text = "Randomizer lol";
-            this.ModTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode12});
             this.ModTreeView.ShowNodeToolTips = true;
             this.ModTreeView.Size = new System.Drawing.Size(254, 366);
             this.ModTreeView.TabIndex = 0;
@@ -282,7 +249,7 @@
             this.ModDownloadTab.Controls.Add(this.ModDescriptionBox);
             this.ModDownloadTab.Controls.Add(this.ModLabel);
             this.ModDownloadTab.Controls.Add(this.DownloadToolStrip);
-            this.ModDownloadTab.Controls.Add(this.treeView1);
+            this.ModDownloadTab.Controls.Add(this.DownloadTreeView);
             this.ModDownloadTab.Location = new System.Drawing.Point(4, 22);
             this.ModDownloadTab.Name = "ModDownloadTab";
             this.ModDownloadTab.Padding = new System.Windows.Forms.Padding(3);
@@ -308,6 +275,7 @@
             this.DriveButton.TabIndex = 6;
             this.DriveButton.Text = "Open Mod Google Drive";
             this.DriveButton.UseVisualStyleBackColor = true;
+            this.DriveButton.Click += new System.EventHandler(this.DriveButton_Click);
             // 
             // ModDescriptionBox
             // 
@@ -356,39 +324,15 @@
             this.DownloadLabel.Size = new System.Drawing.Size(199, 22);
             this.DownloadLabel.Text = "Downloading Randomizer 3.10MW...";
             // 
-            // treeView1
+            // DownloadTreeView
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            treeNode13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            treeNode13.Name = "Node0";
-            treeNode13.Text = "SeanprCore";
-            treeNode13.ToolTipText = "Description";
-            treeNode14.Name = "Node1";
-            treeNode14.Text = "3.10(xx)";
-            treeNode15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            treeNode15.Name = "Node2";
-            treeNode15.Text = "3.10MW(xx)";
-            treeNode16.Name = "Mod1";
-            treeNode16.Text = "Randomizer lol";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode16});
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(212, 344);
-            this.treeView1.TabIndex = 1;
-            // 
-            // SettingsTab
-            // 
-            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
-            this.SettingsTab.Name = "SettingsTab";
-            this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsTab.Size = new System.Drawing.Size(399, 375);
-            this.SettingsTab.TabIndex = 2;
-            this.SettingsTab.Text = "Settings";
-            this.SettingsTab.UseVisualStyleBackColor = true;
+            this.DownloadTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DownloadTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DownloadTreeView.Location = new System.Drawing.Point(3, 3);
+            this.DownloadTreeView.Name = "DownloadTreeView";
+            this.DownloadTreeView.ShowNodeToolTips = true;
+            this.DownloadTreeView.Size = new System.Drawing.Size(212, 344);
+            this.DownloadTreeView.TabIndex = 1;
             // 
             // LevelTab
             // 
@@ -409,6 +353,45 @@
             this.SkinTab.TabIndex = 4;
             this.SkinTab.Text = "Custom Skins";
             this.SkinTab.UseVisualStyleBackColor = true;
+            // 
+            // SettingsTab
+            // 
+            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingsTab.Name = "SettingsTab";
+            this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SettingsTab.Size = new System.Drawing.Size(399, 375);
+            this.SettingsTab.TabIndex = 2;
+            this.SettingsTab.Text = "Settings";
+            this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Location = new System.Drawing.Point(266, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(127, 137);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Open Folders";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(7, 20);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(114, 50);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Open Game Folder";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 81);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(114, 50);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "Open Saves Folder";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // HKManager
             // 
@@ -434,6 +417,7 @@
             this.ModDownloadTab.PerformLayout();
             this.DownloadToolStrip.ResumeLayout(false);
             this.DownloadToolStrip.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -455,7 +439,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox ProfileBox;
         private System.Windows.Forms.GroupBox PresetContainer;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView DownloadTreeView;
         private System.Windows.Forms.ToolStrip DownloadToolStrip;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripLabel DownloadLabel;
@@ -466,6 +450,9 @@
         private System.Windows.Forms.TabPage SettingsTab;
         private System.Windows.Forms.TabPage LevelTab;
         private System.Windows.Forms.TabPage SkinTab;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
 

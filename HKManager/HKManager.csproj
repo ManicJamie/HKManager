@@ -38,10 +38,14 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\hornet.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HKManager.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,17 +57,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionFailedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionFailedForm.Designer.cs">
+      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadHelper.cs" />
     <Compile Include="HKManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HKManager.Designer.cs">
       <DependentUpon>HKManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="PatchSelectionDialog.cs">
+    <Compile Include="Objects.cs" />
+    <Compile Include="ProfileCreationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatchSelectionDialog.Designer.cs">
-      <DependentUpon>PatchSelectionDialog.cs</DependentUpon>
+    <Compile Include="ProfileCreationDialog.Designer.cs">
+      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,20 +99,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\hornet.ico" />
+    <EmbeddedResource Include="ConnectionFailedForm.resx">
+      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HKManager.resx">
       <DependentUpon>HKManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatchSelectionDialog.resx">
-      <DependentUpon>PatchSelectionDialog.cs</DependentUpon>
+    <EmbeddedResource Include="ProfileCreationDialog.resx">
+      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resources\LocalManifest.xml" />
-    <None Include="Resources\Manifest.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ModLinks.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

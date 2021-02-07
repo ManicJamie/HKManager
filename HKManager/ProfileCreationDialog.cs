@@ -10,21 +10,23 @@ using System.Windows.Forms;
 
 namespace HKManager
 {
-    public partial class PatchSelectionDialog : Form
+    public partial class ProfileCreationDialog : Form
     {
-        public string selectedPatch;
-
-        public PatchSelectionDialog()
+        public string patch;
+        public string path;
+        public string name;
+        public ProfileCreationDialog()
         {
             InitializeComponent();
-            comboBox.SelectedItem = "1.4.3.2";
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            selectedPatch = comboBox.SelectedItem.ToString();
-            this.Hide();
+            DialogResult = DialogResult.OK;
+            patch = PatchComboBox.Text;
+            path = PathTextBox.Text;
+            name = NameTextBox.Text;
+            Close();
         }
-
     }
 }

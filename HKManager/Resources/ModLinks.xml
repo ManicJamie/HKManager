@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
+  <DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
+  
+  <!-- Details about the installer and auto updater.-->
+  <Installer>
+    <Link><![CDATA[https://github.com/ManicJamie/HKManager/releases/latest/HKmanager.exe]]></Link>
+    <SHA1></SHA1>
+    <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
+  </Installer>
+
+  <!-- An "API" is any mod that replaces Assembly-Csharp.dll. Please give it a name and description, for my sanity. "Version" should be the patch number, followed by the version of your API. -->
+  <APIList>
+    <API version="1.4.3.2-57">
+      <Name>Modding API</Name>
+      <Description>Allows for loading of third-party mods.</Description>
+      <Patch>1.4.3.2</Patch>
+      <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
+      <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+    </API>
+  </APIList>
+
+  <!-- Modlist. A demo mod can be found at the end of the document. -->
+  
+  <ModList>
+    <Mod>
+      <Name>ModCommon</Name>
+      <Description>Library used by many mods.</Description>
+      <FullDescription>Library used by many mods.</FullDescription>
+      <BranchName>Main</BranchName>
+      <BranchDescription></BranchDescription>
+      <Files>
+        <File>
+          <Name>ModCommon.dll</Name>
+          <SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
+        </File>
+      </Files>
+    </Mod>
+    <Mod>
+      <Name>ModConsole</Name>
+      <Description>An in-game REPL which allows you to easily run C#.</Description>
+      <FullDescription>An in-game REPL which allows you to easily run C#.</FullDescription>
+      <BranchName>Main</BranchName>
+      <BranchDescription></BranchDescription>
+      <Files>
+        <File>
+          <Name>ModCommon.dll</Name>
+          <SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
+        </File>
+      </Files>
+    </Mod>
+  </ModList>
+</ModLinks>
+
+<!-- Demo mod:
+    <Mod>
+      <Name>Modname</Name>
+      <Description>A short description to be shown on hover.</Description>
+      <FullDescription>A long (full paragraph) description to be shown on the mod download menu.</FullDescription>
+      
+      <BranchName>Name of a branch. You can just use "Main" if your mod will not have any other concurrent versions.</BranchName>
+      <BranchDescription>Description of the branch - tell the user what's different in this branch.</BranchDescription>
+      
+      <Files>
+        <File>
+          <Name>ModName.dll</Name>
+          <SHA1>qwertyuiop</SHA1>
+        </File>
+      </Files>
+      
+      <Link>somelink.com</Link>
+      <Dependencies>
+        <string>dependency</string>
+      </Dependencies>
+      <Optional>
+        <string>Recommended mod to be installed along this one. This will suggest the mod to the user, but it will not force them to download it.</string>
+      </Optional>
+    </Mod>
+    -->

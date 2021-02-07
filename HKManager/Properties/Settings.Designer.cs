@@ -26,24 +26,12 @@ namespace HKManager.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string HKPath {
+        public string ProfileList {
             get {
-                return ((string)(this["HKPath"]));
+                return ((string)(this["ProfileList"]));
             }
             set {
-                this["HKPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Patch {
-            get {
-                return ((string)(this["Patch"]));
-            }
-            set {
-                this["Patch"] = value;
+                this["ProfileList"] = value;
             }
         }
     }
