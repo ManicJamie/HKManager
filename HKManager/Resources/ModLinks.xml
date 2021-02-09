@@ -38,6 +38,7 @@
           <SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
         </File>
       </Files>
+      <Link></Link>
     </Mod>
     <Mod>
       <Name>ModConsole</Name>
@@ -52,6 +53,7 @@
           <SHA1>12364E85DA46F3D4652B5E17FC4478E8550B9515</SHA1>
         </File>
       </Files>
+      <Link></Link>
     </Mod>
   </ModList>
 </ModLinks>
