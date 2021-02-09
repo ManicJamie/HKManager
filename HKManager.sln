@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HKManager", "HKManager\HKManager.csproj", "{3B4568E5-B577-43CD-8D5A-8E34B6A9CBCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModLinksConverter", "ModLinksConverter\ModLinksConverter.csproj", "{63CF4244-D93D-48E7-A6F4-8B2F4714AFC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3B4568E5-B577-43CD-8D5A-8E34B6A9CBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4568E5-B577-43CD-8D5A-8E34B6A9CBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4568E5-B577-43CD-8D5A-8E34B6A9CBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CF4244-D93D-48E7-A6F4-8B2F4714AFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CF4244-D93D-48E7-A6F4-8B2F4714AFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CF4244-D93D-48E7-A6F4-8B2F4714AFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CF4244-D93D-48E7-A6F4-8B2F4714AFC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

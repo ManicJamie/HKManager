@@ -58,6 +58,15 @@ namespace HKManager
         public string Patch { get; set; }
         public List<Preset> Presets { get; set; }
         public List<Mod> Mods { get; set; }
+
+        public void PopulateModListFromFiles()
+        {
+            foreach (string fileName in Directory.GetFiles(Path))
+            {
+
+            }
+        }
+
     }
 
     /// <summary>
@@ -67,6 +76,11 @@ namespace HKManager
     {
         string Name { get; set; }
         List<string> IDList { get; }
+
+        public Preset()
+        {
+            IDList = new List<string>();
+        }
 
         public void AddToPreset(string modID)
         {
@@ -85,25 +99,35 @@ namespace HKManager
     /// </summary>
     class Mod
     {
+        public int ID { get; set; } // Unique identifier used to identify mods in a preset.
         public string Name { get; set; }
         public string Description { get; set; } // Description to be shown on hover
         public string FullDescription { get; set; } // Long description seen when installing mods.
         public string BranchName { get; set; } // if empty, mod is not a member of a branch.
         public string BranchDescription { get; set; } // Description of a branch.
+        public string Link { get; set; } // Download link.
         public Dictionary<string, string> Files { get; set; } // Key is file path, value is SHA1.
         public List<string> Dependencies { get; set; }
+        public List<string> Optional { get; set; }
+
+        public Mod()
+        {
+            Files = new Dictionary<string, string>();
+            Dependencies = new List<string>();
+            Optional = new List<string>();
+        }
     }
 
     /// <summary>
-    /// API.
+    /// API. Any mod that replaces Assembly-CSharp.dll
     /// </summary>
-    class API
+    public class API
     {
-        public string patch { get; set; }
+        public string Name { get; set; }
+        public string Patch { get; set; }
         public string Version { get; set; } 
         public string Link { get; set; }
-        public KeyValuePair<string, string> file { get; set; }
-
+        public string SHA1 { get; set; }
     }
 
 }

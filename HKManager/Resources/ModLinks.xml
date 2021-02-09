@@ -12,10 +12,11 @@
 
   <!-- An "API" is any mod that replaces Assembly-Csharp.dll. Please give it a name and description, for my sanity. "Version" should be the patch number, followed by the version of your API. -->
   <APIList>
-    <API version="1.4.3.2-57">
+    <API Patch ="1.4.3.2">
       <Name>Modding API</Name>
       <Description>Allows for loading of third-party mods.</Description>
-      <Patch>1.4.3.2</Patch>
+      
+      <Version>57</Version>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
       <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
     </API>
@@ -30,6 +31,7 @@
       <FullDescription>Library used by many mods.</FullDescription>
       <BranchName>Main</BranchName>
       <BranchDescription></BranchDescription>
+      <Patch>1.4.3.2</Patch>
       <Files>
         <File>
           <Name>ModCommon.dll</Name>
@@ -43,6 +45,7 @@
       <FullDescription>An in-game REPL which allows you to easily run C#.</FullDescription>
       <BranchName>Main</BranchName>
       <BranchDescription></BranchDescription>
+      <Patch>1.4.3.2</Patch>
       <Files>
         <File>
           <Name>ModCommon.dll</Name>
@@ -61,6 +64,8 @@
       
       <BranchName>Name of a branch. You can just use "Main" if your mod will not have any other concurrent versions.</BranchName>
       <BranchDescription>Description of the branch - tell the user what's different in this branch.</BranchDescription>
+      
+      <Patch>1.4.3.2</Patch>
       
       <Files>
         <File>

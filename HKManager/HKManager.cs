@@ -18,17 +18,31 @@ namespace HKManager
     public partial class HKManager : Form
     {
         private const string Version = "v0.1";
-        private const string MODLINKS_URI = "https://raw.githubusercontent.com/Ayugradow/ModInstaller/master/modlinks.xml";
-        private string OS;
-        private List<string> _defaultPaths = new List<string>();
+        private const string MODLINKS_URI = "https://raw.githubusercontent.com/ManicJamie/HKManager/main/HKManager/Resources/ModLinks.xml";
+        public static readonly string OS;
         public bool IsOffline;
 
         private ProfileList profileList;
         private XDocument ModLinks;
+        private List<Mod> DownloadList;
+        public List<API> APIList;
 
         public HKManager()
         {
             InitializeComponent();
+        }
+
+        static HKManager()
+        {
+            // Get OS
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                OS = "Windows";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                OS = "MacOS";
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                OS = "Linux";
+            else
+                OS = "Windows";
         }
 
         private void HKManager_Load(object sender, EventArgs e)
@@ -40,13 +54,14 @@ namespace HKManager
             }
             if (!IsOffline)
             {
-            //CheckUpdate(); // DONT HAVE THIS COMMENTED OUT WHEN YOU BUILD DUMMY
+                //CheckUpdate(); // DONT HAVE THIS COMMENTED OUT WHEN YOU BUILD DUMMY
+                DownloadList = CreateDownloadList();
+                APIList = CreateAPIList();
             } else
             {
-                TabContainer.TabPages.Remove(ModDownloadTab);
+                TabContainer.TabPages.Remove(ModDownloadTab); 
             }
-            GetCurrentOS();
-            FillDefaultPaths();
+
             LoadOrCreateProfiles();
 
 
@@ -58,6 +73,7 @@ namespace HKManager
         }
 
         #region Loading HKManager
+
         /// <summary>
         /// Downloads Modlinks.xml. If connection failed, offer user option to enter offline mode, retry or exit.
         /// </summary>
@@ -87,6 +103,7 @@ namespace HKManager
             }
 
         }
+
         private void CheckUpdate()
         {
             string dir = AppDomain.CurrentDomain.BaseDirectory;
@@ -125,55 +142,96 @@ namespace HKManager
             Application.Exit();
         }
 
-        private void GetCurrentOS()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                OS = "Windows";
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                OS = "MacOS";
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                OS = "Linux";
-            else
-                OS = "Windows";
-        }
-
-        private void FillDefaultPaths()
-        {
-            switch (OS)
-            {
-                case "Windows":
-                    //Default Steam and GOG install paths for Windows.
-                    _defaultPaths.Add("Program Files (x86)/Steam/steamapps/Common/Hollow Knight");
-                    _defaultPaths.Add("Program Files/Steam/steamapps/Common/Hollow Knight");
-                    _defaultPaths.Add("Steam/steamapps/common/Hollow Knight");
-                    _defaultPaths.Add("Program Files (x86)/GOG Galaxy/Games/Hollow Knight");
-                    _defaultPaths.Add("Program Files/GOG Galaxy/Games/Hollow Knight");
-                    _defaultPaths.Add("GOG Galaxy/Games/Hollow Knight");
-                    break;
-                case "Linux":
-                    // Default steam installation path for Linux.
-                    _defaultPaths.Add(Environment.GetEnvironmentVariable("HOME") + "/.steam/steam/steamapps/common/Hollow Knight");
-                    break;
-                case "MacOS":
-                    //Default steam installation path for Mac.
-                    _defaultPaths.Add
-                        (Environment.GetEnvironmentVariable("HOME") + "/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app");
-                    break;
-            }
-        }
-
         private void LoadOrCreateProfiles()
         {
             profileList = ProfileList.LoadProfileList();
-            if (profileList == null)
+            if (profileList == null) // If no profileList exists:
             {
-                profileList = new ProfileList();
-                
-                profileList.CreateProfile("","","");
+                if (!CreateNewProfile()) // Attempt to create new profile.
+                {
+                    // Application needs at least one profile to exist.
+                    MessageBox.Show("HKManager needs you to create a profile in order to function properly.", "Exiting...", MessageBoxButtons.OK);
+                    Application.Exit(); 
+                } 
             }
+        }
+
+        private bool CreateNewProfile()
+        {
+            profileList = new ProfileList();
+            using (ProfileCreationDialog creationDialog = new ProfileCreationDialog(APIList))
+            {
+                switch (creationDialog.ShowDialog())
+                {
+                    case DialogResult.OK:
+                        profileList.CreateProfile(creationDialog.profileName, creationDialog.path, creationDialog.patch);
+                        profileList.SaveProfileList();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            
         }
         #endregion
 
+        #region Profile loading / mod discovery
+        private void PopulateModListFromFile()
+        {
+
+        }
+
+        private List<Mod> CreateDownloadList()
+        {
+            List<Mod> _downloadList = new List<Mod>();
+            foreach (XElement element in ModLinks.Root.Element("ModList").Elements("Mod"))
+            {
+                Mod modConstructor = new Mod()
+                {
+                    Name = element.Element("Name").Value,
+                    Description = element.Element("Description").Value,
+                    FullDescription = element.Element("FullDescription").Value,
+                    BranchName = element.Element("BranchName").Value,
+                    BranchDescription = element.Element("BranchDescription").Value,
+                    Link = element.Element("Link").Value
+                };
+                foreach (XElement file in element.Element("Files").Elements("File"))
+                {
+                    modConstructor.Files.Add(file.Element("Name").Value, file.Element("SHA1").Value);
+                }
+                if (element.Elements("Dependencies").Any())
+                {
+                    foreach (XElement dependency in element.Element("Dependencies").Elements("string"))
+                    {
+                        modConstructor.Dependencies.Add(dependency.Value);
+                    }
+                }
+                _downloadList.Add(modConstructor);
+            }
+            return _downloadList;
+        }
+
+        private List<API> CreateAPIList()
+        {
+            List<API> _apis = new List<API>();
+            foreach (XElement element in ModLinks.Root.Element("APIList").Elements("API"))
+            {
+                API apiConstructor = new API()
+                {
+                    Name = element.Element("Name").Value,
+                    Patch = element.Attribute("Patch").Value,
+                    Version = element.Element("Version").Value,
+                    Link = element.Element("Link").Value,
+                    SHA1 = element.Element("SHA1").Value
+                };
+                _apis.Add(apiConstructor);
+            }
+            return _apis;
+        }
+
+        #endregion
+
+        #region SHA1 computation
         private static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);
         private static string ComputeSHA1(string file)
         {
@@ -185,7 +243,7 @@ namespace HKManager
 
             return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }
-
+        #endregion
         #region Handlers
         private void DriveButton_Click(object sender, EventArgs e)
         {
