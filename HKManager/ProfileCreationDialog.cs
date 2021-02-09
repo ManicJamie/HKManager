@@ -17,15 +17,16 @@ namespace HKManager
         public string path;
         public string profileName;
         public string APIName;
+        public API aPI;
         private List<string> _defaultPaths = new List<string>();
-        List<API> APIs;
+        private List<API> APIs;
 
         public ProfileCreationDialog(List<API> apis)
         {
+            APIs = apis;
             InitializeComponent();
             FillDefaultPaths();
             PathTextBox.Text = FindDefaultInstallation();
-            APIs = apis;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -34,6 +35,12 @@ namespace HKManager
             patch = PatchComboBox.Text;
             path = PathTextBox.Text;
             profileName = NameTextBox.Text;
+            APIName = APIComboBox.Text;
+            foreach (API testapi in APIs) if (testapi.Name == APIName && testapi.Patch == patch)
+            {
+                aPI = testapi;
+                break;
+            }
             Close();
         }
 
@@ -101,20 +108,51 @@ namespace HKManager
             if (InstallExists(PathTextBox.Text))
             {
                 PatchComboBox.Enabled = true;
+                patch = (string)PatchComboBox.SelectedItem;
+                APIComboBox.Enabled = true;
+                UpdateAPIComboBox();
             } else
             {
                 PatchComboBox.Enabled = false;
+                APIComboBox.Enabled = false;
             }
         }
 
         private void PatchComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             patch = (string)PatchComboBox.SelectedItem;
+            UpdateAPIComboBox();
+        }
+
+        private void UpdateAPIComboBox()
+        {
             APIComboBox.Items.Clear();
-            foreach (API API in APIs) if (API.Version == patch)
-                {
-                    APIComboBox.Items.Add(API.Name);
-                }
+            foreach (API API in APIs) if (API.Patch == patch)
+            {
+                APIComboBox.Items.Add(API.Name);
+            }
+        }
+
+        private void APIComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (APIComboBox.SelectedItem != null)
+            {
+                NameTextBox.Enabled = true;
+            } else
+            {
+                NameTextBox.Enabled = false;
+            }
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (NameTextBox.Text == null || NameTextBox.Text == "")
+            {
+                OKButton.Enabled = false;
+            } else
+            {
+                OKButton.Enabled = true;
+            }
         }
     }
 }

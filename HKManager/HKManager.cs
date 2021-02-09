@@ -164,7 +164,7 @@ namespace HKManager
                 switch (creationDialog.ShowDialog())
                 {
                     case DialogResult.OK:
-                        profileList.CreateProfile(creationDialog.profileName, creationDialog.path, creationDialog.patch);
+                        profileList.CreateProfile(creationDialog.profileName, creationDialog.path, creationDialog.patch, creationDialog.aPI);
                         profileList.SaveProfileList();
                         return true;
                     default:

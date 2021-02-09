@@ -131,6 +131,7 @@ namespace HKManager
             this.NameTextBox.Size = new System.Drawing.Size(139, 23);
             this.NameTextBox.TabIndex = 7;
             this.NameTextBox.Text = "\r\n";
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // APILabel
             // 
@@ -152,6 +153,7 @@ namespace HKManager
             this.APIComboBox.Name = "APIComboBox";
             this.APIComboBox.Size = new System.Drawing.Size(146, 24);
             this.APIComboBox.TabIndex = 9;
+            this.APIComboBox.SelectedIndexChanged += new System.EventHandler(this.APIComboBox_SelectedIndexChanged);
             // 
             // ProfileCreationDialog
             // 
