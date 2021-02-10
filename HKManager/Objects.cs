@@ -30,6 +30,15 @@ namespace HKManager
             _ProfileList.Add(newProfile);
         }
 
+        public Profile ProfileWithName(string name)
+        {
+            foreach (Profile profile in _ProfileList) if (profile.Name == name)
+            {
+                return profile;
+            }
+            return null;
+        }
+        #region Serialization
         public void SaveProfileList()
         {
             Properties.Settings.Default.ProfileList = JsonSerializer.Serialize(this, this.GetType());
@@ -44,6 +53,7 @@ namespace HKManager
             }
             else return null;
         }
+        #endregion
     }
     /// <summary>
     /// Reference to a game installation. Contains path, patch and list of presets.
@@ -107,6 +117,7 @@ namespace HKManager
         public Dictionary<string, string> Files { get; set; } // Key is file path, value is SHA1.
         public List<string> Dependencies { get; set; }
         public List<string> Optional { get; set; }
+        public bool Enabled { get; }
 
         public Mod()
         {
@@ -117,7 +128,7 @@ namespace HKManager
     }
 
     /// <summary>
-    /// API. Any mod that replaces Assembly-CSharp.dll
+    /// API. Any mod that replaces Assembly-CSharp.dll. File path is inferred from Enabled and profile path.
     /// </summary>
     public class API
     {
@@ -126,6 +137,7 @@ namespace HKManager
         public string Version { get; set; } 
         public string Link { get; set; }
         public string SHA1 { get; set; }
+        public string Enabled { get; }
     }
 
 }

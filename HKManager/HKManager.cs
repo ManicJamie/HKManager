@@ -27,6 +27,8 @@ namespace HKManager
         private List<Mod> DownloadList;
         public List<API> APIList;
 
+        private Profile currentProfile;
+
         public HKManager()
         {
             InitializeComponent();
@@ -63,7 +65,8 @@ namespace HKManager
             }
 
             LoadOrCreateProfiles();
-
+            UpdateProfileBox();
+            ProfileBox.SelectedIndex = 0;
 
             // Remove unused tabs from TabContainer
             TabContainer.TabPages.Remove(SkinTab);
@@ -151,11 +154,13 @@ namespace HKManager
                 {
                     // Application needs at least one profile to exist.
                     MessageBox.Show("HKManager needs you to create a profile in order to function properly.", "Exiting...", MessageBoxButtons.OK);
-                    Application.Exit(); 
-                } 
+                    Application.Exit();
+                }
             }
         }
+        #endregion
 
+        #region Profile Handling
         private bool CreateNewProfile()
         {
             profileList = new ProfileList();
@@ -171,16 +176,10 @@ namespace HKManager
                         return false;
                 }
             }
-            
         }
         #endregion
 
-        #region Profile loading / mod discovery
-        private void PopulateModListFromFile()
-        {
-
-        }
-
+        #region ModLinks handling
         private List<Mod> CreateDownloadList()
         {
             List<Mod> _downloadList = new List<Mod>();
@@ -214,18 +213,19 @@ namespace HKManager
         private List<API> CreateAPIList()
         {
             List<API> _apis = new List<API>();
-            foreach (XElement element in ModLinks.Root.Element("APIList").Elements("API"))
-            {
-                API apiConstructor = new API()
+            foreach (XElement element in ModLinks.Root.Element("APIList").Elements("API")) 
+                if (element.Element("OS").Value == "Universal" || element.Element("OS").Value == OS) // Only add to APIs if compatible OS.
                 {
-                    Name = element.Element("Name").Value,
-                    Patch = element.Attribute("Patch").Value,
-                    Version = element.Element("Version").Value,
-                    Link = element.Element("Link").Value,
-                    SHA1 = element.Element("SHA1").Value
-                };
-                _apis.Add(apiConstructor);
-            }
+                    API apiConstructor = new API()
+                    {
+                        Name = element.Element("Name").Value,
+                        Patch = element.Attribute("Patch").Value,
+                        Version = element.Element("Version").Value,
+                        Link = element.Element("Link").Value,
+                        SHA1 = element.Element("SHA1").Value
+                    };
+                    _apis.Add(apiConstructor);
+                }
             return _apis;
         }
 
@@ -244,10 +244,30 @@ namespace HKManager
             return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
         }
         #endregion
+
+        #region Display
+        private void UpdateProfileBox()
+        {
+            string selectedItem = (string)ProfileBox.SelectedItem;
+            ProfileBox.Items.Clear();
+            foreach (Profile profile in profileList._ProfileList)
+            {
+                ProfileBox.Items.Add(profile.Name);
+            }
+            ProfileBox.SelectedItem = selectedItem;
+        }
+
+        private void UpdateProfileLabels()
+        {
+            PathLabel.Text = currentProfile.Path;
+            VersionLabel.Text = "Version: " + currentProfile.Patch + " | " + currentProfile.api.Version;
+        }
+        #endregion
+
         #region Handlers
         private void DriveButton_Click(object sender, EventArgs e)
         {
-            // apparently there can be issues finding the default browser if we don't do this
+            // apparently there can be issues finding the default browser if we don't do this. better to be safe ¯\_(ツ)_/¯
             var ps = new ProcessStartInfo(ModLinks.Element("DriveLink").Value)
             {
                 UseShellExecute = true,
@@ -255,6 +275,29 @@ namespace HKManager
             };
             Process.Start(ps);
         }
+
+        private void GameFolderButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveFolderButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProfileBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentProfile = profileList.ProfileWithName(ProfileBox.SelectedItem.ToString());
+            UpdateProfileLabels();
+        }
+
+        private void ModTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+
+        }
         #endregion
+
+
     }
 }

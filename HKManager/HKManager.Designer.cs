@@ -39,8 +39,8 @@
             this.TabContainer = new System.Windows.Forms.TabControl();
             this.ModManageTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.SaveFolderButton = new System.Windows.Forms.Button();
+            this.GameFolderButton = new System.Windows.Forms.Button();
             this.PresetContainer = new System.Windows.Forms.GroupBox();
             this.PresetBox = new System.Windows.Forms.ListBox();
             this.LoadPresetButton = new System.Windows.Forms.Button();
@@ -159,6 +159,7 @@
             this.ProfileBox.Name = "ProfileBox";
             this.ProfileBox.Size = new System.Drawing.Size(189, 220);
             this.ProfileBox.TabIndex = 9;
+            this.ProfileBox.SelectedIndexChanged += new System.EventHandler(this.ProfileBox_SelectedIndexChanged);
             // 
             // TabContainer
             // 
@@ -191,8 +192,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.SaveFolderButton);
+            this.groupBox1.Controls.Add(this.GameFolderButton);
             this.groupBox1.Location = new System.Drawing.Point(266, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(127, 137);
@@ -200,23 +201,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Open Folders";
             // 
-            // button5
+            // SaveFolderButton
             // 
-            this.button5.Location = new System.Drawing.Point(6, 81);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(114, 50);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Open Saves Folder";
-            this.button5.UseVisualStyleBackColor = true;
+            this.SaveFolderButton.Location = new System.Drawing.Point(6, 81);
+            this.SaveFolderButton.Name = "SaveFolderButton";
+            this.SaveFolderButton.Size = new System.Drawing.Size(114, 50);
+            this.SaveFolderButton.TabIndex = 1;
+            this.SaveFolderButton.Text = "Open Saves Folder";
+            this.SaveFolderButton.UseVisualStyleBackColor = true;
+            this.SaveFolderButton.Click += new System.EventHandler(this.SaveFolderButton_Click);
             // 
-            // button4
+            // GameFolderButton
             // 
-            this.button4.Location = new System.Drawing.Point(7, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(114, 50);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Open Game Folder";
-            this.button4.UseVisualStyleBackColor = true;
+            this.GameFolderButton.Location = new System.Drawing.Point(7, 20);
+            this.GameFolderButton.Name = "GameFolderButton";
+            this.GameFolderButton.Size = new System.Drawing.Size(114, 50);
+            this.GameFolderButton.TabIndex = 0;
+            this.GameFolderButton.Text = "Open Game Folder";
+            this.GameFolderButton.UseVisualStyleBackColor = true;
+            this.GameFolderButton.Click += new System.EventHandler(this.GameFolderButton_Click);
             // 
             // PresetContainer
             // 
@@ -272,6 +275,7 @@
             this.ModTreeView.ShowNodeToolTips = true;
             this.ModTreeView.Size = new System.Drawing.Size(254, 366);
             this.ModTreeView.TabIndex = 0;
+            this.ModTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.ModTreeView_AfterCheck);
             // 
             // ModDownloadTab
             // 
@@ -397,6 +401,7 @@
             // 
             // ModWatcher
             // 
+            this.ModWatcher.EnableRaisingEvents = true;
             this.ModWatcher.SynchronizingObject = this;
             // 
             // HKManager
@@ -459,8 +464,8 @@
         private System.Windows.Forms.TabPage LevelTab;
         private System.Windows.Forms.TabPage SkinTab;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button SaveFolderButton;
+        private System.Windows.Forms.Button GameFolderButton;
         private System.IO.FileSystemWatcher ModWatcher;
     }
 }
