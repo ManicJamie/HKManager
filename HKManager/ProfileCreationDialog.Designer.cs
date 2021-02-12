@@ -85,7 +85,7 @@ namespace HKManager
             "1.4.2.4",
             "1.4.3.2"});
             this.PatchComboBox.Location = new System.Drawing.Point(12, 91);
-            this.PatchComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PatchComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatchComboBox.Name = "PatchComboBox";
             this.PatchComboBox.Size = new System.Drawing.Size(83, 24);
             this.PatchComboBox.TabIndex = 3;
@@ -150,7 +150,7 @@ namespace HKManager
             this.APIComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.APIComboBox.FormattingEnabled = true;
             this.APIComboBox.Location = new System.Drawing.Point(112, 91);
-            this.APIComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.APIComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.APIComboBox.Name = "APIComboBox";
             this.APIComboBox.Size = new System.Drawing.Size(146, 24);
             this.APIComboBox.TabIndex = 9;
@@ -173,7 +173,7 @@ namespace HKManager
             this.Controls.Add(this.PathTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProfileCreationDialog";
-            this.Text = "ProfileCreationDialog";
+            this.Text = "Create a Profile";
             this.ResumeLayout(false);
             this.PerformLayout();
 

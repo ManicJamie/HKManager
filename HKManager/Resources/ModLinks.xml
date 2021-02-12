@@ -17,7 +17,7 @@
     <SHA1 Patch = "1.1.1.8">BC3B59FA75C344FAD42C5596F459881F14361098</SHA1>
     <SHA1 Patch = "1.2.2.1">FA353DD5BDB473910205C9A781DFD4333754E5C6</SHA1>
     <SHA1 Patch = "1.4.2.4">4C5C0673D372EFA1DA7309A1B1D2748A314ED778</SHA1>
-    <SHA1 Patch = "1.4.3.2">39AFA2B4F7A9F0DEEF3FFD97D3808378E1A1080D</SHA1>
+    <SHA1 Patch = "1.4.3.2">43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
   </VanillaList>
   
   <!-- An "API" is any mod that replaces Assembly-Csharp.dll. Please give it a name and description, for my sanity. "Version" will display next to patch number on the installer. -->
@@ -41,7 +41,7 @@
   <!-- Modlist. A demo mod can be found at the end of the document. -->
 
   <ModList>
-    <!-- Note that Modding API windows is not supported in HKManager, but is kept for legacy support. APIList is referenced instead. -->
+    <!-- Note that Modding API windows is not used in HKManager, but is kept for legacy support. APIList is referenced instead. -->
     <ModLink>
       <Name>Modding API Windows</Name>
       <FullDescription />

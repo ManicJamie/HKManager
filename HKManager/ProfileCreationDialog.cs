@@ -20,10 +20,12 @@ namespace HKManager
         public API aPI;
         private List<string> _defaultPaths = new List<string>();
         private List<API> APIs;
+        private Dictionary<string, string> VanillaSHA1s;
 
-        public ProfileCreationDialog(List<API> apis)
+        public ProfileCreationDialog(List<API> apis, Dictionary<string,string> SHA1s)
         {
             APIs = apis;
+            VanillaSHA1s = SHA1s;
             InitializeComponent();
             FillDefaultPaths();
             PathTextBox.Text = FindDefaultInstallation();
@@ -107,10 +109,9 @@ namespace HKManager
         {
             if (InstallExists(PathTextBox.Text))
             {
+                path = PathTextBox.Text;
                 PatchComboBox.Enabled = true;
-                patch = (string)PatchComboBox.SelectedItem;
-                APIComboBox.Enabled = true;
-                UpdateAPIComboBox();
+                PatchComboBox.SelectedItem = GetPatch();
             } else
             {
                 PatchComboBox.Enabled = false;
@@ -126,6 +127,7 @@ namespace HKManager
 
         private void UpdateAPIComboBox()
         {
+            APIComboBox.Enabled = true;
             APIComboBox.Items.Clear();
             foreach (API API in APIs) if (API.Patch == patch)
             {
@@ -153,6 +155,15 @@ namespace HKManager
             {
                 OKButton.Enabled = true;
             }
+        }
+
+        private string GetPatch()
+        {
+            foreach (string testPatch in VanillaSHA1s.Keys)
+            {
+                if (HKManager.SHA1Equals(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll") , VanillaSHA1s[testPatch])) { return testPatch; }
+            }
+            return null;
         }
     }
 }

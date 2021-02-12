@@ -29,7 +29,8 @@ namespace ModLinksConverter
             {
                 Console.WriteLine(a + "|||" + ComputeSHA1(@"C:\Users\Jamie\Desktop\Speedrun\Assemblies\" + a).ToUpper()) ;
             }
-            
+            Console.WriteLine("unins000.exe" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.exe").ToUpper());
+            Console.WriteLine("unins000.dat" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.dat").ToUpper());
             Console.ReadLine();
         }
 

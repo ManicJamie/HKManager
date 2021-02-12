@@ -2,6 +2,7 @@
 using System.Xml;
 using System.IO;
 using System.Text.Json;
+using System.Linq;
 
 namespace HKManager
 {
@@ -23,9 +24,9 @@ namespace HKManager
             Profile newProfile = new Profile()
             {
                 Name = name,
-                Path = path,
+                InstallPath = path,
                 Patch = patch,
-                api = aPI
+                Api = aPI
             };
             _ProfileList.Add(newProfile);
         }
@@ -38,6 +39,7 @@ namespace HKManager
             }
             return null;
         }
+
         #region Serialization
         public void SaveProfileList()
         {
@@ -61,17 +63,35 @@ namespace HKManager
     public class Profile
     {
         public string Name { get; set; }
-        public string Path { get; set; }
+        public string InstallPath { get; set; }
         public string Patch { get; set; }
-        public API api { get; set; }
+        public API Api { get; set; }
         public List<Preset> Presets { get; set; }
         public List<Mod> Mods { get; set; }
 
         public void PopulateModListFromFiles()
         {
-            foreach (string fileName in Directory.GetFiles(Path))
+            List<string> filenames = new List<string>();
+            // get all the files in mods folders
+            foreach (string fileName in Directory.GetFiles(HKManager.OS == "MacOS" ? 
+                $"{InstallPath}/Contents/Resources/Data/Managed"
+                : $"{InstallPath}/hollow_knight_Data/Managed"))
             {
+                foreach (Mod mod in Mods) if (mod.Files.ContainsKey(Path.GetFileName(fileName)))
+                {
+                    if (HKManager.SHA1Equals(fileName ,mod.Files[Path.GetFileName(fileName)])) {
 
+                    }
+                }
+            }
+            foreach (string fileName in Directory.GetFiles(HKManager.OS == "MacOS" ?
+                $"{InstallPath}/Contents/Resources/Data/Managed/Disabled"
+                : $"{InstallPath}/hollow_knight_Data/Managed/Disabled"))
+            {
+                foreach (Mod mod in Mods) if (mod.Files.ContainsKey(Path.GetFileName(fileName)))
+                {
+
+                }
             }
         }
 
@@ -117,13 +137,30 @@ namespace HKManager
         public Dictionary<string, string> Files { get; set; } // Key is file path, value is SHA1.
         public List<string> Dependencies { get; set; }
         public List<string> Optional { get; set; }
-        public bool Enabled { get; }
+        public bool Enabled { get => Enabled; set => EnableOrDisable(value); } // Use custom setter to move files when enabled/disabled.
+        public bool UpdateRequired { get; set; } = false;
+        public bool CheckUpdates { get; set; } = true;
 
         public Mod()
         {
             Files = new Dictionary<string, string>();
             Dependencies = new List<string>();
             Optional = new List<string>();
+        }
+
+        private void EnableOrDisable(bool value)
+        {
+            if (value) { Enable(); } else { Disable(); }
+        }
+
+        private void Enable()
+        {
+
+        }
+
+        private void Disable()
+        {
+
         }
     }
 

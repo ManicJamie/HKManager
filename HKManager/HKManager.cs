@@ -20,18 +20,22 @@ namespace HKManager
         private const string Version = "v0.1";
         private const string MODLINKS_URI = "https://raw.githubusercontent.com/ManicJamie/HKManager/main/HKManager/Resources/ModLinks.xml";
         public static readonly string OS;
-        public bool IsOffline;
+        private bool IsOffline;
+        public static HKManager DefaultInstance;
+        private bool Terminating = false; // prevents erroring from Application.Exit taking too much time :woozy:
 
         private ProfileList profileList;
         private XDocument ModLinks;
-        private List<Mod> DownloadList;
-        public List<API> APIList;
+        public List<Mod> DownloadList;
+        private List<API> APIList;
+        private Dictionary<string, string> VanillaList;
 
         private Profile currentProfile;
 
         public HKManager()
         {
             InitializeComponent();
+            DefaultInstance = this;
         }
 
         static HKManager()
@@ -59,20 +63,25 @@ namespace HKManager
                 //CheckUpdate(); // DONT HAVE THIS COMMENTED OUT WHEN YOU BUILD DUMMY
                 DownloadList = CreateDownloadList();
                 APIList = CreateAPIList();
+                VanillaList = CreateVanillaSHA1Dict();
             } else
             {
                 TabContainer.TabPages.Remove(ModDownloadTab); 
             }
 
             LoadOrCreateProfiles();
-            UpdateProfileBox();
-            ProfileBox.SelectedIndex = 0;
+            if (!Terminating)
+            {
+                UpdateProfileBox();
+                ProfileBox.SelectedIndex = 0;
 
-            // Remove unused tabs from TabContainer
-            TabContainer.TabPages.Remove(SkinTab);
-            TabContainer.TabPages.Remove(LevelTab);
+                // Remove unused tabs from TabContainer
+                TabContainer.TabPages.Remove(SkinTab);
+                TabContainer.TabPages.Remove(LevelTab);
 
-            this.Text = "HKManager " + Version + (IsOffline ? " (Offline Mode)" : "");
+                this.Text = "HKManager " + Version + (IsOffline ? " (Offline Mode)" : "");
+            }
+            else Close();
         }
 
         #region Loading HKManager
@@ -154,7 +163,7 @@ namespace HKManager
                 {
                     // Application needs at least one profile to exist.
                     MessageBox.Show("HKManager needs you to create a profile in order to function properly.", "Exiting...", MessageBoxButtons.OK);
-                    Application.Exit();
+                    Terminating = true;
                 }
             }
         }
@@ -164,7 +173,7 @@ namespace HKManager
         private bool CreateNewProfile()
         {
             profileList = new ProfileList();
-            using (ProfileCreationDialog creationDialog = new ProfileCreationDialog(APIList))
+            using (ProfileCreationDialog creationDialog = new ProfileCreationDialog(APIList, VanillaList))
             {
                 switch (creationDialog.ShowDialog())
                 {
@@ -176,6 +185,11 @@ namespace HKManager
                         return false;
                 }
             }
+        }
+        private void SwitchProfile(Profile profile)
+        {
+            currentProfile = profile;
+            UpdateProfileLabels();
         }
         #endregion
 
@@ -229,11 +243,33 @@ namespace HKManager
             return _apis;
         }
 
+        private Dictionary<string, string> CreateVanillaSHA1Dict()
+        {
+            Dictionary<string, string> Vanillas = new Dictionary<string, string>();
+            foreach (XElement element in ModLinks.Root.Element("VanillaList").Elements("SHA1"))
+            {
+                Vanillas.Add(element.Attribute("Patch").Value, element.Value);
+            }
+            return Vanillas;
+        }
+
+        public Mod CheckDownloadListForFile(string filename)
+        {
+            foreach (Mod mod in DownloadList) if (mod.Files.Keys.Contains(filename)) // for each mod w/ this filename present
+            {
+                if (SHA1Equals(filename, mod.Files[filename])) // if SHA1 is same, add it.
+                {
+                    return mod;
+                }
+            }
+            return null;
+        }
+
         #endregion
 
-        #region SHA1 computation
-        private static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);
-        private static string ComputeSHA1(string file)
+        #region SHA1 computation & Static Methods
+        public static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);
+        public static string ComputeSHA1(string file)
         {
             var sha1 = SHA1.Create();
 
@@ -242,6 +278,21 @@ namespace HKManager
             byte[] hash = sha1.ComputeHash(stream);
 
             return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+        }
+
+        public static string GetSavesPath()
+        {
+            switch (OS)
+            {
+                case "Windows":
+                    return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"..\LocalLow\Team Cherry\Hollow Knight\");
+                case "MacOS":
+                    return @"~/Library/Application Support/unity.Team Cherry.Hollow Knight/";
+                case "Linux":
+                    return @"~/.config/unity3d/Team Cherry/Hollow Knight/";
+                default:
+                    return "";
+            }
         }
         #endregion
 
@@ -259,8 +310,8 @@ namespace HKManager
 
         private void UpdateProfileLabels()
         {
-            PathLabel.Text = currentProfile.Path;
-            VersionLabel.Text = "Version: " + currentProfile.Patch + " | " + currentProfile.api.Version;
+            PathLabel.Text = currentProfile.InstallPath;
+            VersionLabel.Text = "Version: " + currentProfile.Patch + " | " + currentProfile.Api.Version;
         }
         #endregion
 
@@ -278,18 +329,23 @@ namespace HKManager
 
         private void GameFolderButton_Click(object sender, EventArgs e)
         {
-
+            if (Directory.Exists(currentProfile.InstallPath))
+            {
+                Process.Start(currentProfile.InstallPath);
+            }
         }
 
         private void SaveFolderButton_Click(object sender, EventArgs e)
         {
-
+            if (Directory.Exists(GetSavesPath()))
+            {
+                Process.Start(GetSavesPath());
+            }
         }
 
         private void ProfileBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentProfile = profileList.ProfileWithName(ProfileBox.SelectedItem.ToString());
-            UpdateProfileLabels();
+            SwitchProfile(profileList.ProfileWithName(ProfileBox.SelectedItem.ToString()));
         }
 
         private void ModTreeView_AfterCheck(object sender, TreeViewEventArgs e)
