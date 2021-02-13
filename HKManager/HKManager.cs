@@ -28,7 +28,6 @@ namespace HKManager
         private XDocument ModLinks;
         public List<Mod> DownloadList;
         private List<API> APIList;
-        private Dictionary<string, string> VanillaList;
 
         private Profile currentProfile;
 
@@ -63,7 +62,6 @@ namespace HKManager
                 //CheckUpdate(); // DONT HAVE THIS COMMENTED OUT WHEN YOU BUILD DUMMY
                 DownloadList = CreateDownloadList();
                 APIList = CreateAPIList();
-                VanillaList = CreateVanillaSHA1Dict();
             } else
             {
                 TabContainer.TabPages.Remove(ModDownloadTab); 
@@ -175,7 +173,7 @@ namespace HKManager
         private bool CreateNewProfile()
         {
             profileList = new ProfileList();
-            using (ProfileCreationDialog creationDialog = new ProfileCreationDialog(APIList, VanillaList))
+            using (ProfileCreationDialog creationDialog = new ProfileCreationDialog(APIList))
             {
                 switch (creationDialog.ShowDialog())
                 {
@@ -245,16 +243,6 @@ namespace HKManager
                     _apis.Add(apiConstructor);
                 }
             return _apis;
-        }
-
-        private Dictionary<string, string> CreateVanillaSHA1Dict()
-        {
-            Dictionary<string, string> Vanillas = new Dictionary<string, string>();
-            foreach (XElement element in ModLinks.Root.Element("APIList").Elements("API")) if (element.Element("Name").Value == "Vanilla")
-            {
-                Vanillas.Add(element.Element("Patch").Value, element.Element("SHA1").Value);
-            }
-            return Vanillas;
         }
 
         public Mod CheckDownloadListForFile(string filename)

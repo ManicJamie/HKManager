@@ -18,7 +18,7 @@
       <OS>Universal</OS>
       <Version>API-57</Version>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
-      <SHA1></SHA1>
+      <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
     </API>
     <!-- Vanilla from here on -->
     <API Patch ="1.4.3.2">
@@ -27,7 +27,7 @@
       <OS>Universal</OS>
       <Version></Version>
       <Link><![CDATA[]]></Link>
-      <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+      <SHA1>39AFA2B4F7A9F0DEEF3FFD97D3808378E1A1080D</SHA1>
     </API>
     <API Patch ="1.4.2.4">
       <Name>Vanilla</Name>

@@ -20,12 +20,13 @@ namespace HKManager
         public API aPI;
         private List<string> _defaultPaths = new List<string>();
         private List<API> APIs;
-        private Dictionary<string, string> VanillaSHA1s;
+        private Dictionary<string, string> SHA1ToPatch;
+        private List<string> Patches;
 
-        public ProfileCreationDialog(List<API> apis, Dictionary<string,string> SHA1s)
+        public ProfileCreationDialog(List<API> apis)
         {
             APIs = apis;
-            VanillaSHA1s = SHA1s;
+            SHA1ToPatch = GetSHA1ToPatches();
             InitializeComponent();
             FillPatchComboBox();
             FillDefaultPaths();
@@ -54,6 +55,22 @@ namespace HKManager
             }
             BrowserDialog.ShowDialog();
             PathTextBox.Text = BrowserDialog.SelectedPath;
+        }
+
+        private Dictionary<string,string> GetSHA1ToPatches()
+        {
+            Dictionary<string, string> SHA1Dict = new Dictionary<string, string>();
+            Patches = new List<string>();
+            foreach (API aPI in APIs)
+            {
+                SHA1Dict.Add(aPI.SHA1, aPI.Patch);
+                if (!Patches.Contains(aPI.Patch))
+                {
+                    Patches.Add(aPI.Patch);
+                }
+            }
+            Patches.Sort();
+            return SHA1Dict;
         }
 
         private void FillDefaultPaths()
@@ -164,16 +181,14 @@ namespace HKManager
 
         private string GetPatch()
         {
-            foreach (string testPatch in VanillaSHA1s.Keys)
-            {
-                if (HKManager.SHA1Equals(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll") , VanillaSHA1s[testPatch])) { return testPatch; }
-            }
-            return null;
+            string returnPatch = null;
+            SHA1ToPatch.TryGetValue(HKManager.ComputeSHA1(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll")), out returnPatch);
+            return returnPatch;
         }
 
         private void FillPatchComboBox()
         {
-            PatchComboBox.Items.AddRange(VanillaSHA1s.Keys.ToArray());
+            PatchComboBox.Items.AddRange(Patches.ToArray());
         }
     }
 }
