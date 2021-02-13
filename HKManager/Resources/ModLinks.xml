@@ -9,18 +9,8 @@
     <SHA1>DE28555B158C41616227D0A2CFD8F04C86E3C188</SHA1>
     <AULink><![CDATA[https://github.com/Ayugradow/ModInstaller-Auto-Updater/releases/download/v1.0/ModInstallerAutoUpdater.exe]]></AULink>
   </Installer>
-
-  <!-- SHA1 hashes for vanilla API, used for patch detection. -->
-  <VanillaList>
-    <SHA1 Patch = "1.0.2.8">985972407E6EEEC57E2EDBE572E307915FB1F1A4</SHA1>
-    <SHA1 Patch = "1.1.1.4">25F9643EA6C71E5BE7B26BABDFF6420C010DF690</SHA1>
-    <SHA1 Patch = "1.1.1.8">BC3B59FA75C344FAD42C5596F459881F14361098</SHA1>
-    <SHA1 Patch = "1.2.2.1">FA353DD5BDB473910205C9A781DFD4333754E5C6</SHA1>
-    <SHA1 Patch = "1.4.2.4">4C5C0673D372EFA1DA7309A1B1D2748A314ED778</SHA1>
-    <SHA1 Patch = "1.4.3.2">43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
-  </VanillaList>
   
-  <!-- An "API" is any mod that replaces Assembly-Csharp.dll. Please give it a name and description, for my sanity. "Version" will display next to patch number on the installer. -->
+  <!-- An "API" is any version of Assembly-Csharp.dll. Please give it a name and description, for my sanity, and for UX. "Version" will display next to patch number on the installer. -->
   <APIList>
     <API Patch ="1.4.3.2">
       <Name>Modding API</Name>
@@ -28,11 +18,60 @@
       <OS>Universal</OS>
       <Version>API-57</Version>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
+      <SHA1></SHA1>
+    </API>
+    <!-- Vanilla from here on -->
+    <API Patch ="1.4.3.2">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
       <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+    </API>
+    <API Patch ="1.4.2.4">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1>4C5C0673D372EFA1DA7309A1B1D2748A314ED778</SHA1>
+    </API>
+    <API Patch ="1.2.2.1">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1>FA353DD5BDB473910205C9A781DFD4333754E5C6</SHA1>
+    </API>
+    <API Patch ="1.1.1.8">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1>BC3B59FA75C344FAD42C5596F459881F14361098</SHA1>
+    </API>
+    <API Patch ="1.1.1.4">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1>25F9643EA6C71E5BE7B26BABDFF6420C010DF690</SHA1>
+    </API>
+    <API Patch ="1.0.2.8">
+      <Name>Vanilla</Name>
+      <Description>Standard Game.</Description>
+      <OS>Universal</OS>
+      <Version></Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1>985972407E6EEEC57E2EDBE572E307915FB1F1A4</SHA1>
     </API>
   </APIList>
   
-  <!-- Assembly-Csharp.xml, only used for help making mods. Only installs on current patch for this reason. -->
+  <!-- Assembly-Csharp.xml, only used for help making mods. Normally ships with CP ModdingAPI. -->
   <AssemblyXML>
     <Link></Link>
     <SHA1></SHA1>
@@ -126,7 +165,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=12RMVG_XdwVnBqUoN0iHjrxFcPiURzIQx]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
         <string>ModCommon</string>
       </Dependencies>
     </ModLink>
@@ -495,13 +534,13 @@
       </Dependencies>
     </ModLink>
     <ModLink>
-      <Name>SeanprCore</Name>
+      <Name>SereCore</Name>
       <Description>Library used mostly by the Randomizer mods</Description>
       <FullDescription />
       <Patch>1.4.3.2</Patch>
       <Files>
         <File>
-          <Name>SeanprCore.dll</Name>
+          <Name>SereCore.dll</Name>
           <SHA1>ba09f0088a5573da442281ae1a18ce9c5baff191</SHA1>
         </File>
       </Files>
@@ -540,7 +579,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1KYygwL2kYyCoASt-TMIpiiNUN6tVO3rG]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
       </Dependencies>
     </ModLink>
     <ModLink>
@@ -968,7 +1007,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
         <string>Benchwarp</string>
         <string>QoL</string>
         <string>Vasi</string>
@@ -1230,7 +1269,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
       </Dependencies>
     </ModLink>
     <ModLink>
@@ -1266,7 +1305,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
       </Dependencies>
     </ModLink>
     <ModLink>
@@ -1283,7 +1322,7 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
       <Dependencies>
         <string>Modding API</string>
-        <string>SeanprCore</string>
+        <string>SereCore</string>
         <string>ItemChanger</string>
       </Dependencies>
     </ModLink>

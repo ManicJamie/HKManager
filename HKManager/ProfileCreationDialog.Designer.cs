@@ -45,10 +45,11 @@ namespace HKManager
             // 
             // PathTextBox
             // 
-            this.PathTextBox.Location = new System.Drawing.Point(12, 30);
+            this.PathTextBox.Location = new System.Drawing.Point(16, 37);
+            this.PathTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PathTextBox.Multiline = true;
             this.PathTextBox.Name = "PathTextBox";
-            this.PathTextBox.Size = new System.Drawing.Size(246, 37);
+            this.PathTextBox.Size = new System.Drawing.Size(327, 45);
             this.PathTextBox.TabIndex = 0;
             this.PathTextBox.TextChanged += new System.EventHandler(this.PathTextBox_TextChanged);
             // 
@@ -56,17 +57,19 @@ namespace HKManager
             // 
             this.PathLabel.AutoSize = true;
             this.PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PathLabel.Location = new System.Drawing.Point(12, 9);
+            this.PathLabel.Location = new System.Drawing.Point(16, 11);
+            this.PathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(42, 18);
+            this.PathLabel.Size = new System.Drawing.Size(52, 24);
             this.PathLabel.TabIndex = 1;
             this.PathLabel.Text = "Path:";
             // 
             // PathBrowseButton
             // 
-            this.PathBrowseButton.Location = new System.Drawing.Point(265, 30);
+            this.PathBrowseButton.Location = new System.Drawing.Point(353, 37);
+            this.PathBrowseButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PathBrowseButton.Name = "PathBrowseButton";
-            this.PathBrowseButton.Size = new System.Drawing.Size(94, 37);
+            this.PathBrowseButton.Size = new System.Drawing.Size(125, 46);
             this.PathBrowseButton.TabIndex = 2;
             this.PathBrowseButton.Text = "Browse";
             this.PathBrowseButton.UseVisualStyleBackColor = true;
@@ -78,16 +81,10 @@ namespace HKManager
             this.PatchComboBox.Enabled = false;
             this.PatchComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PatchComboBox.FormattingEnabled = true;
-            this.PatchComboBox.Items.AddRange(new object[] {
-            "1.1.1.8",
-            "1.2.2.1",
-            "1.3.1.5",
-            "1.4.2.4",
-            "1.4.3.2"});
-            this.PatchComboBox.Location = new System.Drawing.Point(12, 91);
-            this.PatchComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.PatchComboBox.Location = new System.Drawing.Point(16, 112);
+            this.PatchComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PatchComboBox.Name = "PatchComboBox";
-            this.PatchComboBox.Size = new System.Drawing.Size(83, 24);
+            this.PatchComboBox.Size = new System.Drawing.Size(109, 28);
             this.PatchComboBox.TabIndex = 3;
             this.PatchComboBox.SelectedIndexChanged += new System.EventHandler(this.PatchComboBox_SelectedIndexChanged);
             // 
@@ -95,18 +92,20 @@ namespace HKManager
             // 
             this.PatchLabel.AutoSize = true;
             this.PatchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatchLabel.Location = new System.Drawing.Point(12, 71);
+            this.PatchLabel.Location = new System.Drawing.Point(16, 87);
+            this.PatchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PatchLabel.Name = "PatchLabel";
-            this.PatchLabel.Size = new System.Drawing.Size(50, 18);
+            this.PatchLabel.Size = new System.Drawing.Size(62, 24);
             this.PatchLabel.TabIndex = 4;
             this.PatchLabel.Text = "Patch:";
             // 
             // OKButton
             // 
             this.OKButton.Enabled = false;
-            this.OKButton.Location = new System.Drawing.Point(265, 140);
+            this.OKButton.Location = new System.Drawing.Point(353, 172);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(94, 35);
+            this.OKButton.Size = new System.Drawing.Size(125, 43);
             this.OKButton.TabIndex = 5;
             this.OKButton.Text = "Create Profile";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -116,9 +115,10 @@ namespace HKManager
             // 
             this.NicknameLabel.AutoSize = true;
             this.NicknameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NicknameLabel.Location = new System.Drawing.Point(12, 125);
+            this.NicknameLabel.Location = new System.Drawing.Point(16, 154);
+            this.NicknameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NicknameLabel.Name = "NicknameLabel";
-            this.NicknameLabel.Size = new System.Drawing.Size(79, 18);
+            this.NicknameLabel.Size = new System.Drawing.Size(100, 24);
             this.NicknameLabel.TabIndex = 6;
             this.NicknameLabel.Text = "Nickname:";
             // 
@@ -126,9 +126,10 @@ namespace HKManager
             // 
             this.NameTextBox.Enabled = false;
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.NameTextBox.Location = new System.Drawing.Point(12, 146);
+            this.NameTextBox.Location = new System.Drawing.Point(16, 180);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(139, 23);
+            this.NameTextBox.Size = new System.Drawing.Size(184, 26);
             this.NameTextBox.TabIndex = 7;
             this.NameTextBox.Text = "\r\n";
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
@@ -137,9 +138,10 @@ namespace HKManager
             // 
             this.APILabel.AutoSize = true;
             this.APILabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.APILabel.Location = new System.Drawing.Point(109, 71);
+            this.APILabel.Location = new System.Drawing.Point(145, 87);
+            this.APILabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.APILabel.Name = "APILabel";
-            this.APILabel.Size = new System.Drawing.Size(88, 18);
+            this.APILabel.Size = new System.Drawing.Size(114, 24);
             this.APILabel.TabIndex = 8;
             this.APILabel.Text = "API Version:";
             // 
@@ -149,18 +151,18 @@ namespace HKManager
             this.APIComboBox.Enabled = false;
             this.APIComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.APIComboBox.FormattingEnabled = true;
-            this.APIComboBox.Location = new System.Drawing.Point(112, 91);
-            this.APIComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.APIComboBox.Location = new System.Drawing.Point(149, 112);
+            this.APIComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.APIComboBox.Name = "APIComboBox";
-            this.APIComboBox.Size = new System.Drawing.Size(146, 24);
+            this.APIComboBox.Size = new System.Drawing.Size(193, 28);
             this.APIComboBox.TabIndex = 9;
             this.APIComboBox.SelectedIndexChanged += new System.EventHandler(this.APIComboBox_SelectedIndexChanged);
             // 
             // ProfileCreationDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 187);
+            this.ClientSize = new System.Drawing.Size(495, 230);
             this.Controls.Add(this.APIComboBox);
             this.Controls.Add(this.APILabel);
             this.Controls.Add(this.NameTextBox);
@@ -172,6 +174,7 @@ namespace HKManager
             this.Controls.Add(this.PathLabel);
             this.Controls.Add(this.PathTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ProfileCreationDialog";
             this.Text = "Create a Profile";
             this.ResumeLayout(false);

@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HKManager));
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.ProfileContainer = new System.Windows.Forms.GroupBox();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.PathLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.ProfileBox = new System.Windows.Forms.ListBox();
+            this.PBoxContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ProfileBoxRClickAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.TabContainer = new System.Windows.Forms.TabControl();
             this.ModManageTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,20 +58,27 @@
             this.DownloadLabel = new System.Windows.Forms.ToolStripLabel();
             this.DownloadTreeView = new System.Windows.Forms.TreeView();
             this.LevelTab = new System.Windows.Forms.TabPage();
+            this.TrialTab = new System.Windows.Forms.TabPage();
             this.SkinTab = new System.Windows.Forms.TabPage();
+            this.SavesTab = new System.Windows.Forms.TabPage();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.JamieLabel = new System.Windows.Forms.LinkLabel();
             this.ModWatcher = new System.IO.FileSystemWatcher();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
             this.MainContainer.SuspendLayout();
             this.ProfileContainer.SuspendLayout();
+            this.PBoxContext.SuspendLayout();
             this.TabContainer.SuspendLayout();
             this.ModManageTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.PresetContainer.SuspendLayout();
             this.ModDownloadTab.SuspendLayout();
             this.DownloadToolStrip.SuspendLayout();
+            this.SettingsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModWatcher)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +107,6 @@
             this.ProfileContainer.Controls.Add(this.VersionLabel);
             this.ProfileContainer.Controls.Add(this.button1);
             this.ProfileContainer.Controls.Add(this.PathLabel);
-            this.ProfileContainer.Controls.Add(this.button2);
             this.ProfileContainer.Controls.Add(this.ProfileBox);
             this.ProfileContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileContainer.Location = new System.Drawing.Point(3, 3);
@@ -121,12 +129,12 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(106, 336);
+            this.button1.Location = new System.Drawing.Point(6, 320);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 55);
+            this.button1.Size = new System.Drawing.Size(185, 71);
             this.button1.TabIndex = 10;
             this.button1.TabStop = false;
-            this.button1.Text = "Launch Modded";
+            this.button1.Text = "Launch Game";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // PathLabel
@@ -138,20 +146,10 @@
             this.PathLabel.TabIndex = 5;
             this.PathLabel.Text = "HK Path: ";
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(6, 336);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 55);
-            this.button2.TabIndex = 9;
-            this.button2.TabStop = false;
-            this.button2.Text = "Launch Unmodded";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // ProfileBox
             // 
             this.ProfileBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProfileBox.ContextMenuStrip = this.PBoxContext;
             this.ProfileBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileBox.FormattingEnabled = true;
             this.ProfileBox.ItemHeight = 18;
@@ -161,6 +159,20 @@
             this.ProfileBox.TabIndex = 9;
             this.ProfileBox.SelectedIndexChanged += new System.EventHandler(this.ProfileBox_SelectedIndexChanged);
             // 
+            // PBoxContext
+            // 
+            this.PBoxContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProfileBoxRClickAdd});
+            this.PBoxContext.Name = "ProfileBoxRClick";
+            this.PBoxContext.Size = new System.Drawing.Size(97, 26);
+            this.PBoxContext.Opening += new System.ComponentModel.CancelEventHandler(this.PBoxContext_Opening);
+            // 
+            // ProfileBoxRClickAdd
+            // 
+            this.ProfileBoxRClickAdd.Name = "ProfileBoxRClickAdd";
+            this.ProfileBoxRClickAdd.Size = new System.Drawing.Size(96, 22);
+            this.ProfileBoxRClickAdd.Text = "Add";
+            // 
             // TabContainer
             // 
             this.TabContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -169,7 +181,9 @@
             this.TabContainer.Controls.Add(this.ModManageTab);
             this.TabContainer.Controls.Add(this.ModDownloadTab);
             this.TabContainer.Controls.Add(this.LevelTab);
+            this.TabContainer.Controls.Add(this.TrialTab);
             this.TabContainer.Controls.Add(this.SkinTab);
+            this.TabContainer.Controls.Add(this.SavesTab);
             this.TabContainer.Controls.Add(this.SettingsTab);
             this.TabContainer.Location = new System.Drawing.Point(3, 3);
             this.TabContainer.Name = "TabContainer";
@@ -235,12 +249,12 @@
             // 
             // PresetBox
             // 
-            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.PresetBox.FormattingEnabled = true;
-            this.PresetBox.ItemHeight = 15;
+            this.PresetBox.ItemHeight = 16;
             this.PresetBox.Location = new System.Drawing.Point(6, 19);
             this.PresetBox.Name = "PresetBox";
-            this.PresetBox.Size = new System.Drawing.Size(115, 139);
+            this.PresetBox.Size = new System.Drawing.Size(115, 132);
             this.PresetBox.TabIndex = 8;
             // 
             // LoadPresetButton
@@ -376,8 +390,17 @@
             this.LevelTab.Padding = new System.Windows.Forms.Padding(3);
             this.LevelTab.Size = new System.Drawing.Size(399, 375);
             this.LevelTab.TabIndex = 3;
-            this.LevelTab.Text = "Custom Levels";
+            this.LevelTab.Text = "Levels";
             this.LevelTab.UseVisualStyleBackColor = true;
+            // 
+            // TrialTab
+            // 
+            this.TrialTab.Location = new System.Drawing.Point(4, 22);
+            this.TrialTab.Name = "TrialTab";
+            this.TrialTab.Size = new System.Drawing.Size(399, 375);
+            this.TrialTab.TabIndex = 6;
+            this.TrialTab.Text = "Trials";
+            this.TrialTab.UseVisualStyleBackColor = true;
             // 
             // SkinTab
             // 
@@ -386,11 +409,24 @@
             this.SkinTab.Padding = new System.Windows.Forms.Padding(3);
             this.SkinTab.Size = new System.Drawing.Size(399, 375);
             this.SkinTab.TabIndex = 4;
-            this.SkinTab.Text = "Custom Skins";
+            this.SkinTab.Text = "Skins";
             this.SkinTab.UseVisualStyleBackColor = true;
+            // 
+            // SavesTab
+            // 
+            this.SavesTab.Location = new System.Drawing.Point(4, 22);
+            this.SavesTab.Name = "SavesTab";
+            this.SavesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SavesTab.Size = new System.Drawing.Size(399, 375);
+            this.SavesTab.TabIndex = 5;
+            this.SavesTab.Text = "Saves";
+            this.SavesTab.UseVisualStyleBackColor = true;
             // 
             // SettingsTab
             // 
+            this.SettingsTab.Controls.Add(this.button4);
+            this.SettingsTab.Controls.Add(this.button2);
+            this.SettingsTab.Controls.Add(this.JamieLabel);
             this.SettingsTab.Location = new System.Drawing.Point(4, 22);
             this.SettingsTab.Name = "SettingsTab";
             this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -399,10 +435,42 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(227, 298);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 39);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Join the Hollow Knight Discord!";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // JamieLabel
+            // 
+            this.JamieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.JamieLabel.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+            this.JamieLabel.Location = new System.Drawing.Point(3, 355);
+            this.JamieLabel.Name = "JamieLabel";
+            this.JamieLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.JamieLabel.Size = new System.Drawing.Size(393, 17);
+            this.JamieLabel.TabIndex = 1;
+            this.JamieLabel.Text = "HKManager was made open-source by ManicJamie. Check them out!";
+            this.JamieLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.JamieLabel.UseCompatibleTextRendering = true;
+            this.JamieLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.JamieLabel_LinkClicked);
+            // 
             // ModWatcher
             // 
             this.ModWatcher.EnableRaisingEvents = true;
             this.ModWatcher.SynchronizingObject = this;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(283, 243);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(110, 49);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Get Help Package\r\nFor HK Discord";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // HKManager
             // 
@@ -422,6 +490,7 @@
             this.MainContainer.ResumeLayout(false);
             this.ProfileContainer.ResumeLayout(false);
             this.ProfileContainer.PerformLayout();
+            this.PBoxContext.ResumeLayout(false);
             this.TabContainer.ResumeLayout(false);
             this.ModManageTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -430,6 +499,7 @@
             this.ModDownloadTab.PerformLayout();
             this.DownloadToolStrip.ResumeLayout(false);
             this.DownloadToolStrip.PerformLayout();
+            this.SettingsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ModWatcher)).EndInit();
             this.ResumeLayout(false);
 
@@ -449,7 +519,6 @@
         private System.Windows.Forms.GroupBox ProfileContainer;
         private System.Windows.Forms.Label PathLabel;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox ProfileBox;
         private System.Windows.Forms.GroupBox PresetContainer;
         private System.Windows.Forms.TreeView DownloadTreeView;
@@ -467,6 +536,13 @@
         private System.Windows.Forms.Button SaveFolderButton;
         private System.Windows.Forms.Button GameFolderButton;
         private System.IO.FileSystemWatcher ModWatcher;
+        private System.Windows.Forms.ContextMenuStrip PBoxContext;
+        private System.Windows.Forms.ToolStripMenuItem ProfileBoxRClickAdd;
+        private System.Windows.Forms.TabPage SavesTab;
+        private System.Windows.Forms.TabPage TrialTab;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.LinkLabel JamieLabel;
+        private System.Windows.Forms.Button button4;
     }
 }
 

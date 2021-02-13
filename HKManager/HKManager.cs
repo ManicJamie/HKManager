@@ -76,9 +76,11 @@ namespace HKManager
                 ProfileBox.SelectedIndex = 0;
 
                 // Remove unused tabs from TabContainer
-                TabContainer.TabPages.Remove(SkinTab);
-                TabContainer.TabPages.Remove(LevelTab);
+                // TabContainer.TabPages.Remove(SkinTab);
+                // TabContainer.TabPages.Remove(LevelTab);
 
+                JamieLabel.Links.Add(19,11, "https://github.com/ManicJamie/HKManager");
+                JamieLabel.Links.Add(34, 10, "https://www.twitch.tv/manicjamie");
                 this.Text = "HKManager " + Version + (IsOffline ? " (Offline Mode)" : "");
             }
             else Close();
@@ -180,12 +182,14 @@ namespace HKManager
                     case DialogResult.OK:
                         profileList.CreateProfile(creationDialog.profileName, creationDialog.path, creationDialog.patch, creationDialog.aPI);
                         profileList.SaveProfileList();
+                        SwitchProfile(profileList.ProfileWithName(creationDialog.profileName));
                         return true;
                     default:
                         return false;
                 }
             }
         }
+
         private void SwitchProfile(Profile profile)
         {
             currentProfile = profile;
@@ -246,9 +250,9 @@ namespace HKManager
         private Dictionary<string, string> CreateVanillaSHA1Dict()
         {
             Dictionary<string, string> Vanillas = new Dictionary<string, string>();
-            foreach (XElement element in ModLinks.Root.Element("VanillaList").Elements("SHA1"))
+            foreach (XElement element in ModLinks.Root.Element("APIList").Elements("API")) if (element.Element("Name").Value == "Vanilla")
             {
-                Vanillas.Add(element.Attribute("Patch").Value, element.Value);
+                Vanillas.Add(element.Element("Patch").Value, element.Element("SHA1").Value);
             }
             return Vanillas;
         }
@@ -352,8 +356,17 @@ namespace HKManager
         {
 
         }
+
         #endregion
 
+        private void PBoxContext_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
 
+        }
+
+        private void JamieLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start((string)e.Link.LinkData);
+        }
     }
 }

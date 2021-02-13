@@ -27,6 +27,7 @@ namespace HKManager
             APIs = apis;
             VanillaSHA1s = SHA1s;
             InitializeComponent();
+            FillPatchComboBox();
             FillDefaultPaths();
             PathTextBox.Text = FindDefaultInstallation();
         }
@@ -111,11 +112,15 @@ namespace HKManager
             {
                 path = PathTextBox.Text;
                 PatchComboBox.Enabled = true;
-                PatchComboBox.SelectedItem = GetPatch();
+                patch = GetPatch();
+                PatchComboBox.SelectedItem = patch;
+                PatchComboBox.Enabled = (patch != null) ? false : true;
             } else
             {
                 PatchComboBox.Enabled = false;
+                PatchComboBox.SelectedItem = null;
                 APIComboBox.Enabled = false;
+                APIComboBox.SelectedItem = null;
             }
         }
 
@@ -164,6 +169,11 @@ namespace HKManager
                 if (HKManager.SHA1Equals(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll") , VanillaSHA1s[testPatch])) { return testPatch; }
             }
             return null;
+        }
+
+        private void FillPatchComboBox()
+        {
+            PatchComboBox.Items.AddRange(VanillaSHA1s.Keys.ToArray());
         }
     }
 }
