@@ -49,23 +49,41 @@
             this.SavePresetButton = new System.Windows.Forms.Button();
             this.ModTreeView = new System.Windows.Forms.TreeView();
             this.ModDownloadTab = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SearchBox = new System.Windows.Forms.TextBox();
+            this.DownloadTreeView = new System.Windows.Forms.TreeView();
             this.button3 = new System.Windows.Forms.Button();
             this.DriveButton = new System.Windows.Forms.Button();
             this.ModDescriptionBox = new System.Windows.Forms.TextBox();
             this.ModLabel = new System.Windows.Forms.Label();
             this.DownloadToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.DownloadLabel = new System.Windows.Forms.ToolStripLabel();
-            this.DownloadTreeView = new System.Windows.Forms.TreeView();
+            this.DownloadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.LevelTab = new System.Windows.Forms.TabPage();
             this.TrialTab = new System.Windows.Forms.TabPage();
             this.SkinTab = new System.Windows.Forms.TabPage();
             this.SavesTab = new System.Windows.Forms.TabPage();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.JamieLabel = new System.Windows.Forms.LinkLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.DownloadLabel = new System.Windows.Forms.ToolStripLabel();
             this.ModWatcher = new System.IO.FileSystemWatcher();
-            this.button4 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.SettingsBox = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -77,9 +95,16 @@
             this.groupBox1.SuspendLayout();
             this.PresetContainer.SuspendLayout();
             this.ModDownloadTab.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.DownloadToolStrip.SuspendLayout();
+            this.LevelTab.SuspendLayout();
             this.SettingsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModWatcher)).BeginInit();
+            this.SettingsBox.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainContainer
@@ -98,6 +123,7 @@
             // MainContainer.Panel2
             // 
             this.MainContainer.Panel2.Controls.Add(this.TabContainer);
+            this.MainContainer.Panel2.Controls.Add(this.DownloadToolStrip);
             this.MainContainer.Size = new System.Drawing.Size(625, 407);
             this.MainContainer.SplitterDistance = 207;
             this.MainContainer.TabIndex = 0;
@@ -188,18 +214,18 @@
             this.TabContainer.Location = new System.Drawing.Point(3, 3);
             this.TabContainer.Name = "TabContainer";
             this.TabContainer.SelectedIndex = 0;
-            this.TabContainer.Size = new System.Drawing.Size(407, 401);
+            this.TabContainer.Size = new System.Drawing.Size(407, 375);
             this.TabContainer.TabIndex = 9;
             // 
             // ModManageTab
             // 
+            this.ModManageTab.Controls.Add(this.groupBox6);
             this.ModManageTab.Controls.Add(this.groupBox1);
             this.ModManageTab.Controls.Add(this.PresetContainer);
-            this.ModManageTab.Controls.Add(this.ModTreeView);
             this.ModManageTab.Location = new System.Drawing.Point(4, 22);
             this.ModManageTab.Name = "ModManageTab";
             this.ModManageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ModManageTab.Size = new System.Drawing.Size(399, 375);
+            this.ModManageTab.Size = new System.Drawing.Size(399, 349);
             this.ModManageTab.TabIndex = 0;
             this.ModManageTab.Text = "Manage Mods";
             this.ModManageTab.UseVisualStyleBackColor = true;
@@ -210,16 +236,16 @@
             this.groupBox1.Controls.Add(this.GameFolderButton);
             this.groupBox1.Location = new System.Drawing.Point(266, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(127, 137);
+            this.groupBox1.Size = new System.Drawing.Size(127, 111);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Open Folders";
             // 
             // SaveFolderButton
             // 
-            this.SaveFolderButton.Location = new System.Drawing.Point(6, 81);
+            this.SaveFolderButton.Location = new System.Drawing.Point(7, 62);
             this.SaveFolderButton.Name = "SaveFolderButton";
-            this.SaveFolderButton.Size = new System.Drawing.Size(114, 50);
+            this.SaveFolderButton.Size = new System.Drawing.Size(114, 43);
             this.SaveFolderButton.TabIndex = 1;
             this.SaveFolderButton.Text = "Open Saves Folder";
             this.SaveFolderButton.UseVisualStyleBackColor = true;
@@ -227,9 +253,9 @@
             // 
             // GameFolderButton
             // 
-            this.GameFolderButton.Location = new System.Drawing.Point(7, 20);
+            this.GameFolderButton.Location = new System.Drawing.Point(7, 16);
             this.GameFolderButton.Name = "GameFolderButton";
-            this.GameFolderButton.Size = new System.Drawing.Size(114, 50);
+            this.GameFolderButton.Size = new System.Drawing.Size(114, 43);
             this.GameFolderButton.TabIndex = 0;
             this.GameFolderButton.Text = "Open Game Folder";
             this.GameFolderButton.UseVisualStyleBackColor = true;
@@ -240,7 +266,7 @@
             this.PresetContainer.Controls.Add(this.PresetBox);
             this.PresetContainer.Controls.Add(this.LoadPresetButton);
             this.PresetContainer.Controls.Add(this.SavePresetButton);
-            this.PresetContainer.Location = new System.Drawing.Point(266, 146);
+            this.PresetContainer.Location = new System.Drawing.Point(266, 120);
             this.PresetContainer.Name = "PresetContainer";
             this.PresetContainer.Size = new System.Drawing.Size(127, 223);
             this.PresetContainer.TabIndex = 9;
@@ -281,31 +307,63 @@
             // 
             // ModTreeView
             // 
+            this.ModTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ModTreeView.CheckBoxes = true;
             this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ModTreeView.Location = new System.Drawing.Point(3, 3);
+            this.ModTreeView.Location = new System.Drawing.Point(6, 19);
             this.ModTreeView.Name = "ModTreeView";
             this.ModTreeView.ShowNodeToolTips = true;
-            this.ModTreeView.Size = new System.Drawing.Size(254, 366);
+            this.ModTreeView.Size = new System.Drawing.Size(242, 312);
             this.ModTreeView.TabIndex = 0;
             this.ModTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.ModTreeView_AfterCheck);
             // 
             // ModDownloadTab
             // 
+            this.ModDownloadTab.Controls.Add(this.groupBox2);
             this.ModDownloadTab.Controls.Add(this.button3);
             this.ModDownloadTab.Controls.Add(this.DriveButton);
             this.ModDownloadTab.Controls.Add(this.ModDescriptionBox);
             this.ModDownloadTab.Controls.Add(this.ModLabel);
-            this.ModDownloadTab.Controls.Add(this.DownloadToolStrip);
-            this.ModDownloadTab.Controls.Add(this.DownloadTreeView);
             this.ModDownloadTab.Location = new System.Drawing.Point(4, 22);
             this.ModDownloadTab.Name = "ModDownloadTab";
             this.ModDownloadTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ModDownloadTab.Size = new System.Drawing.Size(399, 375);
+            this.ModDownloadTab.Size = new System.Drawing.Size(399, 349);
             this.ModDownloadTab.TabIndex = 1;
             this.ModDownloadTab.Text = "Download Mods";
             this.ModDownloadTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.SearchBox);
+            this.groupBox2.Controls.Add(this.DownloadTreeView);
+            this.groupBox2.Location = new System.Drawing.Point(3, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(215, 347);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search";
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.SearchBox.Location = new System.Drawing.Point(6, 19);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(203, 21);
+            this.SearchBox.TabIndex = 12;
+            // 
+            // DownloadTreeView
+            // 
+            this.DownloadTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DownloadTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DownloadTreeView.Location = new System.Drawing.Point(6, 63);
+            this.DownloadTreeView.Name = "DownloadTreeView";
+            this.DownloadTreeView.ShowNodeToolTips = true;
+            this.DownloadTreeView.Size = new System.Drawing.Size(203, 278);
+            this.DownloadTreeView.TabIndex = 1;
             // 
             // button3
             // 
@@ -348,47 +406,40 @@
             // 
             // DownloadToolStrip
             // 
-            this.DownloadToolStrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DownloadToolStrip.AutoSize = false;
-            this.DownloadToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.DownloadToolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DownloadToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DownloadToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.DownloadToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1,
-            this.DownloadLabel});
-            this.DownloadToolStrip.Location = new System.Drawing.Point(3, 350);
+            this.DownloadProgressBar,
+            this.toolStripLabel1});
+            this.DownloadToolStrip.Location = new System.Drawing.Point(0, 382);
             this.DownloadToolStrip.Name = "DownloadToolStrip";
-            this.DownloadToolStrip.Size = new System.Drawing.Size(393, 25);
+            this.DownloadToolStrip.Size = new System.Drawing.Size(414, 25);
             this.DownloadToolStrip.TabIndex = 3;
             this.DownloadToolStrip.Text = "toolStrip1";
             // 
-            // toolStripProgressBar1
+            // DownloadProgressBar
             // 
-            this.toolStripProgressBar1.AutoSize = false;
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(150, 22);
+            this.DownloadProgressBar.AutoSize = false;
+            this.DownloadProgressBar.Name = "DownloadProgressBar";
+            this.DownloadProgressBar.Size = new System.Drawing.Size(150, 22);
+            this.DownloadProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
-            // DownloadLabel
+            // toolStripLabel1
             // 
-            this.DownloadLabel.Name = "DownloadLabel";
-            this.DownloadLabel.Size = new System.Drawing.Size(199, 22);
-            this.DownloadLabel.Text = "Downloading Randomizer 3.10MW...";
-            // 
-            // DownloadTreeView
-            // 
-            this.DownloadTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DownloadTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DownloadTreeView.Location = new System.Drawing.Point(3, 3);
-            this.DownloadTreeView.Name = "DownloadTreeView";
-            this.DownloadTreeView.ShowNodeToolTips = true;
-            this.DownloadTreeView.Size = new System.Drawing.Size(212, 344);
-            this.DownloadTreeView.TabIndex = 1;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(162, 22);
+            this.toolStripLabel1.Text = "Downloading Randomizer 3...";
             // 
             // LevelTab
             // 
+            this.LevelTab.Controls.Add(this.groupBox5);
+            this.LevelTab.Controls.Add(this.groupBox3);
             this.LevelTab.Location = new System.Drawing.Point(4, 22);
             this.LevelTab.Name = "LevelTab";
             this.LevelTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LevelTab.Size = new System.Drawing.Size(399, 375);
+            this.LevelTab.Size = new System.Drawing.Size(399, 349);
             this.LevelTab.TabIndex = 3;
             this.LevelTab.Text = "Levels";
             this.LevelTab.UseVisualStyleBackColor = true;
@@ -397,7 +448,7 @@
             // 
             this.TrialTab.Location = new System.Drawing.Point(4, 22);
             this.TrialTab.Name = "TrialTab";
-            this.TrialTab.Size = new System.Drawing.Size(399, 375);
+            this.TrialTab.Size = new System.Drawing.Size(399, 349);
             this.TrialTab.TabIndex = 6;
             this.TrialTab.Text = "Trials";
             this.TrialTab.UseVisualStyleBackColor = true;
@@ -407,7 +458,7 @@
             this.SkinTab.Location = new System.Drawing.Point(4, 22);
             this.SkinTab.Name = "SkinTab";
             this.SkinTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SkinTab.Size = new System.Drawing.Size(399, 375);
+            this.SkinTab.Size = new System.Drawing.Size(399, 349);
             this.SkinTab.TabIndex = 4;
             this.SkinTab.Text = "Skins";
             this.SkinTab.UseVisualStyleBackColor = true;
@@ -417,23 +468,34 @@
             this.SavesTab.Location = new System.Drawing.Point(4, 22);
             this.SavesTab.Name = "SavesTab";
             this.SavesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SavesTab.Size = new System.Drawing.Size(399, 375);
+            this.SavesTab.Size = new System.Drawing.Size(399, 349);
             this.SavesTab.TabIndex = 5;
             this.SavesTab.Text = "Saves";
             this.SavesTab.UseVisualStyleBackColor = true;
             // 
             // SettingsTab
             // 
+            this.SettingsTab.Controls.Add(this.groupBox4);
+            this.SettingsTab.Controls.Add(this.SettingsBox);
             this.SettingsTab.Controls.Add(this.button4);
             this.SettingsTab.Controls.Add(this.button2);
             this.SettingsTab.Controls.Add(this.JamieLabel);
             this.SettingsTab.Location = new System.Drawing.Point(4, 22);
             this.SettingsTab.Name = "SettingsTab";
             this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsTab.Size = new System.Drawing.Size(399, 375);
+            this.SettingsTab.Size = new System.Drawing.Size(399, 349);
             this.SettingsTab.TabIndex = 2;
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(283, 243);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(110, 49);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Get Help Package\r\nFor HK Discord";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -453,24 +515,177 @@
             this.JamieLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.JamieLabel.Size = new System.Drawing.Size(393, 17);
             this.JamieLabel.TabIndex = 1;
-            this.JamieLabel.Text = "HKManager was made open-source by ManicJamie. Check them out!";
+            this.JamieLabel.Text = "HKManager was made open-source by ManicJamie. Check her out!";
             this.JamieLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.JamieLabel.UseCompatibleTextRendering = true;
             this.JamieLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.JamieLabel_LinkClicked);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.AutoSize = false;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(150, 22);
+            // 
+            // DownloadLabel
+            // 
+            this.DownloadLabel.Name = "DownloadLabel";
+            this.DownloadLabel.Size = new System.Drawing.Size(199, 22);
+            this.DownloadLabel.Text = "Downloading Randomizer 3.10MW...";
             // 
             // ModWatcher
             // 
             this.ModWatcher.EnableRaisingEvents = true;
             this.ModWatcher.SynchronizingObject = this;
             // 
-            // button4
+            // checkBox1
             // 
-            this.button4.Location = new System.Drawing.Point(283, 243);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 49);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Get Help Package\r\nFor HK Discord";
-            this.button4.UseVisualStyleBackColor = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(176, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Launch Game from HKManager";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // SettingsBox
+            // 
+            this.SettingsBox.Controls.Add(this.checkBox3);
+            this.SettingsBox.Controls.Add(this.checkBox2);
+            this.SettingsBox.Controls.Add(this.checkBox1);
+            this.SettingsBox.Location = new System.Drawing.Point(6, 6);
+            this.SettingsBox.Name = "SettingsBox";
+            this.SettingsBox.Size = new System.Drawing.Size(190, 172);
+            this.SettingsBox.TabIndex = 5;
+            this.SettingsBox.TabStop = false;
+            this.SettingsBox.Text = "HKManager Settings";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button7);
+            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Location = new System.Drawing.Point(202, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(190, 172);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Quick Fixes";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 20);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(177, 43);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "My Saves aren\'t showing!";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(7, 69);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(177, 43);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "I\'m playing Randomizer 3 and I don\'t know where to go.";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(7, 118);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(177, 43);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "I uninstalled Hollow Point and now healing is broken.";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 42);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(158, 17);
+            this.checkBox2.TabIndex = 5;
+            this.checkBox2.Text = "Automatically install updates";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(6, 66);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(133, 17);
+            this.checkBox3.TabIndex = 6;
+            this.checkBox3.Text = "Check for API updates";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(177, 228);
+            this.listBox1.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(190, 255);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Installed Levels";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listBox2);
+            this.groupBox5.Location = new System.Drawing.Point(203, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(190, 255);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Available Levels";
+            // 
+            // listBox2
+            // 
+            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Location = new System.Drawing.Point(6, 19);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(177, 228);
+            this.listBox2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Available Mods";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.ModTreeView);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(254, 337);
+            this.groupBox6.TabIndex = 11;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Installed Mods";
             // 
             // HKManager
             // 
@@ -497,10 +712,19 @@
             this.PresetContainer.ResumeLayout(false);
             this.ModDownloadTab.ResumeLayout(false);
             this.ModDownloadTab.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.DownloadToolStrip.ResumeLayout(false);
             this.DownloadToolStrip.PerformLayout();
+            this.LevelTab.ResumeLayout(false);
             this.SettingsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ModWatcher)).EndInit();
+            this.SettingsBox.ResumeLayout(false);
+            this.SettingsBox.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -543,6 +767,24 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.LinkLabel JamieLabel;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.ToolStripProgressBar DownloadProgressBar;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox SettingsBox;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 

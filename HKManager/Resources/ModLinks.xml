@@ -20,7 +20,23 @@
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
       <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
     </API>
-    <!-- Vanilla from here on -->
+    <API Patch ="1.2.2.1">
+      <Name>Modding API</Name>
+      <Description>Allows for loading of third-party mods.</Description>
+      <OS>Universal</OS>
+      <Version>API-</Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1></SHA1>
+    </API>
+    <API Patch ="1.0.2.8">
+      <Name>Mini Debug</Name>
+      <Description>Lightweight Debug Mod.</Description>
+      <OS>Universal</OS>
+      <Version>Debug</Version>
+      <Link><![CDATA[]]></Link>
+      <SHA1></SHA1>
+    </API>
+    <!-- Vanilla from here on. Note these are downloaded to allow easy switching. -->
     <API Patch ="1.4.3.2">
       <Name>Vanilla</Name>
       <Description>Standard Game.</Description>
@@ -70,21 +86,32 @@
       <SHA1>985972407E6EEEC57E2EDBE572E307915FB1F1A4</SHA1>
     </API>
   </APIList>
+
+  <!-- List of custom trials. Note that each custom trial comes with its own dll - this has to be moved to the mods folder. -->
+  <TrialList>
+    <Trial Name="Trial of the Absolute Fool">
+      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
+      <Description></Description>
+      <Link><![CDATA[]]></Link>
+      <SHA1></SHA1>
+    </Trial>
+  </TrialList>
   
-  <!-- Assembly-Csharp.xml, only used for help making mods. Normally ships with CP ModdingAPI. -->
-  <AssemblyXML>
-    <Link></Link>
-    <SHA1></SHA1>
-  </AssemblyXML>
+  <!-- List of custom levels using DecorationMaster. -->
+  <LevelList>
+    <Level Name="Impossible Birthplace">
+      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
+      <Description></Description>
+      <Link><![CDATA[]]></Link>
+      <SHA1></SHA1>
+    </Level>
+  </LevelList>
 
   <!-- Modlist. A demo mod can be found at the end of the document. -->
-
   <ModList>
-    <!-- Note that Modding API windows is not used in HKManager, but is kept for legacy support. APIList is referenced instead. -->
+    <!-- Note that Modding API Windows is not used in HKManager, but is kept for legacy support w/ Modinstaller/2. APIList is referenced instead. -->
     <ModLink>
       <Name>Modding API Windows</Name>
-      <FullDescription />
-      <Patch>1.4.3.2</Patch>
       <Files>
         <File>
           <Name>Assembly-CSharp.dll</Name>

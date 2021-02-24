@@ -182,7 +182,7 @@ namespace HKManager
         private string GetPatch()
         {
             string returnPatch = null;
-            SHA1ToPatch.TryGetValue(HKManager.ComputeSHA1(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll")), out returnPatch);
+            SHA1ToPatch.TryGetValue(HKManager.ComputeSHA1(Path.Combine(path, "Hollow_Knight_Data/Managed/Assembly-CSharp.dll")).ToUpperInvariant(), out returnPatch);
             return returnPatch;
         }
 

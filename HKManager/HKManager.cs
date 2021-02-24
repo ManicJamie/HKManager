@@ -311,7 +311,7 @@ namespace HKManager
         private void DriveButton_Click(object sender, EventArgs e)
         {
             // apparently there can be issues finding the default browser if we don't do this. better to be safe ¯\_(ツ)_/¯
-            var ps = new ProcessStartInfo(ModLinks.Element("DriveLink").Value)
+            var ps = new ProcessStartInfo(ModLinks.Root.Element("DriveLink").Value)
             {
                 UseShellExecute = true,
                 Verb = "open"
