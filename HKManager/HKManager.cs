@@ -286,6 +286,13 @@ namespace HKManager
                     return "";
             }
         }
+
+        public static string GetManagedPath(string InstallPath)
+        {
+            return HKManager.OS == "MacOS"
+                ? $"{InstallPath}/Contents/Resources/Data/Managed"
+                : $"{InstallPath}/hollow_knight_Data/Managed";
+        }
         #endregion
 
         #region Display

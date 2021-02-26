@@ -73,7 +73,7 @@ namespace HKManager
         {
             List<string> filenames = new List<string>();
             // get all the files in mods folders that are not already in profile
-            foreach (string fileName in Directory.GetFiles(Path.Combine(GetManagedPath(), "/Mods"))) if (!ContainsFile(fileName))
+            foreach (string fileName in Directory.GetFiles(Path.Combine(HKManager.GetManagedPath(InstallPath), "/Mods"))) if (!ContainsFile(fileName))
             {
                     // search downloadlist for a mod w/ same SHA1, if none found, add closest match by file name and disable updates by default
                     bool modConstructed = false;
@@ -108,7 +108,7 @@ namespace HKManager
                     }
                 }
             }
-            foreach (string fileName in Directory.GetFiles(GetManagedPath()))
+            foreach (string fileName in Directory.GetFiles(HKManager.GetManagedPath(InstallPath)))
             {
                 foreach (Mod mod in Mods) if (mod.Files.ContainsKey(Path.GetFileName(fileName)))
                 {
@@ -126,12 +126,7 @@ namespace HKManager
             return false;
         }
 
-        public string GetManagedPath()
-        {
-            return HKManager.OS == "MacOS"
-                ? $"{InstallPath}/Contents/Resources/Data/Managed"
-                : $"{InstallPath}/hollow_knight_Data/Managed";
-        }
+
     }
 
     /// <summary>

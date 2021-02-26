@@ -116,7 +116,7 @@ namespace HKManager
 
         private bool InstallExists(string testPath)
         {
-            if (Directory.Exists(testPath) && File.Exists(testPath + @"\Hollow_Knight_Data\Managed\Assembly-CSharp.dll"))
+            if (Directory.Exists(testPath) && File.Exists(Path.Combine(HKManager.GetManagedPath(testPath), "Assembly-CSharp.dll")))
             {
                 return true;
             }

@@ -18,7 +18,7 @@
       <OS>Universal</OS>
       <Version>API-57</Version>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
-      <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+      <SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
     </API>
     <API Patch ="1.2.2.1">
       <Name>Modding API</Name>
