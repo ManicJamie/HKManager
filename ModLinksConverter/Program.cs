@@ -18,22 +18,7 @@ namespace ModLinksConverter
 
         static void Main(string[] args)
         {
-            List<string> vs = new List<string>();
-            vs.Add("1028.dll");
-            vs.Add("1114.dll");
-            vs.Add("1118.dll");
-            vs.Add("1221.dll");
-            vs.Add("1424.dll");
-            vs.Add("1432.dll");
-            vs.Add("1432Modded.dll");
-            foreach (string a in vs)
-            {
-                Console.WriteLine(a + "|||" + ComputeSHA1(@"C:\Users\Jamie\Desktop\Speedrun\Assemblies\" + a).ToUpper()) ;
-            }
-            // testing around w/ piracy SHA1s for jokes
-            //Console.WriteLine("unins000.exe" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.exe").ToUpper());
-            //Console.WriteLine("unins000.dat" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.dat").ToUpper());
-            Console.ReadLine();
+            GenerateXMLFromModLinks();
         }
 
         private static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);
@@ -59,7 +44,7 @@ namespace ModLinksConverter
                     element.Element("Name"),
                     element.Element("Description"),
                     new XElement("FullDescription"),
-                    new XElement("Patch", "1.4.3.2"),
+                    new XElement("Patches", new XElement("Patch", "1.4.3.2")),
                     element.Element("Files"),
                     element.Element("Link"),
                     element.Element("Dependencies")
@@ -70,6 +55,29 @@ namespace ModLinksConverter
             StringWriter writer = new StringWriter();
             newModLinks.Save(writer);
             Console.WriteLine(writer.ToString());
+            Console.ReadLine();
+        }
+
+        static void GetAssemblySHA1s()
+        {
+            List<string> vs = new List<string>();
+            vs.Add("1028.dll");
+            vs.Add("1114.dll");
+            vs.Add("1118.dll");
+            vs.Add("1221.dll");
+            vs.Add("1424.dll");
+            vs.Add("1432.dll");
+            vs.Add("1432Modded.dll");
+            vs.Add("1028LoadExtender.dll");
+            vs.Add("1221Modded.dll");
+            vs.Add("1028Modded.dll");
+            foreach (string a in vs)
+            {
+                Console.WriteLine(a + "|||" + ComputeSHA1(@"C:\Users\Jamie\Desktop\Speedrun\Assemblies\" + a).ToUpper());
+            }
+            // testing around w/ piracy SHA1s for jokes
+            //Console.WriteLine("unins000.exe" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.exe").ToUpper());
+            //Console.WriteLine("unins000.dat" + "|||" + ComputeSHA1(@"D:\MurkyWaters\Hollow Knight Godmaster\unins000.dat").ToUpper());
             Console.ReadLine();
         }
     }

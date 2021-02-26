@@ -12,28 +12,32 @@ namespace HKManager
 {
     public partial class ModCreationForm : Form
     {
-        public string FileName { get; set; }
-        public string ModName { get; set; }
-        public string BranchName { get; set; }
-        public string BranchDesc { get; set; }
-        public string Desc { get; set; }
-        public string FullDesc { get; set; }
+        private Mod mod;
+        public Mod Mod => mod;
 
-        private readonly bool newModCreation;
+        private readonly bool newModCreation = false;
         
-        public ModCreationForm(bool New)
+        public ModCreationForm()
         {
-            newModCreation = New;
+            newModCreation = true;
             InitializeComponent();
+        }
+
+        public ModCreationForm(Mod modConstructor)
+        {
+            mod = modConstructor;
+            FileNameBox.Text = mod.Files.First().Key;
+            FileNameBox.Enabled = false;
+            NameBox.Text = mod.Name;
+            NameBox.Enabled = false;
+            DescBox.Text = mod.Description;
+            DescBox.Enabled = false;
+            BDescBox.Text = mod.FullDescription;
+            BDescBox.Enabled = false;
         }
 
         private void ModCreationForm_Load(object sender, EventArgs e)
         {
-            if (FileName != null)
-            {
-                FileNameBox.Text = FileName;
-                FileNameBox.Enabled = false;
-            }
             if (!newModCreation)
             {
                 InfoLabel.Visible = false;
@@ -44,5 +48,7 @@ namespace HKManager
         {
             DialogResult = DialogResult.OK;
         }
+
+
     }
 }

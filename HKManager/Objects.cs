@@ -101,7 +101,11 @@ namespace HKManager
                 }
                 if (modConstructed && !modFound)
                 {
-                    Mods.Add(modConstruct);
+                    using (ModCreationForm modForm = new ModCreationForm(modConstruct))
+                    {
+                        modForm.ShowDialog();
+                        Mods.Add(modForm.Mod);
+                    }
                 }
             }
             foreach (string fileName in Directory.GetFiles(GetManagedPath()))
@@ -167,7 +171,7 @@ namespace HKManager
         public string BranchName { get; set; } // if empty, mod is not a member of a branch.
         public string BranchDescription { get; set; } // Description of a branch.
         public string Link { get; set; } // Download link.
-        public Dictionary<string, string> Files { get; set; } // Key is file path, value is SHA1.
+        public Dictionary<string, string> Files { get; set; } // Key is file name, value is SHA1.
         public List<string> Dependencies { get; set; }
         public List<string> Optional { get; set; }
         public bool Enabled { get => Enabled; set => EnableOrDisable(value); } // Use custom setter to move files when enabled/disabled.

@@ -3,7 +3,7 @@
 
   <DriveLink>https://drive.google.com/drive/folders/0B_b9PFqx_PR9Um9MeFZMV21oWGs?usp=sharing</DriveLink>
 
-  <!-- Details about the installer and auto updater.-->
+  <!-- Details about modinstaller and auto updater. -->
   <Installer>
     <Link><![CDATA[https://radiance.host/mods/ModInstaller.exe]]></Link>
     <SHA1>DE28555B158C41616227D0A2CFD8F04C86E3C188</SHA1>
@@ -24,17 +24,17 @@
       <Name>Modding API</Name>
       <Description>Allows for loading of third-party mods.</Description>
       <OS>Universal</OS>
-      <Version>API-</Version>
+      <Version>API-37</Version>
       <Link><![CDATA[]]></Link>
-      <SHA1></SHA1>
+      <SHA1>B38E201130B80279581A625B286BA252CD88788B</SHA1>
     </API>
     <API Patch ="1.0.2.8">
-      <Name>Mini Debug</Name>
-      <Description>Lightweight Debug Mod.</Description>
+      <Name>Modding API</Name>
+      <Description>Allows for loading of third-parth mods.</Description>
       <OS>Universal</OS>
-      <Version>Debug</Version>
+      <Version>API</Version>
       <Link><![CDATA[]]></Link>
-      <SHA1></SHA1>
+      <SHA1>204F5C365E81EC1E0966EC79099B5BC04884B5B8</SHA1>
     </API>
     <!-- Vanilla from here on. Note these are downloaded to allow easy switching. -->
     <API Patch ="1.4.3.2">
@@ -109,13 +109,16 @@
 
   <!-- Modlist. A demo mod can be found at the end of the document. -->
   <ModList>
-    <!-- Note that Modding API Windows is not used in HKManager, but is kept for legacy support w/ Modinstaller/2. APIList is referenced instead. -->
     <ModLink>
       <Name>Modding API Windows</Name>
+      <FullDescription />
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Assembly-CSharp.dll</Name>
-          <SHA1>43B03E72B55BB68BEDD84AF34A7EF02492A9BE45</SHA1>
+          <SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
           <Patch>1.4.3.2</Patch>
         </File>
       </Files>
@@ -126,7 +129,9 @@
       <Name>ModCommon</Name>
       <Description>Library used by many mods.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ModCommon.dll</Name>
@@ -142,7 +147,9 @@
       <Name>ModConsole</Name>
       <Description>An in-game REPL which allows you to easily run C#</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ModConsole.dll</Name>
@@ -166,7 +173,9 @@
       <Name>Hell Mod</Name>
       <Description>Various nerfs to the player (nail, spells, damage, SOUL, etc.) and several buffs to enemies/bosses (health and damage)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>HellMod.dll</Name>
@@ -182,7 +191,9 @@
       <Name>Bingo UI</Name>
       <Description>Automatic tracking of bingo goals for randomizer or vanilla bingo speedrun races</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>BingoUI.dll</Name>
@@ -200,7 +211,9 @@
       <Name>Dumbmod</Name>
       <Description>Makes most animated things invisible</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>dumbmod.dll</Name>
@@ -216,7 +229,9 @@
       <Name>HollowPoint (SEE README)</Name>
       <Description>Gives the player a gun, reworks charms and abilities to play around the concept of gun usage</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>HollowPoint.dll</Name>
@@ -233,7 +248,9 @@
       <Name>Bindings</Name>
       <Description>Applies the bindings from the Godhome Pantheons to the main game. Intended for practicing for bound pantheons in the Hall of Gods</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Bindings.dll</Name>
@@ -250,7 +267,9 @@
       <Name>Lost Lord</Name>
       <Description>Significant buff to Lost Kin</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>LostLord.dll</Name>
@@ -267,7 +286,9 @@
       <Name>Pale Prince</Name>
       <Description>Significant buff for Pure Vessel with new moves</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Pale_Prince.dll</Name>
@@ -284,7 +305,9 @@
       <Name>Random Pantheons</Name>
       <Description>Randomizes Godhome's Pantheons. Bosses appear in random order.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>RandomPantheons.dll</Name>
@@ -301,7 +324,9 @@
       <Name>Mantis Gods</Name>
       <Description>Significantly buffs Mantis Lords</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Mantis Gods.dll</Name>
@@ -317,7 +342,9 @@
       <Name>WeaverCore</Name>
       <Description>Library used by Inferno King Grimm</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>WeaverCore.dll</Name>
@@ -333,7 +360,9 @@
       <Name>Inferno King Grimm</Name>
       <Description>Significantly buffs Nightmare King Grimm</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>InfernoKingGrimm.dll</Name>
@@ -350,7 +379,9 @@
       <Name>Sanic</Name>
       <Description>Allows for modification of game speed for going fast</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Sanic.dll</Name>
@@ -366,7 +397,9 @@
       <Name>RNG</Name>
       <Description>Randomizes animation speeds, waits, and velocities (not recommended for serious use)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>why.dll</Name>
@@ -382,7 +415,9 @@
       <Name>CharmOverhaul</Name>
       <Description>Rebalances charms to make them stronger</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>BetterCharms.dll</Name>
@@ -398,7 +433,9 @@
       <Name>Chaos Mode</Name>
       <Description>Adds a variety of random effects which swap every few seconds</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ChaosMode.dll</Name>
@@ -414,7 +451,9 @@
       <Name>RandoMapMod</Name>
       <Description>Mod which shows randomizer items on the map.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>RandoMapMod.dll</Name>
@@ -430,7 +469,9 @@
       <Name>Lightbringer</Name>
       <Description>Changes nail attack to a lance of light, reworks charms, many other changes</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Lightbringer.dll</Name>
@@ -447,7 +488,9 @@
       <Name>MoreSaves</Name>
       <Description>Allows for more than 4 save slots, organized into multiple pages in the save menu</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>MoreSaves.dll</Name>
@@ -464,7 +507,9 @@
       <Name>The Pain of the Path</Name>
       <Description>Allows the player to complete the Path of Pain backwards, starting just above the final drop to the Kingsmoulds</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ThePainOfThePath.dll</Name>
@@ -480,7 +525,9 @@
       <Name>QoL</Name>
       <Description>Slight improvements to gameplay (skippable cutscenes/credits, "unfixed" menu drop and storage, etc.)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>QoL.dll</Name>
@@ -497,7 +544,9 @@
       <Name>ASCII Camera</Name>
       <Description>Replaces the camera with an ASCII overlay of it</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>AsciiCamera.dll</Name>
@@ -514,7 +563,9 @@
       <Name>Hollow Twitch</Name>
       <Description>Configures twitch chat to handle several commands that spice up gameplay</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>HollowTwitch.dll</Name>
@@ -531,7 +582,9 @@
       <Name>Blackmoth</Name>
       <Description>Changes main mode of attack from nail to shade dash, some charms changed to affect dash</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Blackmoth.dll</Name>
@@ -548,7 +601,9 @@
       <Name>Debug Mod</Name>
       <Description>Allows for debug tools and features like no clip, invincibility, removing and giving items and abilities</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>DebugMod.dll</Name>
@@ -564,14 +619,16 @@
       <Name>SereCore</Name>
       <Description>Library used mostly by the Randomizer mods</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>SereCore.dll</Name>
-          <SHA1>ba09f0088a5573da442281ae1a18ce9c5baff191</SHA1>
+          <SHA1>4792c0b3272e788f61ecd82ba8222663a5af6e60</SHA1>
         </File>
       </Files>
-      <Link><![CDATA[https://drive.google.com/uc?export=download&id=1Ez1JKQiHK7RrLJ7y4YL_z8_Rwf2jMvCI]]></Link>
+      <Link><![CDATA[https://drive.google.com/uc?export=download&id=189-2P-CFUJkZYpK00YNWNX4fPZnzB7Qx]]></Link>
       <Dependencies>
         <string>Modding API</string>
       </Dependencies>
@@ -580,11 +637,13 @@
       <Name>Vasi</Name>
       <Description>Library required for some mods to function</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Vasi.dll</Name>
-          <SHA1>04EE181B6011B3EDD1012A735D175B78D13D9C0C</SHA1>
+          <SHA1>21D94D4DB77CC1786F2F0FE81E8B3B7E46B4C027</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=12cfTR_S5JvYV_sDq2c0iXTP0bd1A960o]]></Link>
@@ -596,7 +655,9 @@
       <Name>Randomizer 2 (Old)</Name>
       <Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>RandomizerMod2.0.dll</Name>
@@ -613,7 +674,9 @@
       <Name>Custom Knight</Name>
       <Description>Allows for the player character's sprites to be edited by modifying image files in the Hollow Knight directory</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>CustomKnight.dll</Name>
@@ -630,7 +693,9 @@
       <Name>Show Hitboxes</Name>
       <Description>Displays Hitboxes</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ShowHitboxes.dll</Name>
@@ -646,7 +711,9 @@
       <Name>Enemy Randomizer</Name>
       <Description>Randomizes enemy spawns (with some limitations), several randomization modes (may break)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>EnemyRandomizer.dll</Name>
@@ -663,7 +730,9 @@
       <Name>Bonfire Mod</Name>
       <Description>Adds upgradeable stat bonuses to the game (purchased with geo)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>BonfireMod.dll</Name>
@@ -679,7 +748,9 @@
       <Name>Glorious Combos</Name>
       <Description>Nerfs player damage, but gradually increases it as the player chains attacks, rewarding skill in combat with increased DPS. Recommended for use in Godhome only, but settings allow it to be used in Hallownest proper</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>combomod.dll</Name>
@@ -696,7 +767,9 @@
       <Name>Infinite Grimm</Name>
       <Description>Includes multiple modes like Time Attack and One Hit, Nightmare God Grimm is packaged with this, (takes place in Dirtmouth, not Godhome)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>infinitegrimm.dll</Name>
@@ -713,7 +786,9 @@
       <Name>Grimmchild Upgrades</Name>
       <Description>Buffs/modifies level 4 Grimmchild, and makes it fully customizable</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>grimmchildupgrades.dll</Name>
@@ -730,7 +805,9 @@
       <Name>Unofficial Hollow Knight Patch</Name>
       <Description>Fixes Absrad hazard spawn bug, sharp shadow fix, and adds new PV statue in Hall of Gods</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>UHKP.dll</Name>
@@ -747,7 +824,9 @@
       <Name>Redwing</Name>
       <Description>Gives the player several new fiery attacks and abilities making them stronger. Fully configurable with optional "hard" mode</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>redwing.dll</Name>
@@ -769,7 +848,9 @@
       <Name>Redwing Assets</Name>
       <Description>Video assets for the Redwing mod.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>dummy.dll</Name>
@@ -797,7 +878,9 @@
       <Name>'Art' Mods</Name>
       <Description>Shitpost mod</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>infinitemyla.dll</Name>
@@ -838,7 +921,9 @@
       <Name>Infinite Notches</Name>
       <Description>Gives the player infinite notches, might mess with save</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>InfiniteNotches.dll</Name>
@@ -854,7 +939,9 @@
       <Name>Player Data Tracker</Name>
       <Description>Tracks player data. Most frequently used to display abilities/charms during Randomizer streams</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>PlayerDataDump.dll</Name>
@@ -874,7 +961,9 @@
       <Name>Charm Notch Mod</Name>
       <Description>Automatically grants notches normally bought from Salubra upon collecting the required number of charms</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>CharmNotchMod.dll</Name>
@@ -890,7 +979,9 @@
       <Name>EnemyHPBar</Name>
       <Description>Displays customizable  health bars above enemies and big health bar for bosses</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>EnemyHPBar.dll</Name>
@@ -907,7 +998,9 @@
       <Name>Fragile Strength for Nail Arts</Name>
       <Description>Fragile/Unbreakable Strength increases the damage of Nail Arts</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>FragileStrengthForNailArts.dll</Name>
@@ -923,7 +1016,9 @@
       <Name>Ultimatum Radiance</Name>
       <Description>Significantly buffs Absolute Radiance</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Ultimatum Radiance.dll</Name>
@@ -940,7 +1035,9 @@
       <Name>Darkness</Name>
       <Description>Renders the Lumafly Lantern useless and makes every room dark (akin to Deepnest without the lantern)</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Darkness.dll</Name>
@@ -957,7 +1054,9 @@
       <Name>Daughter of Hallownest</Name>
       <Description>Modifies Hornet Sentinel to a 3-phase boss, focused on projectile attacks from other bosses.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>DoH.dll</Name>
@@ -974,7 +1073,9 @@
       <Name>Benchwarp</Name>
       <Description>Allows warping to benches, has an option to display room names, required for Randomizer 2 and 3</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Benchwarp.dll</Name>
@@ -990,7 +1091,9 @@
       <Name>Pale Champion</Name>
       <Description>Significant rework to Pale Lurker</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>PaleChampion.dll</Name>
@@ -1007,7 +1110,9 @@
       <Name>Elderbug God</Name>
       <Description>monkaU</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ElderbugGod.dll</Name>
@@ -1024,11 +1129,13 @@
       <Name>Randomizer 3 (Item or Room)</Name>
       <Description>Mixes up charms, spells, abilities, etc. for new saves, difficulty settings and randomization seeds included. Includes a room and area rando mode.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>RandomizerMod3.0.dll</Name>
-          <SHA1>88FCB2BE21C2534F1DF143A94D9FCEC41A38021D</SHA1>
+          <SHA1>0486D3D3CE43FD34DAFCF94CE230F14B31B3C8C3</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1q5HtsxfVydCueDj5-mactbU_ZyHECD-j]]></Link>
@@ -1043,7 +1150,9 @@
     <ModLink>
       <Name>Poorly Translated</Name>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>TranslationMod.dll</Name>
@@ -1060,7 +1169,9 @@
       <Name>Crystalblobbles</Name>
       <Description>Oblobbles but with Crystal Hunter crystals</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Crystalblobbles.dll</Name>
@@ -1077,7 +1188,9 @@
       <Name>Traitor God</Name>
       <Description>Singificant buff to Traitor Lord</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Traitor God.dll</Name>
@@ -1094,7 +1207,9 @@
       <Name>Tribe of Battle</Name>
       <Description>Mantis Lords and Traitor Lord simultaneously</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Tribe_of_Battle.dll</Name>
@@ -1111,7 +1226,9 @@
       <Name>LoadNormalizer</Name>
       <Description>Normalizes loads across computers, used for races.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>LoadNormalizer.dll</Name>
@@ -1127,7 +1244,9 @@
       <Name>Path of Pure Vessel</Name>
       <Description>Adds pure vessel at the end of Path of Pain</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>PVPoP.dll</Name>
@@ -1144,11 +1263,13 @@
       <Name>Press G to Dab</Name>
       <Description>Press G to dab.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>PressGToDab.dll</Name>
-          <SHA1>30a26c5910e8881555971e46d0b645a79bc0bf5a</SHA1>
+          <SHA1>063B0603C5EB0B9E3BFF62A5BF2CCBC91D758389</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1MROspqNmyNwq_e3sN5Gkze4WqFv1WX4X]]></Link>
@@ -1160,7 +1281,9 @@
       <Name>Royal Dreamer</Name>
       <Description>markoth buff cold_face</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>RoyalDreamer.dll</Name>
@@ -1177,7 +1300,9 @@
       <Name>Dream Shield Coop</Name>
       <Description>Adds a controllable Dreamshield alongside the player character</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Dshieldcoop.dll</Name>
@@ -1194,7 +1319,9 @@
       <Name>Transtrans</Name>
       <Description>TikTiks support trans rights</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Transtrans.dll</Name>
@@ -1210,7 +1337,9 @@
     <ModLink>
       <Name>Floor Lava</Name>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>FloorLava.dll</Name>
@@ -1227,7 +1356,9 @@
       <Name>Lifeblood Master</Name>
       <Description>Significantly buffs Hive Knight.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>LifebloodMaster.dll</Name>
@@ -1244,7 +1375,9 @@
       <Name>DeathCounter</Name>
       <Description>Counts your deaths with a slot in the inventory</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>DeathCounter.dll</Name>
@@ -1261,7 +1394,9 @@
       <Name>Indie Crossover</Name>
       <Description>Integrates Propeller Knight, Fennel, and Cagney Carnation into the game as a boss fight</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Fennel.dll</Name>
@@ -1286,11 +1421,13 @@
       <Name>EasyMode</Name>
       <Description>Adds a variety of assisting effects that is meant to help newer or struggling players.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>EasyMode.dll</Name>
-          <SHA1>EEF956C6BC4F36CD9E5D9D9787B1559874F1B2A6</SHA1>
+          <SHA1>EBBEC9B2F482ABEAF84AE58D91B5559DE61804C2</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1ikYFKzzoRE3uYuxrNuzDRrFLrmFl6plV]]></Link>
@@ -1303,7 +1440,9 @@
       <Name>Uuwuu</Name>
       <Description>Significantly buffs Uumuu</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Uuwuu.dll</Name>
@@ -1322,11 +1461,13 @@
       <Name>ItemChanger</Name>
       <Description>A library which performs many of the same tasks as Randomizer such as modifying and creating items</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ItemChanger.dll</Name>
-          <SHA1>43E0C5131A97B7BB37A383668D3945EB6CA28992</SHA1>
+          <SHA1>D31B5C898352F8941724AF2E401405C39420E27D</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=15ukNBxUfWAvHoO4PEep8GmJk95iby17L]]></Link>
@@ -1339,11 +1480,13 @@
       <Name>plandoplando</Name>
       <Description>Reads from an XML file to change item locations and add preloaded objects.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>plandoplando.dll</Name>
-          <SHA1>812A2CC778BAB7A62E04812E9ABDCB14AE933042</SHA1>
+          <SHA1>1930D727B1880670CDDAC00BD1C9039C83D0E118</SHA1>
         </File>
       </Files>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1q-HTYPNzdUiJq4kxASZqN88RFt6BQs4a]]></Link>
@@ -1357,7 +1500,9 @@
       <Name>Exaltation</Name>
       <Description>Overhauls charms, implementing unused "charm glorification" concept teased prior to Godmaster. Charms are buffed by completing Pantheons in Godhome, making them much stronger.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>Exaltation.dll</Name>
@@ -1374,7 +1519,9 @@
       <Name>PaletteSwapper</Name>
       <Description>Randomizes the color tints of rooms for each area. Configurable.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>PaletteSwapper.dll</Name>
@@ -1390,7 +1537,9 @@
       <Name>NG+ (King's Pass)</Name>
       <Description>Make's King's pass significantly more difficult by adding platforming challenges while disabling pogos.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>NG+ (King's Pass).dll</Name>
@@ -1405,7 +1554,9 @@
     <ModLink>
       <Name>Multiplayer Client (Alpha Pre-Release)</Name>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>MultiplayerClient.dll</Name>
@@ -1421,7 +1572,9 @@
     <ModLink>
       <Name>Multiplayer Server (Alpha Pre-Release)</Name>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>MultiplayerServer.dll</Name>
@@ -1437,14 +1590,16 @@
     <ModLink>
       <Name>SFCore</Name>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>SFCore.dll</Name>
-          <SHA1>b87d56a73eba7ce55a55ea07e2776741b54399ff</SHA1>
+          <SHA1>6C704B1A14393CD87A977B0EA9F224D32DD6CFB5</SHA1>
         </File>
       </Files>
-      <Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.1.1/SFCore.zip]]></Link>
+      <Link><![CDATA[https://github.com/SFGrenade/SFCore/releases/download/v1.2/SFCore.zip]]></Link>
       <Dependencies>
         <string>Modding API</string>
         <string>ModCommon</string>
@@ -1454,7 +1609,9 @@
       <Name>Child of Light</Name>
       <Description>Replaces your spells with Radiance attacks.</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>ChildOfLight.dll</Name>
@@ -1471,7 +1628,9 @@
       <Name>Howwow Knyight</Name>
       <Description>Twanswates aww of de text in Howwow Knyight into de much supewiow UwU wanguage, incwuding menyus, usew intewface and in-game diawogues! &gt;w&lt;</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>HowwowKnyight.dll</Name>
@@ -1487,7 +1646,9 @@
       <Name>FrogCore</Name>
       <Description>Library mod containing stuff for adding journal entries and npcs</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>FrogCore.dll</Name>
@@ -1502,10 +1663,30 @@
       </Dependencies>
     </ModLink>
     <ModLink>
+      <Name>BlindRadiance</Name>
+      <Description>Mod to darken selected scenes for visibility</Description>
+      <FullDescription />
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
+      <Files>
+        <File>
+          <Name>BlindRadiance.dll</Name>
+          <SHA1>85C66C36A7BD84787560D3861584C81B4659D5F7</SHA1>
+        </File>
+      </Files>
+      <Link><![CDATA[https://github.com/SFGrenade/BlindRadiance/releases/download/v1.5.0.1/BlindRadiance.zip]]></Link>
+      <Dependencies>
+        <string>Modding API</string>
+      </Dependencies>
+    </ModLink>
+    <ModLink>
       <Name>Lunatic Radiance</Name>
       <Description>Bullet Hell Radiance Boss in Hollow Knight</Description>
       <FullDescription />
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       <Files>
         <File>
           <Name>HKBulletHell.dll</Name>
@@ -1517,6 +1698,63 @@
         <string>Modding API</string>
         <string>ModCommon</string>
         <string>Vasi</string>
+      </Dependencies>
+    </ModLink>
+    <ModLink>
+      <Name>Language Support</Name>
+      <Description>Adds support for additional languages in a CustomKnight style</Description>
+      <FullDescription />
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
+      <Files>
+        <File>
+          <Name>LanguageSupport.dll</Name>
+          <SHA1>96771A54CA485296DC20FC8E6C3294A16DAEB641</SHA1>
+        </File>
+      </Files>
+      <Link><![CDATA[https://github.com/SFGrenade/LanguageSupport/releases/download/v2.0/LanguageSupport.zip]]></Link>
+      <Dependencies>
+        <string>Modding API</string>
+        <string>ModCommon</string>
+      </Dependencies>
+    </ModLink>
+    <ModLink>
+      <Name>GrassBag</Name>
+      <Description>Tracks how much grass you've mowed and leads you to unmowed grass</Description>
+      <FullDescription />
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
+      <Files>
+        <File>
+          <Name>GrassBag.dll</Name>
+          <SHA1>a74e65e1c8bf4acca1d9d83828b54000d6c56edc</SHA1>
+        </File>
+      </Files>
+      <Link><![CDATA[https://github.com/itsjohncs/GrassBag/releases/download/1.4.2/GrassBag.zip]]></Link>
+      <Dependencies>
+        <string>Modding API</string>
+        <string>ModCommon</string>
+      </Dependencies>
+    </ModLink>
+    <ModLink>
+      <Name>Buzzbo</Name>
+      <Description>A mod that significantly buffs Hive Knight</Description>
+      <FullDescription />
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
+      <Files>
+        <File>
+          <Name>Buzzbo (Bloodless).dll</Name>
+          <SHA1>19582B880BA6199E4CCB94E6E43104BC935F9200</SHA1>
+        </File>
+      </Files>
+      <Link><![CDATA[https://drive.google.com/uc?export=download&id=1mVKg2VxPcovrhVR03hJ_okfKj4QW3RDc]]></Link>
+      <Dependencies>
+        <string>Modding API</string>
+        <string>ModCommon</string>
       </Dependencies>
     </ModLink>
   </ModList>
