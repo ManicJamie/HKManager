@@ -72,6 +72,8 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SettingsBox = new System.Windows.Forms.GroupBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -84,8 +86,6 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.DownloadLabel = new System.Windows.Forms.ToolStripLabel();
             this.ModWatcher = new System.IO.FileSystemWatcher();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
             this.MainContainer.Panel2.SuspendLayout();
@@ -126,6 +126,7 @@
             // 
             this.MainContainer.Panel2.Controls.Add(this.TabContainer);
             this.MainContainer.Panel2.Controls.Add(this.DownloadToolStrip);
+            this.MainContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.MainContainer_Panel2_Paint);
             this.MainContainer.Size = new System.Drawing.Size(625, 407);
             this.MainContainer.SplitterDistance = 207;
             this.MainContainer.TabIndex = 0;
@@ -136,7 +137,7 @@
             this.ProfileContainer.Controls.Add(this.button1);
             this.ProfileContainer.Controls.Add(this.PathLabel);
             this.ProfileContainer.Controls.Add(this.ProfileBox);
-            this.ProfileContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProfileContainer.Location = new System.Drawing.Point(3, 3);
             this.ProfileContainer.Name = "ProfileContainer";
             this.ProfileContainer.Size = new System.Drawing.Size(200, 401);
@@ -147,7 +148,7 @@
             // VersionLabel
             // 
             this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VersionLabel.Location = new System.Drawing.Point(6, 16);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(66, 18);
@@ -167,7 +168,7 @@
             // 
             // PathLabel
             // 
-            this.PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PathLabel.Location = new System.Drawing.Point(6, 41);
             this.PathLabel.Name = "PathLabel";
             this.PathLabel.Size = new System.Drawing.Size(186, 50);
@@ -178,7 +179,7 @@
             // 
             this.ProfileBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfileBox.ContextMenuStrip = this.PBoxContext;
-            this.ProfileBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProfileBox.FormattingEnabled = true;
             this.ProfileBox.ItemHeight = 18;
             this.ProfileBox.Location = new System.Drawing.Point(6, 94);
@@ -213,7 +214,7 @@
             this.TabContainer.Controls.Add(this.SkinTab);
             this.TabContainer.Controls.Add(this.SavesTab);
             this.TabContainer.Controls.Add(this.SettingsTab);
-            this.TabContainer.Location = new System.Drawing.Point(3, 3);
+            this.TabContainer.Location = new System.Drawing.Point(2, 3);
             this.TabContainer.Name = "TabContainer";
             this.TabContainer.SelectedIndex = 0;
             this.TabContainer.Size = new System.Drawing.Size(407, 375);
@@ -224,10 +225,10 @@
             this.ModManageTab.Controls.Add(this.groupBox6);
             this.ModManageTab.Controls.Add(this.groupBox1);
             this.ModManageTab.Controls.Add(this.PresetContainer);
-            this.ModManageTab.Location = new System.Drawing.Point(4, 22);
+            this.ModManageTab.Location = new System.Drawing.Point(4, 24);
             this.ModManageTab.Name = "ModManageTab";
             this.ModManageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ModManageTab.Size = new System.Drawing.Size(399, 349);
+            this.ModManageTab.Size = new System.Drawing.Size(399, 347);
             this.ModManageTab.TabIndex = 0;
             this.ModManageTab.Text = "Manage Mods";
             this.ModManageTab.UseVisualStyleBackColor = true;
@@ -249,7 +250,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ModTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ModTreeView.CheckBoxes = true;
-            this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ModTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ModTreeView.Location = new System.Drawing.Point(6, 19);
             this.ModTreeView.Name = "ModTreeView";
             this.ModTreeView.ShowNodeToolTips = true;
@@ -302,7 +303,7 @@
             // 
             // PresetBox
             // 
-            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.PresetBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PresetBox.FormattingEnabled = true;
             this.PresetBox.ItemHeight = 16;
             this.PresetBox.Location = new System.Drawing.Point(6, 19);
@@ -339,10 +340,10 @@
             this.ModDownloadTab.Controls.Add(this.DriveButton);
             this.ModDownloadTab.Controls.Add(this.ModDescriptionBox);
             this.ModDownloadTab.Controls.Add(this.ModLabel);
-            this.ModDownloadTab.Location = new System.Drawing.Point(4, 22);
+            this.ModDownloadTab.Location = new System.Drawing.Point(4, 24);
             this.ModDownloadTab.Name = "ModDownloadTab";
             this.ModDownloadTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ModDownloadTab.Size = new System.Drawing.Size(399, 349);
+            this.ModDownloadTab.Size = new System.Drawing.Size(399, 347);
             this.ModDownloadTab.TabIndex = 1;
             this.ModDownloadTab.Text = "Download Mods";
             this.ModDownloadTab.UseVisualStyleBackColor = true;
@@ -364,13 +365,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "Available Mods";
             // 
             // SearchBox
             // 
-            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchBox.Location = new System.Drawing.Point(6, 19);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(203, 21);
@@ -379,7 +380,7 @@
             // DownloadTreeView
             // 
             this.DownloadTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DownloadTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DownloadTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DownloadTreeView.Location = new System.Drawing.Point(6, 63);
             this.DownloadTreeView.Name = "DownloadTreeView";
             this.DownloadTreeView.ShowNodeToolTips = true;
@@ -408,7 +409,7 @@
             // 
             // ModDescriptionBox
             // 
-            this.ModDescriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModDescriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ModDescriptionBox.Location = new System.Drawing.Point(224, 30);
             this.ModDescriptionBox.Multiline = true;
             this.ModDescriptionBox.Name = "ModDescriptionBox";
@@ -420,21 +421,21 @@
             // ModLabel
             // 
             this.ModLabel.AutoSize = true;
-            this.ModLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ModLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ModLabel.Location = new System.Drawing.Point(221, 7);
             this.ModLabel.Name = "ModLabel";
-            this.ModLabel.Size = new System.Drawing.Size(139, 15);
+            this.ModLabel.Size = new System.Drawing.Size(123, 15);
             this.ModLabel.TabIndex = 4;
-            this.ModLabel.Text = "Randomizer 3 - 3.10(xx)";
+            this.ModLabel.Text = "Randomizer 3 - Main";
             // 
             // LevelTab
             // 
             this.LevelTab.Controls.Add(this.groupBox5);
             this.LevelTab.Controls.Add(this.groupBox3);
-            this.LevelTab.Location = new System.Drawing.Point(4, 22);
+            this.LevelTab.Location = new System.Drawing.Point(4, 24);
             this.LevelTab.Name = "LevelTab";
             this.LevelTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LevelTab.Size = new System.Drawing.Size(399, 349);
+            this.LevelTab.Size = new System.Drawing.Size(399, 347);
             this.LevelTab.TabIndex = 3;
             this.LevelTab.Text = "Levels";
             this.LevelTab.UseVisualStyleBackColor = true;
@@ -454,7 +455,7 @@
             this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
             this.listBox2.Location = new System.Drawing.Point(6, 19);
@@ -477,7 +478,7 @@
             this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
@@ -487,29 +488,29 @@
             // 
             // TrialTab
             // 
-            this.TrialTab.Location = new System.Drawing.Point(4, 22);
+            this.TrialTab.Location = new System.Drawing.Point(4, 24);
             this.TrialTab.Name = "TrialTab";
-            this.TrialTab.Size = new System.Drawing.Size(399, 349);
+            this.TrialTab.Size = new System.Drawing.Size(399, 347);
             this.TrialTab.TabIndex = 6;
             this.TrialTab.Text = "Trials";
             this.TrialTab.UseVisualStyleBackColor = true;
             // 
             // SkinTab
             // 
-            this.SkinTab.Location = new System.Drawing.Point(4, 22);
+            this.SkinTab.Location = new System.Drawing.Point(4, 24);
             this.SkinTab.Name = "SkinTab";
             this.SkinTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SkinTab.Size = new System.Drawing.Size(399, 349);
+            this.SkinTab.Size = new System.Drawing.Size(399, 347);
             this.SkinTab.TabIndex = 4;
             this.SkinTab.Text = "Skins";
             this.SkinTab.UseVisualStyleBackColor = true;
             // 
             // SavesTab
             // 
-            this.SavesTab.Location = new System.Drawing.Point(4, 22);
+            this.SavesTab.Location = new System.Drawing.Point(4, 24);
             this.SavesTab.Name = "SavesTab";
             this.SavesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SavesTab.Size = new System.Drawing.Size(399, 349);
+            this.SavesTab.Size = new System.Drawing.Size(399, 347);
             this.SavesTab.TabIndex = 5;
             this.SavesTab.Text = "Saves";
             this.SavesTab.UseVisualStyleBackColor = true;
@@ -521,10 +522,10 @@
             this.SettingsTab.Controls.Add(this.button4);
             this.SettingsTab.Controls.Add(this.button2);
             this.SettingsTab.Controls.Add(this.JamieLabel);
-            this.SettingsTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingsTab.Location = new System.Drawing.Point(4, 24);
             this.SettingsTab.Name = "SettingsTab";
             this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsTab.Size = new System.Drawing.Size(399, 349);
+            this.SettingsTab.Size = new System.Drawing.Size(399, 347);
             this.SettingsTab.TabIndex = 2;
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
@@ -582,6 +583,28 @@
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "HKManager Settings";
             // 
+            // checkBox5
+            // 
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox5.Location = new System.Drawing.Point(6, 126);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(178, 53);
+            this.checkBox5.TabIndex = 8;
+            this.checkBox5.Text = "Automatically download Recommended mods for levels";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(6, 90);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(178, 39);
+            this.checkBox4.TabIndex = 7;
+            this.checkBox4.Text = "Group Mods by Category in Downloads list";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -589,7 +612,7 @@
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(6, 67);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(133, 17);
+            this.checkBox3.Size = new System.Drawing.Size(143, 19);
             this.checkBox3.TabIndex = 6;
             this.checkBox3.Text = "Check for API updates";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -599,7 +622,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(6, 43);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(158, 17);
+            this.checkBox2.Size = new System.Drawing.Size(179, 19);
             this.checkBox2.TabIndex = 5;
             this.checkBox2.Text = "Automatically install updates";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -611,7 +634,7 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(6, 20);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(176, 17);
+            this.checkBox1.Size = new System.Drawing.Size(194, 19);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "Launch Game from HKManager";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -636,13 +659,14 @@
             // 
             // JamieLabel
             // 
-            this.JamieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.JamieLabel.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+            this.JamieLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.JamieLabel.LinkArea = new System.Windows.Forms.LinkArea(19, 11);
             this.JamieLabel.Location = new System.Drawing.Point(3, 329);
             this.JamieLabel.Name = "JamieLabel";
             this.JamieLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.JamieLabel.Size = new System.Drawing.Size(393, 17);
             this.JamieLabel.TabIndex = 1;
+            this.JamieLabel.TabStop = true;
             this.JamieLabel.Text = "HKManager was made open-source by ManicJamie. Check her out!";
             this.JamieLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.JamieLabel.UseCompatibleTextRendering = true;
@@ -692,28 +716,6 @@
             // 
             this.ModWatcher.EnableRaisingEvents = true;
             this.ModWatcher.SynchronizingObject = this;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(6, 90);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(178, 30);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Group Mods by Category in Downloads list";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(6, 126);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(178, 30);
-            this.checkBox5.TabIndex = 8;
-            this.checkBox5.Text = "Automatically download Recommended mods for levels";
-            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // HKManager
             // 

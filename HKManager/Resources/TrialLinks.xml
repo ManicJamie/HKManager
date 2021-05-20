@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrialLinks>
+  <!-- List of custom trials. Note that each custom trial comes with its own dll - this has to be moved to the mods folder. -->
+  <TrialList>
+    <Trial Name="Trial of the Absolute Fool">
+      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
+      <Description></Description>
+      <Link><![CDATA[]]></Link>
+      <SHA1></SHA1>
+    </Trial>
+  </TrialList>
+  
+  <!-- Example Trial Entry:
+    <Trial Name="Name of the Trial">
+      <Author Name="Author Name"><![CDATA[Link to Author's socials.]]></Author>
+      <Description>Description of the trial</Description>
+      <Link><![CDATA[Download link]]></Link>
+      <SHA1>SHA1 of the XML</SHA1>
+    </Trial>
+  -->
+</TrialLinks>

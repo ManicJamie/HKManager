@@ -16,7 +16,7 @@
       <Name>Modding API</Name>
       <Description>Allows for loading of third-party mods.</Description>
       <OS>Universal</OS>
-      <Version>API-57</Version>
+      <Version>API-60</Version>
       <Link><![CDATA[https://drive.google.com/uc?export=download&id=1qgm-LS3mBtbaqd-BxxRjqmE1eEmXG8rH]]></Link>
       <SHA1>E880EA1B2B4B57FBD6ECA36B26746F08FF4EEF9F</SHA1>
     </API>
@@ -30,7 +30,7 @@
     </API>
     <API Patch ="1.0.2.8">
       <Name>Modding API</Name>
-      <Description>Allows for loading of third-parth mods.</Description>
+      <Description>Allows for loading of third-party mods.</Description>
       <OS>Universal</OS>
       <Version>API</Version>
       <Link><![CDATA[]]></Link>
@@ -87,28 +87,9 @@
     </API>
   </APIList>
 
-  <!-- List of custom trials. Note that each custom trial comes with its own dll - this has to be moved to the mods folder. -->
-  <TrialList>
-    <Trial Name="Trial of the Absolute Fool">
-      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
-      <Description></Description>
-      <Link><![CDATA[]]></Link>
-      <SHA1></SHA1>
-    </Trial>
-  </TrialList>
-  
-  <!-- List of custom levels using DecorationMaster. -->
-  <LevelList>
-    <Level Name="Impossible Birthplace">
-      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
-      <Description></Description>
-      <Link><![CDATA[]]></Link>
-      <SHA1></SHA1>
-    </Level>
-  </LevelList>
-
   <!-- Modlist. A demo mod can be found at the end of the document. -->
   <ModList>
+  <!-- kept for back compatibility, horrible -->
     <ModLink>
       <Name>Modding API Windows</Name>
       <FullDescription />
@@ -1758,6 +1739,9 @@
       </Dependencies>
     </ModLink>
   </ModList>
+
+  <!-- Extension to Modlist. Used by HKManager for branches. Only use if you are creating a branch of an existing mod.-->
+  <ModExtensions></ModExtensions>
 </ModLinks>
 
   <!-- Demo mod:
@@ -1769,12 +1753,14 @@
       <BranchName>Name of a branch. You can just use "Main" if your mod will not have any other concurrent versions.</BranchName>
       <BranchDescription>Description of the branch - tell the user what's different in this branch.</BranchDescription>
       
-      <Patch>1.4.3.2</Patch>
+      <Patches>
+        <Patch>1.4.3.2</Patch>
+      </Patches>
       
       <Files>
         <File>
-          <Name>ModName.dll</Name>
-          <SHA1>qwertyuiop</SHA1>
+          <Name>Filename.dll</Name>
+          <SHA1>SHA1 hash of the file. This changes when the dll changes - if you update your mod, update this too!</SHA1>
         </File>
       </Files>
       

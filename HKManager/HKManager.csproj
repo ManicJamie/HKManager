@@ -1,162 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B4568E5-B577-43CD-8D5A-8E34B6A9CBCE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HKManager</RootNamespace>
-    <AssemblyName>HKManager</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>HKManager5._0</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\hornet.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>HKManager.Program</StartupObject>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <None Remove="Resources\LevelLinks.xml" />
+    <None Remove="Resources\ModLinks.xml" />
+    <None Remove="Resources\SkinLinks.xml" />
+    <None Remove="Resources\TrialLinks.xml" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="ConnectionFailedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConnectionFailedForm.Designer.cs">
-      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DownloadHelper.cs" />
-    <Compile Include="HKManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HKManager.Designer.cs">
-      <DependentUpon>HKManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModCreationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModCreationForm.Designer.cs">
-      <DependentUpon>ModCreationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Objects.cs" />
-    <Compile Include="ProfileCreationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProfileCreationDialog.Designer.cs">
-      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\hornet.ico" />
-    <EmbeddedResource Include="ConnectionFailedForm.resx">
-      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HKManager.resx">
-      <DependentUpon>HKManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModCreationForm.resx">
-      <DependentUpon>ModCreationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProfileCreationDialog.resx">
-      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Resources\LevelLinks.xml" />
     <Content Include="Resources\ModLinks.xml" />
+    <Content Include="Resources\SkinLinks.xml" />
+    <Content Include="Resources\TrialLinks.xml" />
   </ItemGroup>
+
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <Compile Update="ConnectionFailedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConnectionFailedForm.Designer.cs">
+      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="HKManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="HKManager.Designer.cs">
+      <DependentUpon>HKManager.cs</DependentUpon>
+    </Compile>
+    <Compile Update="ModCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModCreationForm.Designer.cs">
+      <DependentUpon>ModCreationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="ProfileCreationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProfileCreationDialog.Designer.cs">
+      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>@RD /S /Q "C:\Users\Jamie\AppData\Local\HKManager"</PreBuildEvent>
-  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ConnectionFailedForm.resx">
+      <DependentUpon>ConnectionFailedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="HKManager.resx">
+      <DependentUpon>HKManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ModCreationForm.resx">
+      <DependentUpon>ModCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ProfileCreationDialog.resx">
+      <DependentUpon>ProfileCreationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

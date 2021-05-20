@@ -19,10 +19,10 @@ namespace HKManager
     {
         private const string Version = "v0.1";
         private const string MODLINKS_URI = "https://raw.githubusercontent.com/ManicJamie/HKManager/main/HKManager/Resources/ModLinks.xml";
-        public static readonly string OS;
+        public static string OS;
         private bool IsOffline;
-        public static HKManager DefaultInstance;
-        private bool Terminating = false; // prevents erroring from Application.Exit taking too much time :woozy:
+        public static HKManager DefaultInstance { get; set; }
+        private bool Terminating = false; // Application.Exit() doesn't immediately terminate the program, so we must prevent it from continuing manually.
 
         private ProfileList profileList;
         private XDocument ModLinks;
@@ -34,11 +34,6 @@ namespace HKManager
         public HKManager()
         {
             InitializeComponent();
-            DefaultInstance = this;
-        }
-
-        static HKManager()
-        {
             // Get OS
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 OS = "Windows";
@@ -48,43 +43,45 @@ namespace HKManager
                 OS = "Linux";
             else
                 OS = "Windows";
+
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12; // Forces TLS 1.2 for github downloads, since some OS don't select it by default.
+            DefaultInstance = this;
         }
+
 
         private void HKManager_Load(object sender, EventArgs e)
         {
+
             if (!GetModLinks())
             {
                 Application.Exit();
                 return;
             }
+
             if (!IsOffline)
             {
-                //CheckUpdate(); // DONT HAVE THIS COMMENTED OUT WHEN YOU BUILD DUMMY
+                #if !DEBUG
+                CheckUpdate();
+                #endif
+
                 DownloadList = CreateDownloadList();
                 APIList = CreateAPIList();
-            } else
+            } 
+            else
             {
                 TabContainer.TabPages.Remove(ModDownloadTab); 
             }
 
             LoadOrCreateProfiles();
-            if (!Terminating)
-            {
-                UpdateProfileBox();
-                ProfileBox.SelectedIndex = 0;
+            if (Terminating) { Close(); return; }
 
-                // Remove unused tabs from TabContainer
-                // TabContainer.TabPages.Remove(SkinTab);
-                // TabContainer.TabPages.Remove(LevelTab);
+            UpdateProfileBox();
+            ProfileBox.SelectedIndex = 0;
 
-                JamieLabel.Links.Add(19,11, "https://github.com/ManicJamie/HKManager");
-                JamieLabel.Links.Add(34, 10, "https://www.twitch.tv/manicjamie");
-                this.Text = "HKManager " + Version + (IsOffline ? " (Offline Mode)" : "");
-            }
-            else Close();
+            this.Text = "HKManager " + Version + (IsOffline ? " (Offline Mode)" : "");
         }
 
-        #region Loading HKManager
+#region Loading HKManager
 
         /// <summary>
         /// Downloads Modlinks.xml. If connection failed, offer user option to enter offline mode, retry or exit.
@@ -167,9 +164,9 @@ namespace HKManager
                 }
             }
         }
-        #endregion
+#endregion
 
-        #region Profile Handling
+#region Profile Handling
         private bool CreateNewProfile()
         {
             profileList = new ProfileList();
@@ -193,9 +190,9 @@ namespace HKManager
             currentProfile = profile;
             UpdateProfileLabels();
         }
-        #endregion
+#endregion
 
-        #region ModLinks handling
+#region ModLinks handling
         private List<Mod> CreateDownloadList()
         {
             List<Mod> _downloadList = new List<Mod>();
@@ -257,9 +254,9 @@ namespace HKManager
             return null;
         }
 
-        #endregion
+#endregion
 
-        #region SHA1 computation & Static Methods
+#region SHA1 computation & Static Methods
         public static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);
         public static string ComputeSHA1(string file)
         {
@@ -293,9 +290,9 @@ namespace HKManager
                 ? $"{InstallPath}/Contents/Resources/Data/Managed"
                 : $"{InstallPath}/hollow_knight_Data/Managed";
         }
-        #endregion
+#endregion
 
-        #region Display
+#region Display
         private void UpdateProfileBox()
         {
             string selectedItem = (string)ProfileBox.SelectedItem;
@@ -312,9 +309,40 @@ namespace HKManager
             PathLabel.Text = currentProfile.InstallPath;
             VersionLabel.Text = "Version: " + currentProfile.Patch + " | " + currentProfile.Api.Version;
         }
-        #endregion
 
-        #region Handlers
+        /// <summary>
+        /// Restructures the mod list view completely. Only use when a file is changed.
+        /// </summary>
+        private void BuildModTreeView()
+        {
+            ModTreeView.BeginUpdate();
+            ModTreeView.Nodes.Clear();
+            List<Mod> addedMods = new List<Mod>();
+            ModNameComparer modNameComparer = new ModNameComparer();
+            foreach (Mod mod in currentProfile.Mods)
+            {
+                if (!addedMods.Contains(mod, modNameComparer)) // if the mod does not already exist in the treeview
+                {
+                    ModTreeView.Nodes.Add(new ModNode(mod));
+                } else
+                {
+                    ModNode parent = (ModNode)ModTreeView.Nodes.Find(mod.Name, false)[0];
+                    if (parent.FirstNode == null) 
+                    {
+                        parent.Nodes.Add(new ModNode(parent.mod, true)
+                        {
+                            Name = parent.mod.BranchName == null ? "Main" : parent.mod.BranchName
+                        }); // create child for main branch
+                    }
+                    parent.Nodes.Add(new ModNode(mod, true)); // add new branch
+                }
+                addedMods.Add(mod);
+            }
+            ModTreeView.EndUpdate();
+        }
+#endregion
+
+#region Handlers
         private void DriveButton_Click(object sender, EventArgs e)
         {
             // apparently there can be issues finding the default browser if we don't do this. better to be safe ¯\_(ツ)_/¯
@@ -330,7 +358,12 @@ namespace HKManager
         {
             if (Directory.Exists(currentProfile.InstallPath))
             {
-                Process.Start(currentProfile.InstallPath);
+                Process.Start(new ProcessStartInfo()
+                {
+                    Arguments = currentProfile.InstallPath,
+                    FileName = "explorer.exe"
+                }
+);
             }
         }
 
@@ -338,7 +371,12 @@ namespace HKManager
         {
             if (Directory.Exists(GetSavesPath()))
             {
-                Process.Start(GetSavesPath());
+                Process.Start(new ProcessStartInfo()
+                {
+                    Arguments = GetSavesPath(),
+                    FileName = "explorer.exe"
+                }
+                );
             }
         }
 
@@ -352,6 +390,15 @@ namespace HKManager
 
         }
 
+        private void JamieLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var ps = new ProcessStartInfo((string)e.Link.LinkData)
+            {
+                UseShellExecute = true,
+                Verb = "open"
+            };
+            Process.Start(ps);
+        }
         #endregion
 
         private void PBoxContext_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -359,9 +406,37 @@ namespace HKManager
 
         }
 
-        private void JamieLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MainContainer_Panel2_Paint(object sender, PaintEventArgs e)
         {
-            Process.Start((string)e.Link.LinkData);
+
         }
+    }
+
+    class ModNameComparer : IEqualityComparer<Mod>
+    {
+        public bool Equals(Mod m1, Mod m2)
+        {
+            if (m1 == null && m2 == null) { return true; }
+            if (m1 == null || m2 == null) { return false; }
+            if (m1.Name == m2.Name) { return true; }
+            return false;
+        }
+
+        public int GetHashCode(Mod m)
+        {
+            return (m.Name).GetHashCode();
+        }
+    }
+
+    class ModNode : TreeNode
+    {
+        public Mod mod;
+
+        public ModNode(Mod m, bool isBranch = false) : base(!isBranch ? m.Name : m.BranchName)
+        {
+            mod = m;
+            Checked = m.Enabled;
+        }
+        public ModNode(string s) : base(s) { }
     }
 }

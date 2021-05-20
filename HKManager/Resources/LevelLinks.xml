@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelLinks xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- List of custom levels using DecorationMaster. -->
+  <LevelList>
+    <Level Name="Impossible Birthplace">
+      <Author Name="fireb0rn"><![CDATA[https://www.youtube.com/c/fireb0rngg]]></Author>
+      <Description></Description>
+      <Link><![CDATA[]]></Link>
+    </Level>
+  </LevelList>
+  
+  <!-- Example Level entry:
+    <Level Name="Level Name">
+      <Author Name="Author Name"><![CDATA[Link to author's social]]></Author>
+      <Description>Description of the level.</Description>
+      <Link><![CDATA[Download link]]></Link>
+      <Version>Level version</Version> 
+    </Level>
+  
+  -->
+</LevelLinks>

@@ -18,7 +18,8 @@ namespace ModLinksConverter
 
         static void Main(string[] args)
         {
-            GenerateXMLFromModLinks();
+            Console.WriteLine(ComputeSHA1(@"C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Assembly-CSharp.dll").ToUpper());
+            Console.ReadLine();
         }
 
         private static bool SHA1Equals(string file, string sha1) => string.Equals(ComputeSHA1(file), sha1, StringComparison.InvariantCultureIgnoreCase);

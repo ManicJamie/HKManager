@@ -3,6 +3,9 @@ using System.Xml;
 using System.IO;
 using System.Text.Json;
 using System.Linq;
+using System;
+
+
 
 namespace HKManager
 {
@@ -43,22 +46,25 @@ namespace HKManager
         #region Serialization
         public void SaveProfileList()
         {
-            Properties.Settings.Default.ProfileList = JsonSerializer.Serialize(this, this.GetType());
-            Properties.Settings.Default.Save();
+            Directory.CreateDirectory(Path.Combine(HKManager.GetSavesPath(), "HKM"));
+            using StreamWriter settingWriter = new StreamWriter(Path.Combine(HKManager.GetSavesPath(), "HKM/HKManagerData.json"));
+            settingWriter.Write(JsonSerializer.Serialize(this, this.GetType()));
         }
 
         public static ProfileList LoadProfileList()
         {
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.ProfileList))
+            if (File.Exists(Path.Combine(HKManager.GetSavesPath(), "HKM/HKManagerData.json")))
             {
-                return (ProfileList)JsonSerializer.Deserialize(Properties.Settings.Default.ProfileList, typeof(ProfileList));
+                using StreamReader settingReader = new StreamReader(Path.Combine(HKManager.GetSavesPath(), "HKM/HKManagerData.json"));
+                return (ProfileList)JsonSerializer.Deserialize(settingReader.ReadToEnd(), typeof(ProfileList));
             }
             else return null;
         }
         #endregion
+
     }
     /// <summary>
-    /// Reference to a game installation. Contains path, patch and list of presets.
+    /// Reference to a game installation. Contains path, patch, modlist and list of presets.
     /// </summary>
     public class Profile
     {
@@ -159,7 +165,7 @@ namespace HKManager
     /// </summary>
     public class Mod
     {
-        public int ID { get; set; } // Unique identifier used to identify mods in a preset.
+        public string ID { get; set; } // Unique identifier used to identify mods in a preset.
         public string Name { get; set; }
         public string Description { get; set; } // Description to be shown on hover
         public string FullDescription { get; set; } // Long description seen when installing mods.
@@ -209,4 +215,39 @@ namespace HKManager
         public string Enabled { get; }
     }
 
+    /// <summary>
+    /// List of mods from the manifest.
+    /// </summary>
+    public class DownloadList
+    {
+        private List<Mod> Downloads = new List<Mod>();
+        public List<string> IDs { get; set; }
+        public Profile LinkedProfile { get; set; }
+
+        public Mod this[string ID]
+        {
+            get => Downloads.Find(x => x.ID == ID);
+        }
+
+        public void FillIDsFromProfile()
+        {
+            IDs = new List<string>();
+            foreach (Mod mod in LinkedProfile.Mods)
+            {
+                IDs.Add(mod.ID);
+            }
+        }
+
+        public List<Mod> GetUninstalledDownloads()
+        {
+            List<Mod> tmp = new List<Mod>();
+            foreach (Mod mod in Downloads) if (!IDs.Contains(mod.ID))
+            {
+                tmp.Add(mod);
+            }
+            return tmp;
+        }
+
+
+    }
 }
